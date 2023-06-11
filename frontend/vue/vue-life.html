@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>vue生命周期 | Jian‘s blog</title>
+    <meta name="generator" content="VuePress 1.9.9">
+    <link rel="icon" href="/jian_x48.png">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="apple-touch-icon" href="/jian_x192.png">
+    <meta name="description" content="每天进步一点点">
+    <meta name="theme-color" content="#3eaf7c">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="msapplication-TileImage" content="/jian_x192.png">
+    <meta name="msapplication-TileColor" content="#000000">
+    
+    <link rel="preload" href="/assets/css/0.styles.19232fe9.css" as="style"><link rel="preload" href="/assets/js/app.9e441e61.js" as="script"><link rel="preload" href="/assets/js/2.36bde0fd.js" as="script"><link rel="preload" href="/assets/js/74.e089a7e8.js" as="script"><link rel="preload" href="/assets/js/3.5a07e503.js" as="script"><link rel="prefetch" href="/assets/js/10.bc82d67b.js"><link rel="prefetch" href="/assets/js/11.ead9b8ca.js"><link rel="prefetch" href="/assets/js/12.a048ccaa.js"><link rel="prefetch" href="/assets/js/13.3e4cc077.js"><link rel="prefetch" href="/assets/js/14.58cd0fa5.js"><link rel="prefetch" href="/assets/js/15.98e26beb.js"><link rel="prefetch" href="/assets/js/16.4cf1daea.js"><link rel="prefetch" href="/assets/js/17.c190a7fe.js"><link rel="prefetch" href="/assets/js/18.89814285.js"><link rel="prefetch" href="/assets/js/19.77f58842.js"><link rel="prefetch" href="/assets/js/20.9920ac2c.js"><link rel="prefetch" href="/assets/js/21.6a8c9cfe.js"><link rel="prefetch" href="/assets/js/22.cfd89a61.js"><link rel="prefetch" href="/assets/js/23.48f5d9f7.js"><link rel="prefetch" href="/assets/js/24.a8c5ac10.js"><link rel="prefetch" href="/assets/js/25.842b3853.js"><link rel="prefetch" href="/assets/js/26.9c5fe1dd.js"><link rel="prefetch" href="/assets/js/27.c4f0a52b.js"><link rel="prefetch" href="/assets/js/28.ce11023f.js"><link rel="prefetch" href="/assets/js/29.9001ac2f.js"><link rel="prefetch" href="/assets/js/30.5edf0dc1.js"><link rel="prefetch" href="/assets/js/31.57d2aeed.js"><link rel="prefetch" href="/assets/js/32.db6f674e.js"><link rel="prefetch" href="/assets/js/33.038cad31.js"><link rel="prefetch" href="/assets/js/34.bff4a907.js"><link rel="prefetch" href="/assets/js/35.e9272942.js"><link rel="prefetch" href="/assets/js/36.896895d7.js"><link rel="prefetch" href="/assets/js/37.91a5bb8c.js"><link rel="prefetch" href="/assets/js/38.3f6a6f29.js"><link rel="prefetch" href="/assets/js/39.270d8c27.js"><link rel="prefetch" href="/assets/js/4.0800d99b.js"><link rel="prefetch" href="/assets/js/40.b379e318.js"><link rel="prefetch" href="/assets/js/41.f3073d82.js"><link rel="prefetch" href="/assets/js/42.867935ca.js"><link rel="prefetch" href="/assets/js/43.30335621.js"><link rel="prefetch" href="/assets/js/44.993aea4e.js"><link rel="prefetch" href="/assets/js/45.60eb5226.js"><link rel="prefetch" href="/assets/js/46.8501be1f.js"><link rel="prefetch" href="/assets/js/47.ba2302fc.js"><link rel="prefetch" href="/assets/js/48.e932482f.js"><link rel="prefetch" href="/assets/js/49.c1af1af4.js"><link rel="prefetch" href="/assets/js/5.1d8a5d7f.js"><link rel="prefetch" href="/assets/js/50.e7715e10.js"><link rel="prefetch" href="/assets/js/51.ab6021ba.js"><link rel="prefetch" href="/assets/js/52.c5c5c3ef.js"><link rel="prefetch" href="/assets/js/53.7157cd05.js"><link rel="prefetch" href="/assets/js/54.f4abd89d.js"><link rel="prefetch" href="/assets/js/55.c86bbebc.js"><link rel="prefetch" href="/assets/js/56.ee48a85c.js"><link rel="prefetch" href="/assets/js/57.90d4c487.js"><link rel="prefetch" href="/assets/js/58.1d4866f8.js"><link rel="prefetch" href="/assets/js/59.75c6bc90.js"><link rel="prefetch" href="/assets/js/6.90059570.js"><link rel="prefetch" href="/assets/js/60.c5e61798.js"><link rel="prefetch" href="/assets/js/61.54457b0e.js"><link rel="prefetch" href="/assets/js/62.2e0af734.js"><link rel="prefetch" href="/assets/js/63.07cece40.js"><link rel="prefetch" href="/assets/js/64.e6ab0174.js"><link rel="prefetch" href="/assets/js/65.663550a9.js"><link rel="prefetch" href="/assets/js/66.64ad9de7.js"><link rel="prefetch" href="/assets/js/67.cc5c5ab3.js"><link rel="prefetch" href="/assets/js/68.d76b1a45.js"><link rel="prefetch" href="/assets/js/69.06c85095.js"><link rel="prefetch" href="/assets/js/7.e0481b37.js"><link rel="prefetch" href="/assets/js/70.5fa17108.js"><link rel="prefetch" href="/assets/js/71.ea8df0ea.js"><link rel="prefetch" href="/assets/js/72.12d99daf.js"><link rel="prefetch" href="/assets/js/73.8b6c81cd.js"><link rel="prefetch" href="/assets/js/75.eda86622.js"><link rel="prefetch" href="/assets/js/76.451d3bf2.js"><link rel="prefetch" href="/assets/js/77.5a71a520.js"><link rel="prefetch" href="/assets/js/78.5e4673c6.js"><link rel="prefetch" href="/assets/js/79.f657e29d.js"><link rel="prefetch" href="/assets/js/8.e1e88656.js"><link rel="prefetch" href="/assets/js/80.d7b2d65d.js"><link rel="prefetch" href="/assets/js/81.c9dc1609.js"><link rel="prefetch" href="/assets/js/82.2b309c6c.js"><link rel="prefetch" href="/assets/js/9.54f76d53.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.19232fe9.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/img/jian.jpeg" alt="Jian‘s blog" class="logo"> <span class="site-name can-hide">Jian‘s blog</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="js" class="dropdown-title"><span class="title">js</span> <span class="arrow down"></span></button> <button type="button" aria-label="js" class="mobile-dropdown-title"><span class="title">js</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/frontend/js/" class="nav-link">
+  js杂记
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/js/promise.html" class="nav-link">
+  Promise规范和应用
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/js/browser.html" class="nav-link">
+  浏览器对象详解
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/js/js_oop.html" class="nav-link">
+  面向对象编程
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/js/ES6.html" class="nav-link">
+  ES6ESNext规范详解
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/js/this_chain.html" class="nav-link">
+  this指针作用域
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/js/typescript.html" class="nav-link">
+  ts初探
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/ts/basics.html" class="nav-link">
+  ts基础
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/ts/project.html" class="nav-link">
+  ts工程
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="工程化" class="dropdown-title"><span class="title">工程化</span> <span class="arrow down"></span></button> <button type="button" aria-label="工程化" class="mobile-dropdown-title"><span class="title">工程化</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/frontend/tools/js_module.html" class="nav-link">
+  模块化规范
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/tools/js_project.html" class="nav-link">
+  前端工程化
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/tools/webpack.html" class="nav-link">
+  webpack
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/tools/babel.html" class="nav-link">
+  babel
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/tools/autotest.html" class="nav-link">
+  自动化测试和部署
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/tools/ast.html" class="nav-link">
+  AST
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/tools/solution.html" class="nav-link">
+  前端方案
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/tools/js_tools.html" class="nav-link">
+  常用工具
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="vue" class="dropdown-title"><span class="title">vue</span> <span class="arrow down"></span></button> <button type="button" aria-label="vue" class="mobile-dropdown-title"><span class="title">vue</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/frontend/vue/index.html" class="nav-link">
+  vue2.0基础
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/advance.html" class="nav-link">
+  vue2.0进阶
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vue-cli.html" class="nav-link">
+  vue-cli
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vue-loader.html" class="nav-link">
+  vue-loader
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vue-router.html" class="nav-link">
+  vue-router
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vuex.html" class="nav-link">
+  vuex
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vue_ssr.html" class="nav-link">
+  vue-ssr
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vue-i18n.html" class="nav-link">
+  vue-i18n
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vue-life.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  生命周期
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vue_reactive.html" class="nav-link">
+  响应式原理
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vue_diff.html" class="nav-link">
+  diff原理
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vue-compiler.html" class="nav-link">
+  编译原理
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vue-refs.html" class="nav-link">
+  实战总结
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="react" class="dropdown-title"><span class="title">react</span> <span class="arrow down"></span></button> <button type="button" aria-label="react" class="mobile-dropdown-title"><span class="title">react</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/frontend/react/react.html" class="nav-link">
+  react基础
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/react/react-advance.html" class="nav-link">
+  react进阶
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/react/react-router.html" class="nav-link">
+  react-router
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/react/react-state.html" class="nav-link">
+  react状态管理
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/react/react-ssr.html" class="nav-link">
+  react同构
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/react/react-component.html" class="nav-link">
+  react组件封装
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/react/react-code.html" class="nav-link">
+  react源码分析
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/ts/react-ts.html" class="nav-link">
+  react-ts实战
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/react/react-practice.html" class="nav-link">
+  react问题整理
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="nodejs" class="dropdown-title"><span class="title">nodejs</span> <span class="arrow down"></span></button> <button type="button" aria-label="nodejs" class="mobile-dropdown-title"><span class="title">nodejs</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/frontend/nodejs/index.html" class="nav-link">
+  nodejs基础
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/nodejs/module.html" class="nav-link">
+  nodejs常用框架
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/nodejs/http.html" class="nav-link">
+  nodejs网络及部署
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/ts/express-ts.html" class="nav-link">
+  express-ts实战
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/nodejs/info.html" class="nav-link">
+  nodejs前研
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="其他" class="dropdown-title"><span class="title">其他</span> <span class="arrow down"></span></button> <button type="button" aria-label="其他" class="mobile-dropdown-title"><span class="title">其他</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/frontend/interview/" class="nav-link">
+  前端面试
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/performance/performance.html" class="nav-link">
+  前端性能优化
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/performance/explorer.html" class="nav-link">
+  浏览器进程和线程
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/else/security-control.html" class="nav-link">
+  前端网络安全
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/lowcode/lowcode.html" class="nav-link">
+  低代码平台
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/else/micro-frontend.html" class="nav-link">
+  微前端
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/else/designMode.html" class="nav-link">
+  前端设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/css/" class="nav-link">
+  css
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/mini-program/" class="nav-link">
+  小程序
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/hybrid/hybrid.html" class="nav-link">
+  hybrid开发及原理分析
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/else/canvas.html" class="nav-link">
+  canvas
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/else/graph.html" class="nav-link">
+  图片格式
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/else/web3.html" class="nav-link">
+  web3探索
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="算法" class="dropdown-title"><span class="title">算法</span> <span class="arrow down"></span></button> <button type="button" aria-label="算法" class="mobile-dropdown-title"><span class="title">算法</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/frontend/algorithm/graph.html" class="nav-link">
+  图的存储和遍历
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/algorithm/dpointer.html" class="nav-link">
+  双指针
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/algorithm/Levenshtein.html" class="nav-link">
+  最短编辑距离
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/algorithm/greed.html" class="nav-link">
+  贪心算法
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/algorithm/dp.html" class="nav-link">
+  动态规划
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/algorithm/leetcode.html" class="nav-link">
+  leetcode
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="后端" class="dropdown-title"><span class="title">后端</span> <span class="arrow down"></span></button> <button type="button" aria-label="后端" class="mobile-dropdown-title"><span class="title">后端</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/backend/nginx.html" class="nav-link">
+  nginx
+</a></li><li class="dropdown-item"><!----> <a href="/backend/springboot.html" class="nav-link">
+  springboot
+</a></li><li class="dropdown-item"><!----> <a href="/backend/mybatis.html" class="nav-link">
+  mybatis
+</a></li><li class="dropdown-item"><!----> <a href="/backend/uml.html" class="nav-link">
+  uml类图
+</a></li><li class="dropdown-item"><!----> <a href="/backend/ddd.html" class="nav-link">
+  领域驱动设计
+</a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="js" class="dropdown-title"><span class="title">js</span> <span class="arrow down"></span></button> <button type="button" aria-label="js" class="mobile-dropdown-title"><span class="title">js</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/frontend/js/" class="nav-link">
+  js杂记
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/js/promise.html" class="nav-link">
+  Promise规范和应用
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/js/browser.html" class="nav-link">
+  浏览器对象详解
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/js/js_oop.html" class="nav-link">
+  面向对象编程
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/js/ES6.html" class="nav-link">
+  ES6ESNext规范详解
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/js/this_chain.html" class="nav-link">
+  this指针作用域
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/js/typescript.html" class="nav-link">
+  ts初探
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/ts/basics.html" class="nav-link">
+  ts基础
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/ts/project.html" class="nav-link">
+  ts工程
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="工程化" class="dropdown-title"><span class="title">工程化</span> <span class="arrow down"></span></button> <button type="button" aria-label="工程化" class="mobile-dropdown-title"><span class="title">工程化</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/frontend/tools/js_module.html" class="nav-link">
+  模块化规范
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/tools/js_project.html" class="nav-link">
+  前端工程化
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/tools/webpack.html" class="nav-link">
+  webpack
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/tools/babel.html" class="nav-link">
+  babel
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/tools/autotest.html" class="nav-link">
+  自动化测试和部署
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/tools/ast.html" class="nav-link">
+  AST
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/tools/solution.html" class="nav-link">
+  前端方案
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/tools/js_tools.html" class="nav-link">
+  常用工具
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="vue" class="dropdown-title"><span class="title">vue</span> <span class="arrow down"></span></button> <button type="button" aria-label="vue" class="mobile-dropdown-title"><span class="title">vue</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/frontend/vue/index.html" class="nav-link">
+  vue2.0基础
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/advance.html" class="nav-link">
+  vue2.0进阶
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vue-cli.html" class="nav-link">
+  vue-cli
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vue-loader.html" class="nav-link">
+  vue-loader
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vue-router.html" class="nav-link">
+  vue-router
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vuex.html" class="nav-link">
+  vuex
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vue_ssr.html" class="nav-link">
+  vue-ssr
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vue-i18n.html" class="nav-link">
+  vue-i18n
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vue-life.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  生命周期
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vue_reactive.html" class="nav-link">
+  响应式原理
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vue_diff.html" class="nav-link">
+  diff原理
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vue-compiler.html" class="nav-link">
+  编译原理
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vue-refs.html" class="nav-link">
+  实战总结
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="react" class="dropdown-title"><span class="title">react</span> <span class="arrow down"></span></button> <button type="button" aria-label="react" class="mobile-dropdown-title"><span class="title">react</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/frontend/react/react.html" class="nav-link">
+  react基础
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/react/react-advance.html" class="nav-link">
+  react进阶
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/react/react-router.html" class="nav-link">
+  react-router
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/react/react-state.html" class="nav-link">
+  react状态管理
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/react/react-ssr.html" class="nav-link">
+  react同构
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/react/react-component.html" class="nav-link">
+  react组件封装
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/react/react-code.html" class="nav-link">
+  react源码分析
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/ts/react-ts.html" class="nav-link">
+  react-ts实战
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/react/react-practice.html" class="nav-link">
+  react问题整理
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="nodejs" class="dropdown-title"><span class="title">nodejs</span> <span class="arrow down"></span></button> <button type="button" aria-label="nodejs" class="mobile-dropdown-title"><span class="title">nodejs</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/frontend/nodejs/index.html" class="nav-link">
+  nodejs基础
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/nodejs/module.html" class="nav-link">
+  nodejs常用框架
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/nodejs/http.html" class="nav-link">
+  nodejs网络及部署
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/ts/express-ts.html" class="nav-link">
+  express-ts实战
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/nodejs/info.html" class="nav-link">
+  nodejs前研
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="其他" class="dropdown-title"><span class="title">其他</span> <span class="arrow down"></span></button> <button type="button" aria-label="其他" class="mobile-dropdown-title"><span class="title">其他</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/frontend/interview/" class="nav-link">
+  前端面试
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/performance/performance.html" class="nav-link">
+  前端性能优化
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/performance/explorer.html" class="nav-link">
+  浏览器进程和线程
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/else/security-control.html" class="nav-link">
+  前端网络安全
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/lowcode/lowcode.html" class="nav-link">
+  低代码平台
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/else/micro-frontend.html" class="nav-link">
+  微前端
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/else/designMode.html" class="nav-link">
+  前端设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/css/" class="nav-link">
+  css
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/mini-program/" class="nav-link">
+  小程序
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/hybrid/hybrid.html" class="nav-link">
+  hybrid开发及原理分析
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/else/canvas.html" class="nav-link">
+  canvas
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/else/graph.html" class="nav-link">
+  图片格式
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/else/web3.html" class="nav-link">
+  web3探索
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="算法" class="dropdown-title"><span class="title">算法</span> <span class="arrow down"></span></button> <button type="button" aria-label="算法" class="mobile-dropdown-title"><span class="title">算法</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/frontend/algorithm/graph.html" class="nav-link">
+  图的存储和遍历
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/algorithm/dpointer.html" class="nav-link">
+  双指针
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/algorithm/Levenshtein.html" class="nav-link">
+  最短编辑距离
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/algorithm/greed.html" class="nav-link">
+  贪心算法
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/algorithm/dp.html" class="nav-link">
+  动态规划
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/algorithm/leetcode.html" class="nav-link">
+  leetcode
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="后端" class="dropdown-title"><span class="title">后端</span> <span class="arrow down"></span></button> <button type="button" aria-label="后端" class="mobile-dropdown-title"><span class="title">后端</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/backend/nginx.html" class="nav-link">
+  nginx
+</a></li><li class="dropdown-item"><!----> <a href="/backend/springboot.html" class="nav-link">
+  springboot
+</a></li><li class="dropdown-item"><!----> <a href="/backend/mybatis.html" class="nav-link">
+  mybatis
+</a></li><li class="dropdown-item"><!----> <a href="/backend/uml.html" class="nav-link">
+  uml类图
+</a></li><li class="dropdown-item"><!----> <a href="/backend/ddd.html" class="nav-link">
+  领域驱动设计
+</a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>vue生命周期</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/frontend/vue/vue-life.html#_1、面试题" class="sidebar-link">1、面试题</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/frontend/vue/vue-life.html#_2、常用" class="sidebar-link">2、常用</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/frontend/vue/vue-life.html#_3、图解生命周期" class="sidebar-link">3、图解生命周期</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/frontend/vue/vue-life.html#_1、实例创建" class="sidebar-link">1、实例创建</a></li><li class="sidebar-sub-header"><a href="/frontend/vue/vue-life.html#_2、模版编译" class="sidebar-link">2、模版编译</a></li><li class="sidebar-sub-header"><a href="/frontend/vue/vue-life.html#_3、数据更新" class="sidebar-link">3、数据更新</a></li><li class="sidebar-sub-header"><a href="/frontend/vue/vue-life.html#_4、数据销毁" class="sidebar-link">4、数据销毁</a></li><li class="sidebar-sub-header"><a href="/frontend/vue/vue-life.html#_5、路由缓存" class="sidebar-link">5、路由缓存</a></li><li class="sidebar-sub-header"><a href="/frontend/vue/vue-life.html#_6、vue中内置的方法属性" class="sidebar-link">6、vue中内置的方法属性</a></li></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="vue生命周期"><a href="#vue生命周期" class="header-anchor">#</a> vue生命周期</h1> <h2 id="_1、面试题"><a href="#_1、面试题" class="header-anchor">#</a> 1、面试题</h2> <ol><li><p>vue生命周期是什么？作用是什么？</p> <p>vue实例从创建到销毁的过程为生命周期，从开始创建、初始化数据、编译模版、挂载dom-&gt;渲染、更新-&gt;渲染、卸载等一系列过程称之为vue的生命周期。在控制整个vue实例的过程中更容易形成好的逻辑。</p></li> <li><p>vue生命周期总共有几个阶段？</p> <p>总共分为8个阶段：创建前/后（beforeCreate/created），载入前/后(beforeMount/mounted)，更新前/后(beforeUpdated/updated)，销毁前/后(beforeDestory/destoryed)</p></li> <li><p>第一次页面加载会触发哪些勾子？</p> <p>会触发beforeCreate，created，beforeMount，mounted这几个钩子</p></li> <li><p>dom渲染在哪个周期中就已经完成了？</p> <p>DOM渲染在mounted中就已经完成了</p></li> <li><p>简述每个生命周期具体适合场景？</p> <ul><li>创建vue实例，执行init()，在init过程中首先调用了beforeCreate勾子，同时监听data数据变化，初始化vue内部事件，进行属性和方法的计算，之后执行created函数</li> <li>模版编译，把data对象里面的数据和vue语法写的模版编译成html，编译过程分为三种情况
+<ul><li>实例内部有template属性，直接调用，然后调用render函数去渲染</li> <li>没有template属性调用外部html</li> <li>都没有抛出错误</li></ul></li> <li>编译模版完成，调用beforeMount钩子函数</li> <li>render函数执行之后，将渲染出来的内容挂载到dom节点上，挂载结束，调用mounted钩子函数</li> <li>数据发生变化，调用beforeUpdate函数，更新完成调用Updated函数。</li> <li>beforeDestroy销毁所有观察者、组件及事件监听，destoryed实例销毁</li></ul></li> <li><p>父子组件的生命周期</p> <p>父-&gt;子-&gt;子-&gt;父：父组件开始执行到beforeMount然后开始子组件执行，最后时父组件的mounted，若有兄弟组件，兄弟组件依次执行到beforeMount，然后按顺序执行mounted，最后父组件mounted。</p> <ul><li><p>加载</p> <p>父beforeCreate&gt;父created&gt;父beforeMount&gt;子beforeCreate&gt;子created&gt;子beforeMount&gt;子mounted&gt;父mounted</p></li> <li><p>更新</p> <p>父beforeUpdate-&gt;子beforeUpdate-&gt;子updated-&gt;父updated</p></li> <li><p>销毁</p> <p>父beforeDestroy-&gt;子beforeDestroy-&gt;子destroyed-&gt;父destroyed</p></li></ul></li></ol> <h2 id="_2、常用"><a href="#_2、常用" class="header-anchor">#</a> 2、常用</h2> <ul><li>created：组件渲染前，数据请求，启动定时器等异步操作，太多出现白屏现象。</li> <li>mounted：组件渲染后，建议使用。之前是服务器渲染阶段，不适合发送请求，客户端发送api放在服务器不会渲染的方法里；请求中可能有操作dom操作，会出现问题，在组件挂载至dom元素后再进行请求更新。</li> <li>beforeDestory()：收尾操作，比如清楚定时器，数据缓存。</li></ul> <h2 id="_3、图解生命周期"><a href="#_3、图解生命周期" class="header-anchor">#</a> 3、图解生命周期</h2> <img src="/img/vue-lifecycle.png"> <h3 id="_1、实例创建"><a href="#_1、实例创建" class="header-anchor">#</a> 1、实例创建</h3> <ul><li>beforeCreate：创建实例部分初始化，this指向创建的实例。
+<ul><li>只初始化了生命周期函数和默认事件，不能获得DOM节点</li> <li>数据观察事件机制都未形成，data，computed，watch，methods 上的方法和数据均不能访问</li> <li>可以在这加个loading事件</li></ul></li> <li>created：创建实例初始化完成，完成数据(data、props、computed)的初始化导入依赖项。
+<ul><li>可访问data、computed、watch、methods 上的方法和数据。</li> <li>未挂载DOM，若在此阶段进行DOM操作一定要放在Vue.nextTick()的回调函数中。</li> <li>初始化完成时的事件写在这里，异步请求也适宜在这里调用(请求不宜过多，避免白屏时间太长)。可以在这里结束loading事件，还做一些初始化，实现函数自执行。</li></ul></li></ul> <h3 id="_2、模版编译"><a href="#_2、模版编译" class="header-anchor">#</a> 2、模版编译</h3> <ul><li>beforeMount：挂载前，虽然得不到具体的DOM元素，但vue挂载的根节点已经创建
+<ul><li>beforeMount这个阶段是过渡性的，一般一个项目只能用到一两次。</li></ul></li> <li>mounted：挂载完成，完成创建vm.$el和双向绑定，完成挂载DOM和渲染，
+<ul><li>可在mounted钩子函数中对挂载的DOM进行操作。</li> <li>可在这发起后端请求，拿回数据，配合路由钩子做一些事情。</li></ul></li></ul> <h3 id="_3、数据更新"><a href="#_3、数据更新" class="header-anchor">#</a> 3、数据更新</h3> <ul><li>beforeUpdate：数据更新前，数据驱动DOM。
+<ul><li>在数据更新后虽然没有立即更新数据，但是DOM中的数据会改变，这是vue双向数据绑定的作用。</li> <li>可在更新前访问现有的DOM，如手动移出添加的事件监听器。</li></ul></li> <li>updated：数据更新后，完成虚拟DOM的重新渲染和打补丁。
+<ul><li>组件DOM已完成更新，可执行依赖的DOM操作。注意：不要在此函数中操作数据(修改属性)，会陷入死循环。</li></ul></li></ul> <h3 id="_4、数据销毁"><a href="#_4、数据销毁" class="header-anchor">#</a> 4、数据销毁</h3> <ul><li>beforeDestroy：销毁前，可做一些删除提示，如：您确定删除xx吗？</li> <li>destroyed：销毁后，当前组件已被删除，销毁监听事件，组件、事件、子实例也被销毁。这时组件已经没有了，无法操作里面的任何东西了。</li></ul> <h3 id="_5、路由缓存"><a href="#_5、路由缓存" class="header-anchor">#</a> 5、路由缓存</h3> <p>for keep-alive，组件被激活和销毁时使用。</p> <ul><li><p>activated：在使用vue-router时有时需要使用来缓存组件状态，这个时候created钩子就不会被重复用了。如果我们的子组件需要在每次加载的时候进行某些操作，可以使用activated钩子触发。</p></li> <li><p>deactivated：组件被移除时使用。</p></li></ul> <h3 id="_6、vue中内置的方法属性"><a href="#_6、vue中内置的方法属性" class="header-anchor">#</a> 6、vue中内置的方法属性</h3> <p>执行顺序：props =&gt; methods =&gt;data =&gt; computed =&gt; watch。</p></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">Last Updated:</span> <span class="time">7/21/2021, 2:56:02 PM</span></div></footer> <!----> </main></div><div class="global-ui"><!----><!----></div></div>
+    <script src="/assets/js/app.9e441e61.js" defer></script><script src="/assets/js/2.36bde0fd.js" defer></script><script src="/assets/js/74.e089a7e8.js" defer></script><script src="/assets/js/3.5a07e503.js" defer></script>
+  </body>
+</html>

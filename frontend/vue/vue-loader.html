@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>vue-loader解析 | Jian‘s blog</title>
+    <meta name="generator" content="VuePress 1.9.9">
+    <link rel="icon" href="/jian_x48.png">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="apple-touch-icon" href="/jian_x192.png">
+    <meta name="description" content="每天进步一点点">
+    <meta name="theme-color" content="#3eaf7c">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="msapplication-TileImage" content="/jian_x192.png">
+    <meta name="msapplication-TileColor" content="#000000">
+    
+    <link rel="preload" href="/assets/css/0.styles.19232fe9.css" as="style"><link rel="preload" href="/assets/js/app.9e441e61.js" as="script"><link rel="preload" href="/assets/js/2.36bde0fd.js" as="script"><link rel="preload" href="/assets/js/75.eda86622.js" as="script"><link rel="preload" href="/assets/js/3.5a07e503.js" as="script"><link rel="prefetch" href="/assets/js/10.bc82d67b.js"><link rel="prefetch" href="/assets/js/11.ead9b8ca.js"><link rel="prefetch" href="/assets/js/12.a048ccaa.js"><link rel="prefetch" href="/assets/js/13.3e4cc077.js"><link rel="prefetch" href="/assets/js/14.58cd0fa5.js"><link rel="prefetch" href="/assets/js/15.98e26beb.js"><link rel="prefetch" href="/assets/js/16.4cf1daea.js"><link rel="prefetch" href="/assets/js/17.c190a7fe.js"><link rel="prefetch" href="/assets/js/18.89814285.js"><link rel="prefetch" href="/assets/js/19.77f58842.js"><link rel="prefetch" href="/assets/js/20.9920ac2c.js"><link rel="prefetch" href="/assets/js/21.6a8c9cfe.js"><link rel="prefetch" href="/assets/js/22.cfd89a61.js"><link rel="prefetch" href="/assets/js/23.48f5d9f7.js"><link rel="prefetch" href="/assets/js/24.a8c5ac10.js"><link rel="prefetch" href="/assets/js/25.842b3853.js"><link rel="prefetch" href="/assets/js/26.9c5fe1dd.js"><link rel="prefetch" href="/assets/js/27.c4f0a52b.js"><link rel="prefetch" href="/assets/js/28.ce11023f.js"><link rel="prefetch" href="/assets/js/29.9001ac2f.js"><link rel="prefetch" href="/assets/js/30.5edf0dc1.js"><link rel="prefetch" href="/assets/js/31.57d2aeed.js"><link rel="prefetch" href="/assets/js/32.db6f674e.js"><link rel="prefetch" href="/assets/js/33.038cad31.js"><link rel="prefetch" href="/assets/js/34.bff4a907.js"><link rel="prefetch" href="/assets/js/35.e9272942.js"><link rel="prefetch" href="/assets/js/36.896895d7.js"><link rel="prefetch" href="/assets/js/37.91a5bb8c.js"><link rel="prefetch" href="/assets/js/38.3f6a6f29.js"><link rel="prefetch" href="/assets/js/39.270d8c27.js"><link rel="prefetch" href="/assets/js/4.0800d99b.js"><link rel="prefetch" href="/assets/js/40.b379e318.js"><link rel="prefetch" href="/assets/js/41.f3073d82.js"><link rel="prefetch" href="/assets/js/42.867935ca.js"><link rel="prefetch" href="/assets/js/43.30335621.js"><link rel="prefetch" href="/assets/js/44.993aea4e.js"><link rel="prefetch" href="/assets/js/45.60eb5226.js"><link rel="prefetch" href="/assets/js/46.8501be1f.js"><link rel="prefetch" href="/assets/js/47.ba2302fc.js"><link rel="prefetch" href="/assets/js/48.e932482f.js"><link rel="prefetch" href="/assets/js/49.c1af1af4.js"><link rel="prefetch" href="/assets/js/5.1d8a5d7f.js"><link rel="prefetch" href="/assets/js/50.e7715e10.js"><link rel="prefetch" href="/assets/js/51.ab6021ba.js"><link rel="prefetch" href="/assets/js/52.c5c5c3ef.js"><link rel="prefetch" href="/assets/js/53.7157cd05.js"><link rel="prefetch" href="/assets/js/54.f4abd89d.js"><link rel="prefetch" href="/assets/js/55.c86bbebc.js"><link rel="prefetch" href="/assets/js/56.ee48a85c.js"><link rel="prefetch" href="/assets/js/57.90d4c487.js"><link rel="prefetch" href="/assets/js/58.1d4866f8.js"><link rel="prefetch" href="/assets/js/59.75c6bc90.js"><link rel="prefetch" href="/assets/js/6.90059570.js"><link rel="prefetch" href="/assets/js/60.c5e61798.js"><link rel="prefetch" href="/assets/js/61.54457b0e.js"><link rel="prefetch" href="/assets/js/62.2e0af734.js"><link rel="prefetch" href="/assets/js/63.07cece40.js"><link rel="prefetch" href="/assets/js/64.e6ab0174.js"><link rel="prefetch" href="/assets/js/65.663550a9.js"><link rel="prefetch" href="/assets/js/66.64ad9de7.js"><link rel="prefetch" href="/assets/js/67.cc5c5ab3.js"><link rel="prefetch" href="/assets/js/68.d76b1a45.js"><link rel="prefetch" href="/assets/js/69.06c85095.js"><link rel="prefetch" href="/assets/js/7.e0481b37.js"><link rel="prefetch" href="/assets/js/70.5fa17108.js"><link rel="prefetch" href="/assets/js/71.ea8df0ea.js"><link rel="prefetch" href="/assets/js/72.12d99daf.js"><link rel="prefetch" href="/assets/js/73.8b6c81cd.js"><link rel="prefetch" href="/assets/js/74.e089a7e8.js"><link rel="prefetch" href="/assets/js/76.451d3bf2.js"><link rel="prefetch" href="/assets/js/77.5a71a520.js"><link rel="prefetch" href="/assets/js/78.5e4673c6.js"><link rel="prefetch" href="/assets/js/79.f657e29d.js"><link rel="prefetch" href="/assets/js/8.e1e88656.js"><link rel="prefetch" href="/assets/js/80.d7b2d65d.js"><link rel="prefetch" href="/assets/js/81.c9dc1609.js"><link rel="prefetch" href="/assets/js/82.2b309c6c.js"><link rel="prefetch" href="/assets/js/9.54f76d53.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.19232fe9.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/img/jian.jpeg" alt="Jian‘s blog" class="logo"> <span class="site-name can-hide">Jian‘s blog</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="js" class="dropdown-title"><span class="title">js</span> <span class="arrow down"></span></button> <button type="button" aria-label="js" class="mobile-dropdown-title"><span class="title">js</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/frontend/js/" class="nav-link">
+  js杂记
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/js/promise.html" class="nav-link">
+  Promise规范和应用
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/js/browser.html" class="nav-link">
+  浏览器对象详解
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/js/js_oop.html" class="nav-link">
+  面向对象编程
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/js/ES6.html" class="nav-link">
+  ES6ESNext规范详解
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/js/this_chain.html" class="nav-link">
+  this指针作用域
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/js/typescript.html" class="nav-link">
+  ts初探
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/ts/basics.html" class="nav-link">
+  ts基础
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/ts/project.html" class="nav-link">
+  ts工程
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="工程化" class="dropdown-title"><span class="title">工程化</span> <span class="arrow down"></span></button> <button type="button" aria-label="工程化" class="mobile-dropdown-title"><span class="title">工程化</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/frontend/tools/js_module.html" class="nav-link">
+  模块化规范
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/tools/js_project.html" class="nav-link">
+  前端工程化
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/tools/webpack.html" class="nav-link">
+  webpack
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/tools/babel.html" class="nav-link">
+  babel
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/tools/autotest.html" class="nav-link">
+  自动化测试和部署
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/tools/ast.html" class="nav-link">
+  AST
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/tools/solution.html" class="nav-link">
+  前端方案
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/tools/js_tools.html" class="nav-link">
+  常用工具
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="vue" class="dropdown-title"><span class="title">vue</span> <span class="arrow down"></span></button> <button type="button" aria-label="vue" class="mobile-dropdown-title"><span class="title">vue</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/frontend/vue/index.html" class="nav-link">
+  vue2.0基础
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/advance.html" class="nav-link">
+  vue2.0进阶
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vue-cli.html" class="nav-link">
+  vue-cli
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vue-loader.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  vue-loader
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vue-router.html" class="nav-link">
+  vue-router
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vuex.html" class="nav-link">
+  vuex
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vue_ssr.html" class="nav-link">
+  vue-ssr
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vue-i18n.html" class="nav-link">
+  vue-i18n
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vue-life.html" class="nav-link">
+  生命周期
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vue_reactive.html" class="nav-link">
+  响应式原理
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vue_diff.html" class="nav-link">
+  diff原理
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vue-compiler.html" class="nav-link">
+  编译原理
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vue-refs.html" class="nav-link">
+  实战总结
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="react" class="dropdown-title"><span class="title">react</span> <span class="arrow down"></span></button> <button type="button" aria-label="react" class="mobile-dropdown-title"><span class="title">react</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/frontend/react/react.html" class="nav-link">
+  react基础
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/react/react-advance.html" class="nav-link">
+  react进阶
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/react/react-router.html" class="nav-link">
+  react-router
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/react/react-state.html" class="nav-link">
+  react状态管理
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/react/react-ssr.html" class="nav-link">
+  react同构
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/react/react-component.html" class="nav-link">
+  react组件封装
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/react/react-code.html" class="nav-link">
+  react源码分析
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/ts/react-ts.html" class="nav-link">
+  react-ts实战
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/react/react-practice.html" class="nav-link">
+  react问题整理
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="nodejs" class="dropdown-title"><span class="title">nodejs</span> <span class="arrow down"></span></button> <button type="button" aria-label="nodejs" class="mobile-dropdown-title"><span class="title">nodejs</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/frontend/nodejs/index.html" class="nav-link">
+  nodejs基础
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/nodejs/module.html" class="nav-link">
+  nodejs常用框架
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/nodejs/http.html" class="nav-link">
+  nodejs网络及部署
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/ts/express-ts.html" class="nav-link">
+  express-ts实战
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/nodejs/info.html" class="nav-link">
+  nodejs前研
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="其他" class="dropdown-title"><span class="title">其他</span> <span class="arrow down"></span></button> <button type="button" aria-label="其他" class="mobile-dropdown-title"><span class="title">其他</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/frontend/interview/" class="nav-link">
+  前端面试
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/performance/performance.html" class="nav-link">
+  前端性能优化
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/performance/explorer.html" class="nav-link">
+  浏览器进程和线程
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/else/security-control.html" class="nav-link">
+  前端网络安全
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/lowcode/lowcode.html" class="nav-link">
+  低代码平台
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/else/micro-frontend.html" class="nav-link">
+  微前端
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/else/designMode.html" class="nav-link">
+  前端设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/css/" class="nav-link">
+  css
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/mini-program/" class="nav-link">
+  小程序
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/hybrid/hybrid.html" class="nav-link">
+  hybrid开发及原理分析
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/else/canvas.html" class="nav-link">
+  canvas
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/else/graph.html" class="nav-link">
+  图片格式
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/else/web3.html" class="nav-link">
+  web3探索
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="算法" class="dropdown-title"><span class="title">算法</span> <span class="arrow down"></span></button> <button type="button" aria-label="算法" class="mobile-dropdown-title"><span class="title">算法</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/frontend/algorithm/graph.html" class="nav-link">
+  图的存储和遍历
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/algorithm/dpointer.html" class="nav-link">
+  双指针
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/algorithm/Levenshtein.html" class="nav-link">
+  最短编辑距离
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/algorithm/greed.html" class="nav-link">
+  贪心算法
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/algorithm/dp.html" class="nav-link">
+  动态规划
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/algorithm/leetcode.html" class="nav-link">
+  leetcode
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="后端" class="dropdown-title"><span class="title">后端</span> <span class="arrow down"></span></button> <button type="button" aria-label="后端" class="mobile-dropdown-title"><span class="title">后端</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/backend/nginx.html" class="nav-link">
+  nginx
+</a></li><li class="dropdown-item"><!----> <a href="/backend/springboot.html" class="nav-link">
+  springboot
+</a></li><li class="dropdown-item"><!----> <a href="/backend/mybatis.html" class="nav-link">
+  mybatis
+</a></li><li class="dropdown-item"><!----> <a href="/backend/uml.html" class="nav-link">
+  uml类图
+</a></li><li class="dropdown-item"><!----> <a href="/backend/ddd.html" class="nav-link">
+  领域驱动设计
+</a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="js" class="dropdown-title"><span class="title">js</span> <span class="arrow down"></span></button> <button type="button" aria-label="js" class="mobile-dropdown-title"><span class="title">js</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/frontend/js/" class="nav-link">
+  js杂记
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/js/promise.html" class="nav-link">
+  Promise规范和应用
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/js/browser.html" class="nav-link">
+  浏览器对象详解
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/js/js_oop.html" class="nav-link">
+  面向对象编程
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/js/ES6.html" class="nav-link">
+  ES6ESNext规范详解
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/js/this_chain.html" class="nav-link">
+  this指针作用域
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/js/typescript.html" class="nav-link">
+  ts初探
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/ts/basics.html" class="nav-link">
+  ts基础
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/ts/project.html" class="nav-link">
+  ts工程
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="工程化" class="dropdown-title"><span class="title">工程化</span> <span class="arrow down"></span></button> <button type="button" aria-label="工程化" class="mobile-dropdown-title"><span class="title">工程化</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/frontend/tools/js_module.html" class="nav-link">
+  模块化规范
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/tools/js_project.html" class="nav-link">
+  前端工程化
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/tools/webpack.html" class="nav-link">
+  webpack
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/tools/babel.html" class="nav-link">
+  babel
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/tools/autotest.html" class="nav-link">
+  自动化测试和部署
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/tools/ast.html" class="nav-link">
+  AST
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/tools/solution.html" class="nav-link">
+  前端方案
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/tools/js_tools.html" class="nav-link">
+  常用工具
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="vue" class="dropdown-title"><span class="title">vue</span> <span class="arrow down"></span></button> <button type="button" aria-label="vue" class="mobile-dropdown-title"><span class="title">vue</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/frontend/vue/index.html" class="nav-link">
+  vue2.0基础
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/advance.html" class="nav-link">
+  vue2.0进阶
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vue-cli.html" class="nav-link">
+  vue-cli
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vue-loader.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  vue-loader
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vue-router.html" class="nav-link">
+  vue-router
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vuex.html" class="nav-link">
+  vuex
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vue_ssr.html" class="nav-link">
+  vue-ssr
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vue-i18n.html" class="nav-link">
+  vue-i18n
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vue-life.html" class="nav-link">
+  生命周期
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vue_reactive.html" class="nav-link">
+  响应式原理
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vue_diff.html" class="nav-link">
+  diff原理
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vue-compiler.html" class="nav-link">
+  编译原理
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vue-refs.html" class="nav-link">
+  实战总结
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="react" class="dropdown-title"><span class="title">react</span> <span class="arrow down"></span></button> <button type="button" aria-label="react" class="mobile-dropdown-title"><span class="title">react</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/frontend/react/react.html" class="nav-link">
+  react基础
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/react/react-advance.html" class="nav-link">
+  react进阶
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/react/react-router.html" class="nav-link">
+  react-router
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/react/react-state.html" class="nav-link">
+  react状态管理
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/react/react-ssr.html" class="nav-link">
+  react同构
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/react/react-component.html" class="nav-link">
+  react组件封装
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/react/react-code.html" class="nav-link">
+  react源码分析
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/ts/react-ts.html" class="nav-link">
+  react-ts实战
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/react/react-practice.html" class="nav-link">
+  react问题整理
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="nodejs" class="dropdown-title"><span class="title">nodejs</span> <span class="arrow down"></span></button> <button type="button" aria-label="nodejs" class="mobile-dropdown-title"><span class="title">nodejs</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/frontend/nodejs/index.html" class="nav-link">
+  nodejs基础
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/nodejs/module.html" class="nav-link">
+  nodejs常用框架
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/nodejs/http.html" class="nav-link">
+  nodejs网络及部署
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/ts/express-ts.html" class="nav-link">
+  express-ts实战
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/nodejs/info.html" class="nav-link">
+  nodejs前研
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="其他" class="dropdown-title"><span class="title">其他</span> <span class="arrow down"></span></button> <button type="button" aria-label="其他" class="mobile-dropdown-title"><span class="title">其他</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/frontend/interview/" class="nav-link">
+  前端面试
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/performance/performance.html" class="nav-link">
+  前端性能优化
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/performance/explorer.html" class="nav-link">
+  浏览器进程和线程
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/else/security-control.html" class="nav-link">
+  前端网络安全
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/lowcode/lowcode.html" class="nav-link">
+  低代码平台
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/else/micro-frontend.html" class="nav-link">
+  微前端
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/else/designMode.html" class="nav-link">
+  前端设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/css/" class="nav-link">
+  css
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/mini-program/" class="nav-link">
+  小程序
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/hybrid/hybrid.html" class="nav-link">
+  hybrid开发及原理分析
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/else/canvas.html" class="nav-link">
+  canvas
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/else/graph.html" class="nav-link">
+  图片格式
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/else/web3.html" class="nav-link">
+  web3探索
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="算法" class="dropdown-title"><span class="title">算法</span> <span class="arrow down"></span></button> <button type="button" aria-label="算法" class="mobile-dropdown-title"><span class="title">算法</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/frontend/algorithm/graph.html" class="nav-link">
+  图的存储和遍历
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/algorithm/dpointer.html" class="nav-link">
+  双指针
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/algorithm/Levenshtein.html" class="nav-link">
+  最短编辑距离
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/algorithm/greed.html" class="nav-link">
+  贪心算法
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/algorithm/dp.html" class="nav-link">
+  动态规划
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/algorithm/leetcode.html" class="nav-link">
+  leetcode
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="后端" class="dropdown-title"><span class="title">后端</span> <span class="arrow down"></span></button> <button type="button" aria-label="后端" class="mobile-dropdown-title"><span class="title">后端</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/backend/nginx.html" class="nav-link">
+  nginx
+</a></li><li class="dropdown-item"><!----> <a href="/backend/springboot.html" class="nav-link">
+  springboot
+</a></li><li class="dropdown-item"><!----> <a href="/backend/mybatis.html" class="nav-link">
+  mybatis
+</a></li><li class="dropdown-item"><!----> <a href="/backend/uml.html" class="nav-link">
+  uml类图
+</a></li><li class="dropdown-item"><!----> <a href="/backend/ddd.html" class="nav-link">
+  领域驱动设计
+</a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>vue-loader解析</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/frontend/vue/vue-loader.html#_1、vue-loader" class="sidebar-link">1、vue-loader</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/frontend/vue/vue-loader.html#_1、使用" class="sidebar-link">1、使用</a></li><li class="sidebar-sub-header"><a href="/frontend/vue/vue-loader.html#_2、处理资源路径" class="sidebar-link">2、处理资源路径</a></li><li class="sidebar-sub-header"><a href="/frontend/vue/vue-loader.html#_3、预处理器" class="sidebar-link">3、预处理器</a></li><li class="sidebar-sub-header"><a href="/frontend/vue/vue-loader.html#_4、scoped-css" class="sidebar-link">4、scoped css</a></li><li class="sidebar-sub-header"><a href="/frontend/vue/vue-loader.html#_5、热重载" class="sidebar-link">5、热重载</a></li><li class="sidebar-sub-header"><a href="/frontend/vue/vue-loader.html#_6、css提取" class="sidebar-link">6、css提取</a></li><li class="sidebar-sub-header"><a href="/frontend/vue/vue-loader.html#_7、代码校验" class="sidebar-link">7、代码校验</a></li></ul></li><li><a href="/frontend/vue/vue-loader.html#_2、单文件组件-sfc-规范" class="sidebar-link">2、单文件组件（SFC)规范</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/frontend/vue/vue-loader.html#_1、简介" class="sidebar-link">1、简介</a></li><li class="sidebar-sub-header"><a href="/frontend/vue/vue-loader.html#_2、语言块" class="sidebar-link">2、语言块</a></li></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="vue-loader解析"><a href="#vue-loader解析" class="header-anchor">#</a> vue-loader解析</h1> <blockquote><p>资料：<a href="https://vue-loader.vuejs.org/zh/" target="_blank" rel="noopener noreferrer">vue-loader<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p></blockquote> <h2 id="_1、vue-loader"><a href="#_1、vue-loader" class="header-anchor">#</a> 1、vue-loader</h2> <p>vue-loader是一个webpack的loader，允许以单文件（SFCs）格式写vue组件。</p> <h3 id="_1、使用"><a href="#_1、使用" class="header-anchor">#</a> 1、使用</h3> <ul><li>vue-cli会全部设置完成</li> <li>手动设置：npm install -D vue-loader vue-template-compiler</li></ul> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token comment">// webpack.config.js</span>
+<span class="token keyword">const</span> <span class="token punctuation">{</span> VueLoaderPlugin <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'vue-loader'</span><span class="token punctuation">)</span>
+
+module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">mode</span><span class="token operator">:</span> <span class="token string">'development'</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">module</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">rules</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+      <span class="token punctuation">{</span>
+        <span class="token literal-property property">test</span><span class="token operator">:</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">\.vue$</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span>
+        <span class="token literal-property property">loader</span><span class="token operator">:</span> <span class="token string">'vue-loader'</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token comment">// 它会应用到普通的 `.js` 文件</span>
+      <span class="token comment">// 以及 `.vue` 文件中的 `&lt;script&gt;` 块</span>
+      <span class="token punctuation">{</span>
+        <span class="token literal-property property">test</span><span class="token operator">:</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">\.js$</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span>
+        <span class="token literal-property property">loader</span><span class="token operator">:</span> <span class="token string">'babel-loader'</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token comment">// 它会应用到普通的 `.css` 文件</span>
+      <span class="token comment">// 以及 `.vue` 文件中的 `&lt;style&gt;` 块</span>
+      <span class="token punctuation">{</span>
+        <span class="token literal-property property">test</span><span class="token operator">:</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">\.css$</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span>
+        <span class="token literal-property property">use</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+          <span class="token string">'vue-style-loader'</span><span class="token punctuation">,</span>
+          <span class="token string">'css-loader'</span>
+        <span class="token punctuation">]</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">]</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">plugins</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token comment">/* 必须引入：将你定义过的其它规则复制并应用到 .vue 文件里相应语言的块。例如，如果你有一条匹配 /\.js$/ 的规则，那么它会应用到 .vue 文件里的 &lt;script&gt; 块 */</span>
+    <span class="token keyword">new</span> <span class="token class-name">VueLoaderPlugin</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br></div></div><h3 id="_2、处理资源路径"><a href="#_2、处理资源路径" class="header-anchor">#</a> 2、处理资源路径</h3> <p>当 Vue Loader 编译单文件组件中的 <code>&lt;template&gt;</code> 块时，它也会将所有遇到的资源 URL 转换为 <strong>webpack 模块请求</strong>，转换规则如下：</p> <ul><li>如果路径是绝对路径 (例如 <code>/images/foo.png</code>)，会原样保留。</li> <li>如果路径以 <code>.</code> 开头，将会被看作相对的模块依赖，并按照你的本地文件系统上的目录结构进行解析。</li> <li>如果路径以 <code>~</code> 开头，其后的部分将会被看作模块依赖，这意味着你可以用该特性来引用一个 Node 依赖中的资源。</li> <li>如果路径以 <code>@</code> 开头，也会被看作模块依赖，使用vue配置的alias</li></ul> <p>.png文件非模块，需在webpack中配置file-loader、url-loader进行加载。</p> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token operator">&lt;</span>img src<span class="token operator">=</span><span class="token string">&quot;../image.png&quot;</span><span class="token operator">&gt;</span>
+<span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">'img'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">attrs</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">src</span><span class="token operator">:</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'../image.png'</span><span class="token punctuation">)</span> <span class="token comment">// 现在这是一个模块的请求了</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><h3 id="_3、预处理器"><a href="#_3、预处理器" class="header-anchor">#</a> 3、预处理器</h3> <h4 id="_1、scss"><a href="#_1、scss" class="header-anchor">#</a> 1、scss</h4> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token comment">// npm install -D sass-loader node-sass</span>
+module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">module</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">rules</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+      <span class="token comment">// 普通的 `.scss` 文件和 `*.vue` 文件中的</span>
+      <span class="token comment">// `&lt;style lang=&quot;scss&quot;&gt;` 块都应用它</span>
+      <span class="token punctuation">{</span>
+        <span class="token literal-property property">test</span><span class="token operator">:</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">\.scss$</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span>
+        <span class="token literal-property property">use</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+          <span class="token string">'vue-style-loader'</span><span class="token punctuation">,</span>
+          <span class="token string">'css-loader'</span><span class="token punctuation">,</span>
+          <span class="token string">'sass-loader'</span>
+        <span class="token punctuation">]</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">]</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/* 
+&lt;style lang=&quot;scss&quot;&gt;
+// 在这里撰写 SCSS
+&lt;/style&gt;
+这个块里的任何内容都会被 webpack 当作在一个 *.scss 文件中一样被处理
+*/</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br></div></div><h4 id="_2、less"><a href="#_2、less" class="header-anchor">#</a> 2、less</h4> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token comment">// npm install -D less less-loader</span>
+<span class="token comment">// webpack.config.js -&gt; module.rules</span>
+<span class="token punctuation">{</span>
+  <span class="token literal-property property">test</span><span class="token operator">:</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">\.less$</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span>
+  <span class="token literal-property property">use</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token string">'vue-style-loader'</span><span class="token punctuation">,</span>
+    <span class="token string">'css-loader'</span><span class="token punctuation">,</span>
+    <span class="token string">'less-loader'</span>
+  <span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br></div></div><h3 id="_4、scoped-css"><a href="#_4、scoped-css" class="header-anchor">#</a> 4、scoped css</h3> <p>当 <code>&lt;style&gt;</code> 标签有 <code>scoped</code> 属性时，它的 CSS 只作用于当前组件中的元素。</p> <h4 id="_1、使用-2"><a href="#_1、使用-2" class="header-anchor">#</a> 1、使用</h4> <div class="language-vue line-numbers-mode"><pre class="language-vue"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>example<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>hi<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span><span class="token punctuation">&gt;</span></span><span class="token style"><span class="token language-css">
+<span class="token comment">/* 全局样式 */</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span> <span class="token attr-name">scoped</span><span class="token punctuation">&gt;</span></span><span class="token style"><span class="token language-css">
+<span class="token comment">/* 本地样式 */</span>
+<span class="token selector">.example</span> <span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> red<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">.a &gt;&gt;&gt; .b</span> <span class="token punctuation">{</span> <span class="token comment">/* ... */</span> <span class="token punctuation">}</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token comment">&lt;!-- 转译为：
+&lt;style&gt;
+.example[data-v-f3f3eg9] {
+  color: red;
+}
+
+.a[data-v-f3f3eg9] .b { /* ... */ }
+&lt;/style&gt;
+--&gt;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br></div></div><h4 id="_2、深度作用选择器"><a href="#_2、深度作用选择器" class="header-anchor">#</a> 2、深度作用选择器</h4> <p>使用 <code>scoped</code> 后，父组件的样式将不会渗透到子组件中。</p> <ul><li>特殊：一个子组件的根节点会同时受其父组件的 scoped CSS 和子组件的 scoped CSS 的影响。</li> <li>希望 <code>scoped</code> 样式中的一个选择器能够作用得“更深”，例如影响子组件，可以使用 <code>&gt;&gt;&gt;</code> 操作符，预处理器可以使用 <code>/deep/</code> 或 <code>::v-deep</code> 操作符取而代之。</li></ul> <h3 id="_5、热重载"><a href="#_5、热重载" class="header-anchor">#</a> 5、热重载</h3> <p>“热重载”不只是当你修改文件的时候简单重新加载页面。启用热重载后，当你修改 <code>.vue</code> 文件时，该组件的所有实例将在<strong>不刷新页面</strong>的情况下被替换。</p> <h4 id="_1、规则"><a href="#_1、规则" class="header-anchor">#</a> 1、规则</h4> <ul><li>当编辑一个组件的 <code>&lt;template&gt;</code> 时，这个组件实例将就地重新渲染，并保留当前所有的私有状态。</li> <li>当编辑一个组件的 <code>&lt;script&gt;</code> 时，这个组件实例将就地销毁并重新创建，应用中其它组件的状态将会被保留</li> <li><code>&lt;style&gt;</code> 会通过 vue-style-loader 自行热重载，所以它不会影响应用的状态</li></ul> <h4 id="_2、关闭热重载"><a href="#_2、关闭热重载" class="header-anchor">#</a> 2、关闭热重载</h4> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token literal-property property">module</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">rules</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">{</span>
+      <span class="token literal-property property">test</span><span class="token operator">:</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">\.vue$</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span>
+      <span class="token literal-property property">loader</span><span class="token operator">:</span> <span class="token string">'vue-loader'</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">options</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token literal-property property">hotReload</span><span class="token operator">:</span> <span class="token boolean">false</span> <span class="token comment">// 关闭热重载</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br></div></div><h3 id="_6、css提取"><a href="#_6、css提取" class="header-anchor">#</a> 6、css提取</h3> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token comment">//npm install -D mini-css-extract-plugin</span>
+<span class="token comment">// webpack.config.js</span>
+<span class="token keyword">var</span> MiniCssExtractPlugin <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'mini-css-extract-plugin'</span><span class="token punctuation">)</span>
+
+module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">// 其它选项...</span>
+  <span class="token literal-property property">module</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">rules</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+      <span class="token punctuation">{</span>
+        <span class="token literal-property property">test</span><span class="token operator">:</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">\.css$</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span>
+        <span class="token literal-property property">use</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+          process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">NODE_ENV</span> <span class="token operator">!==</span> <span class="token string">'production'</span>
+            <span class="token operator">?</span> <span class="token string">'vue-style-loader'</span>
+            <span class="token operator">:</span> MiniCssExtractPlugin<span class="token punctuation">.</span>loader<span class="token punctuation">,</span>
+          <span class="token string">'css-loader'</span>
+        <span class="token punctuation">]</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">]</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">plugins</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token keyword">new</span> <span class="token class-name">MiniCssExtractPlugin</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      <span class="token literal-property property">filename</span><span class="token operator">:</span> <span class="token string">'style.css'</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br></div></div><h3 id="_7、代码校验"><a href="#_7、代码校验" class="header-anchor">#</a> 7、代码校验</h3> <ul><li><p>官方的 <a href="https://eslint.vuejs.org/" target="_blank" rel="noopener noreferrer">eslint-plugin-vue<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> 同时支持在 Vue 单文件组件的模板和脚本部分的代码校验，执行命令：</p></li> <li><p>另一个选项是使用 <a href="https://github.com/MoOx/eslint-loader" target="_blank" rel="noopener noreferrer">eslint-loader<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> 那么你的 <code>*.vue</code> 文件在开发过程中每次保存的时候就会自动进行代码校验</p></li></ul> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token comment">//eslint-plugin-vue：eslint --ext js,vue MyComponent.vue</span>
+<span class="token comment">// .eslintrc.js</span>
+module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token keyword">extends</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token string">&quot;plugin:vue/essential&quot;</span>
+  <span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">//npm install -D eslint eslint-loader</span>
+<span class="token comment">//webpack.config.js，确保它是作为一个pre-loader运用的</span>
+module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">// ... 其它选项</span>
+  <span class="token literal-property property">module</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">rules</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+      <span class="token punctuation">{</span>
+        <span class="token literal-property property">enforce</span><span class="token operator">:</span> <span class="token string">'pre'</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">test</span><span class="token operator">:</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">\.(js|vue)$</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span>
+        <span class="token literal-property property">loader</span><span class="token operator">:</span> <span class="token string">'eslint-loader'</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">exclude</span><span class="token operator">:</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">node_modules</span><span class="token regex-delimiter">/</span></span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">]</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br></div></div><h2 id="_2、单文件组件-sfc-规范"><a href="#_2、单文件组件-sfc-规范" class="header-anchor">#</a> 2、单文件组件（SFC)规范</h2> <h3 id="_1、简介"><a href="#_1、简介" class="header-anchor">#</a> 1、简介</h3> <p><code>.vue</code> 文件是一个自定义的文件类型，用类 HTML 语法描述一个 Vue 组件。每个 <code>.vue</code> 文件包含三种类型的顶级语言块 <code>&lt;template&gt;</code>、<code>&lt;script&gt;</code> 和 <code>&lt;style&gt;</code>，还允许添加可选的自定义块。</p> <ul><li><code>vue-loader</code> 会解析文件，提取每个语言块，如有必要会通过其它 loader 处理，最后将他们组装成一个 ES Module，它的默认导出是一个 Vue.js 组件选项的对象</li> <li><code>vue-loader</code> 支持使用非默认语言，比如 CSS 预处理器，预编译的 HTML 模版语言，通过设置语言块的 <code>lang</code> 属性</li></ul> <div class="language-vue line-numbers-mode"><pre class="language-vue"><code><span class="token comment">&lt;!-- 注释解析：
+在语言块中使用该语言块对应的注释语法 (HTML、CSS、JavaScript、Jade 等)。
+顶层注释使用 HTML 注释语法：`&lt;! -- comment contents here -- &gt;`
+--&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>example<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>{{ msg }}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+  <span class="token function">data</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">{</span>
+      <span class="token literal-property property">msg</span><span class="token operator">:</span> <span class="token string">'Hello world!'</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span><span class="token punctuation">&gt;</span></span><span class="token style"><span class="token language-css">
+<span class="token selector">.example</span> <span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> red<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>custom1</span><span class="token punctuation">&gt;</span></span>
+  This could be e.g. documentation for the component.
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>custom1</span><span class="token punctuation">&gt;</span></span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br></div></div><h3 id="_2、语言块"><a href="#_2、语言块" class="header-anchor">#</a> 2、语言块</h3> <h4 id="_1、模版"><a href="#_1、模版" class="header-anchor">#</a> 1、模版</h4> <ul><li>每个 <code>.vue</code> 文件最多包含一个 <code>&lt;template&gt;</code> 块。</li> <li>内容将被提取并传递给 <code>vue-template-compiler</code> 为字符串，预处理为 JavaScript 渲染函数，并最终注入到从 <code>&lt;script&gt;</code> 导出的组件中。</li></ul> <h4 id="_2、脚本"><a href="#_2、脚本" class="header-anchor">#</a> 2、脚本</h4> <ul><li>每个 <code>.vue</code> 文件最多包含一个 <code>&lt;script&gt;</code> 块。</li> <li>这个脚本会作为一个 ES Module 来执行。</li> <li>它的<strong>默认导出</strong>应该是一个 Vue.js 的<a href="https://cn.vuejs.org/v2/api/#%E9%80%89%E9%A1%B9-%E6%95%B0%E6%8D%AE" target="_blank" rel="noopener noreferrer">组件选项对象<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>。也可以导出由 <code>Vue.extend()</code> 创建的扩展对象，但是普通对象是更好的选择。</li> <li>任何匹配 <code>.js</code> 文件 (或通过它的 <code>lang</code> 特性指定的扩展名) 的 webpack 规则都将会运用到这个 <code>&lt;script&gt;</code> 块的内容中。</li></ul> <h4 id="_3、样式"><a href="#_3、样式" class="header-anchor">#</a> 3、样式</h4> <ul><li>默认匹配：<code>/\.css$/</code>。</li> <li>一个 <code>.vue</code> 文件可以包含多个 <code>&lt;style&gt;</code> 标签。</li> <li><code>&lt;style&gt;</code> 标签可以有 scoped 或者 module 属性，具有不同封装模式的多个 <code>&lt;style&gt;</code>标签可以在同一个组件中混合使用。</li> <li>任何匹配 <code>.css</code> 文件 (或通过它的 <code>lang</code> 特性指定的扩展名) 的 webpack 规则都将会运用到这个 <code>&lt;style&gt;</code> 块的内容中。</li></ul> <h4 id="_4、自定义块"><a href="#_4、自定义块" class="header-anchor">#</a> 4、自定义块</h4> <p>可以在 <code>.vue</code> 文件中添加额外的自定义块来实现项目的特定需求，例如 <code>&lt;docs&gt;</code> 块。<code>vue-loader</code> 将会使用标签名来查找对应的 webpack loader 来应用在对应的块上。webpack loader 需要在 <code>vue-loader</code> 的选项 <code>loaders</code> 中指定。</p> <h4 id="_5、src导入"><a href="#_5、src导入" class="header-anchor">#</a> 5、src导入</h4> <p>把 <code>.vue</code> 文件分隔到多个文件中，你可以通过 <code>src</code> 属性导入外部文件， <code>src</code> 导入遵循和 webpack 模块请求相同的路径解析规则：</p> <ul><li>相对路径需要以 <code>./</code> 开始</li> <li>你可以从 NPM 依赖中导入资源</li> <li>自定义块上同样支持 <code>src</code> 导入</li></ul> <div class="language-vue line-numbers-mode"><pre class="language-vue"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>./template.html<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>./style.css<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span><span class="token style"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>./script.js<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token comment">&lt;!-- import a file from the installed &quot;todomvc-app-css&quot; npm package --&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>todomvc-app-css/index.css<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+
+<span class="token comment">&lt;!-- 自定义模块导入外部文件 --&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>unit-test</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>./unit-test.js<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>unit-test</span><span class="token punctuation">&gt;</span></span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br></div></div></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">Last Updated:</span> <span class="time">8/1/2021, 11:39:39 AM</span></div></footer> <!----> </main></div><div class="global-ui"><!----><!----></div></div>
+    <script src="/assets/js/app.9e441e61.js" defer></script><script src="/assets/js/2.36bde0fd.js" defer></script><script src="/assets/js/75.eda86622.js" defer></script><script src="/assets/js/3.5a07e503.js" defer></script>
+  </body>
+</html>

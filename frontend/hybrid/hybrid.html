@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Hybrid开发及原理 | Jian‘s blog</title>
+    <meta name="generator" content="VuePress 1.9.9">
+    <link rel="icon" href="/jian_x48.png">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="apple-touch-icon" href="/jian_x192.png">
+    <meta name="description" content="每天进步一点点">
+    <meta name="theme-color" content="#3eaf7c">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="msapplication-TileImage" content="/jian_x192.png">
+    <meta name="msapplication-TileColor" content="#000000">
+    
+    <link rel="preload" href="/assets/css/0.styles.19232fe9.css" as="style"><link rel="preload" href="/assets/js/app.9e441e61.js" as="script"><link rel="preload" href="/assets/js/2.36bde0fd.js" as="script"><link rel="preload" href="/assets/js/28.ce11023f.js" as="script"><link rel="preload" href="/assets/js/3.5a07e503.js" as="script"><link rel="prefetch" href="/assets/js/10.bc82d67b.js"><link rel="prefetch" href="/assets/js/11.ead9b8ca.js"><link rel="prefetch" href="/assets/js/12.a048ccaa.js"><link rel="prefetch" href="/assets/js/13.3e4cc077.js"><link rel="prefetch" href="/assets/js/14.58cd0fa5.js"><link rel="prefetch" href="/assets/js/15.98e26beb.js"><link rel="prefetch" href="/assets/js/16.4cf1daea.js"><link rel="prefetch" href="/assets/js/17.c190a7fe.js"><link rel="prefetch" href="/assets/js/18.89814285.js"><link rel="prefetch" href="/assets/js/19.77f58842.js"><link rel="prefetch" href="/assets/js/20.9920ac2c.js"><link rel="prefetch" href="/assets/js/21.6a8c9cfe.js"><link rel="prefetch" href="/assets/js/22.cfd89a61.js"><link rel="prefetch" href="/assets/js/23.48f5d9f7.js"><link rel="prefetch" href="/assets/js/24.a8c5ac10.js"><link rel="prefetch" href="/assets/js/25.842b3853.js"><link rel="prefetch" href="/assets/js/26.9c5fe1dd.js"><link rel="prefetch" href="/assets/js/27.c4f0a52b.js"><link rel="prefetch" href="/assets/js/29.9001ac2f.js"><link rel="prefetch" href="/assets/js/30.5edf0dc1.js"><link rel="prefetch" href="/assets/js/31.57d2aeed.js"><link rel="prefetch" href="/assets/js/32.db6f674e.js"><link rel="prefetch" href="/assets/js/33.038cad31.js"><link rel="prefetch" href="/assets/js/34.bff4a907.js"><link rel="prefetch" href="/assets/js/35.e9272942.js"><link rel="prefetch" href="/assets/js/36.896895d7.js"><link rel="prefetch" href="/assets/js/37.91a5bb8c.js"><link rel="prefetch" href="/assets/js/38.3f6a6f29.js"><link rel="prefetch" href="/assets/js/39.270d8c27.js"><link rel="prefetch" href="/assets/js/4.0800d99b.js"><link rel="prefetch" href="/assets/js/40.b379e318.js"><link rel="prefetch" href="/assets/js/41.f3073d82.js"><link rel="prefetch" href="/assets/js/42.867935ca.js"><link rel="prefetch" href="/assets/js/43.30335621.js"><link rel="prefetch" href="/assets/js/44.993aea4e.js"><link rel="prefetch" href="/assets/js/45.60eb5226.js"><link rel="prefetch" href="/assets/js/46.8501be1f.js"><link rel="prefetch" href="/assets/js/47.ba2302fc.js"><link rel="prefetch" href="/assets/js/48.e932482f.js"><link rel="prefetch" href="/assets/js/49.c1af1af4.js"><link rel="prefetch" href="/assets/js/5.1d8a5d7f.js"><link rel="prefetch" href="/assets/js/50.e7715e10.js"><link rel="prefetch" href="/assets/js/51.ab6021ba.js"><link rel="prefetch" href="/assets/js/52.c5c5c3ef.js"><link rel="prefetch" href="/assets/js/53.7157cd05.js"><link rel="prefetch" href="/assets/js/54.f4abd89d.js"><link rel="prefetch" href="/assets/js/55.c86bbebc.js"><link rel="prefetch" href="/assets/js/56.ee48a85c.js"><link rel="prefetch" href="/assets/js/57.90d4c487.js"><link rel="prefetch" href="/assets/js/58.1d4866f8.js"><link rel="prefetch" href="/assets/js/59.75c6bc90.js"><link rel="prefetch" href="/assets/js/6.90059570.js"><link rel="prefetch" href="/assets/js/60.c5e61798.js"><link rel="prefetch" href="/assets/js/61.54457b0e.js"><link rel="prefetch" href="/assets/js/62.2e0af734.js"><link rel="prefetch" href="/assets/js/63.07cece40.js"><link rel="prefetch" href="/assets/js/64.e6ab0174.js"><link rel="prefetch" href="/assets/js/65.663550a9.js"><link rel="prefetch" href="/assets/js/66.64ad9de7.js"><link rel="prefetch" href="/assets/js/67.cc5c5ab3.js"><link rel="prefetch" href="/assets/js/68.d76b1a45.js"><link rel="prefetch" href="/assets/js/69.06c85095.js"><link rel="prefetch" href="/assets/js/7.e0481b37.js"><link rel="prefetch" href="/assets/js/70.5fa17108.js"><link rel="prefetch" href="/assets/js/71.ea8df0ea.js"><link rel="prefetch" href="/assets/js/72.12d99daf.js"><link rel="prefetch" href="/assets/js/73.8b6c81cd.js"><link rel="prefetch" href="/assets/js/74.e089a7e8.js"><link rel="prefetch" href="/assets/js/75.eda86622.js"><link rel="prefetch" href="/assets/js/76.451d3bf2.js"><link rel="prefetch" href="/assets/js/77.5a71a520.js"><link rel="prefetch" href="/assets/js/78.5e4673c6.js"><link rel="prefetch" href="/assets/js/79.f657e29d.js"><link rel="prefetch" href="/assets/js/8.e1e88656.js"><link rel="prefetch" href="/assets/js/80.d7b2d65d.js"><link rel="prefetch" href="/assets/js/81.c9dc1609.js"><link rel="prefetch" href="/assets/js/82.2b309c6c.js"><link rel="prefetch" href="/assets/js/9.54f76d53.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.19232fe9.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/img/jian.jpeg" alt="Jian‘s blog" class="logo"> <span class="site-name can-hide">Jian‘s blog</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="js" class="dropdown-title"><span class="title">js</span> <span class="arrow down"></span></button> <button type="button" aria-label="js" class="mobile-dropdown-title"><span class="title">js</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/frontend/js/" class="nav-link">
+  js杂记
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/js/promise.html" class="nav-link">
+  Promise规范和应用
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/js/browser.html" class="nav-link">
+  浏览器对象详解
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/js/js_oop.html" class="nav-link">
+  面向对象编程
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/js/ES6.html" class="nav-link">
+  ES6ESNext规范详解
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/js/this_chain.html" class="nav-link">
+  this指针作用域
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/js/typescript.html" class="nav-link">
+  ts初探
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/ts/basics.html" class="nav-link">
+  ts基础
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/ts/project.html" class="nav-link">
+  ts工程
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="工程化" class="dropdown-title"><span class="title">工程化</span> <span class="arrow down"></span></button> <button type="button" aria-label="工程化" class="mobile-dropdown-title"><span class="title">工程化</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/frontend/tools/js_module.html" class="nav-link">
+  模块化规范
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/tools/js_project.html" class="nav-link">
+  前端工程化
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/tools/webpack.html" class="nav-link">
+  webpack
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/tools/babel.html" class="nav-link">
+  babel
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/tools/autotest.html" class="nav-link">
+  自动化测试和部署
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/tools/ast.html" class="nav-link">
+  AST
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/tools/solution.html" class="nav-link">
+  前端方案
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/tools/js_tools.html" class="nav-link">
+  常用工具
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="vue" class="dropdown-title"><span class="title">vue</span> <span class="arrow down"></span></button> <button type="button" aria-label="vue" class="mobile-dropdown-title"><span class="title">vue</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/frontend/vue/index.html" class="nav-link">
+  vue2.0基础
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/advance.html" class="nav-link">
+  vue2.0进阶
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vue-cli.html" class="nav-link">
+  vue-cli
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vue-loader.html" class="nav-link">
+  vue-loader
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vue-router.html" class="nav-link">
+  vue-router
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vuex.html" class="nav-link">
+  vuex
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vue_ssr.html" class="nav-link">
+  vue-ssr
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vue-i18n.html" class="nav-link">
+  vue-i18n
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vue-life.html" class="nav-link">
+  生命周期
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vue_reactive.html" class="nav-link">
+  响应式原理
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vue_diff.html" class="nav-link">
+  diff原理
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vue-compiler.html" class="nav-link">
+  编译原理
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vue-refs.html" class="nav-link">
+  实战总结
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="react" class="dropdown-title"><span class="title">react</span> <span class="arrow down"></span></button> <button type="button" aria-label="react" class="mobile-dropdown-title"><span class="title">react</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/frontend/react/react.html" class="nav-link">
+  react基础
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/react/react-advance.html" class="nav-link">
+  react进阶
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/react/react-router.html" class="nav-link">
+  react-router
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/react/react-state.html" class="nav-link">
+  react状态管理
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/react/react-ssr.html" class="nav-link">
+  react同构
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/react/react-component.html" class="nav-link">
+  react组件封装
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/react/react-code.html" class="nav-link">
+  react源码分析
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/ts/react-ts.html" class="nav-link">
+  react-ts实战
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/react/react-practice.html" class="nav-link">
+  react问题整理
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="nodejs" class="dropdown-title"><span class="title">nodejs</span> <span class="arrow down"></span></button> <button type="button" aria-label="nodejs" class="mobile-dropdown-title"><span class="title">nodejs</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/frontend/nodejs/index.html" class="nav-link">
+  nodejs基础
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/nodejs/module.html" class="nav-link">
+  nodejs常用框架
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/nodejs/http.html" class="nav-link">
+  nodejs网络及部署
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/ts/express-ts.html" class="nav-link">
+  express-ts实战
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/nodejs/info.html" class="nav-link">
+  nodejs前研
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="其他" class="dropdown-title"><span class="title">其他</span> <span class="arrow down"></span></button> <button type="button" aria-label="其他" class="mobile-dropdown-title"><span class="title">其他</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/frontend/interview/" class="nav-link">
+  前端面试
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/performance/performance.html" class="nav-link">
+  前端性能优化
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/performance/explorer.html" class="nav-link">
+  浏览器进程和线程
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/else/security-control.html" class="nav-link">
+  前端网络安全
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/lowcode/lowcode.html" class="nav-link">
+  低代码平台
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/else/micro-frontend.html" class="nav-link">
+  微前端
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/else/designMode.html" class="nav-link">
+  前端设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/css/" class="nav-link">
+  css
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/mini-program/" class="nav-link">
+  小程序
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/hybrid/hybrid.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  hybrid开发及原理分析
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/else/canvas.html" class="nav-link">
+  canvas
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/else/graph.html" class="nav-link">
+  图片格式
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/else/web3.html" class="nav-link">
+  web3探索
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="算法" class="dropdown-title"><span class="title">算法</span> <span class="arrow down"></span></button> <button type="button" aria-label="算法" class="mobile-dropdown-title"><span class="title">算法</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/frontend/algorithm/graph.html" class="nav-link">
+  图的存储和遍历
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/algorithm/dpointer.html" class="nav-link">
+  双指针
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/algorithm/Levenshtein.html" class="nav-link">
+  最短编辑距离
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/algorithm/greed.html" class="nav-link">
+  贪心算法
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/algorithm/dp.html" class="nav-link">
+  动态规划
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/algorithm/leetcode.html" class="nav-link">
+  leetcode
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="后端" class="dropdown-title"><span class="title">后端</span> <span class="arrow down"></span></button> <button type="button" aria-label="后端" class="mobile-dropdown-title"><span class="title">后端</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/backend/nginx.html" class="nav-link">
+  nginx
+</a></li><li class="dropdown-item"><!----> <a href="/backend/springboot.html" class="nav-link">
+  springboot
+</a></li><li class="dropdown-item"><!----> <a href="/backend/mybatis.html" class="nav-link">
+  mybatis
+</a></li><li class="dropdown-item"><!----> <a href="/backend/uml.html" class="nav-link">
+  uml类图
+</a></li><li class="dropdown-item"><!----> <a href="/backend/ddd.html" class="nav-link">
+  领域驱动设计
+</a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="js" class="dropdown-title"><span class="title">js</span> <span class="arrow down"></span></button> <button type="button" aria-label="js" class="mobile-dropdown-title"><span class="title">js</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/frontend/js/" class="nav-link">
+  js杂记
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/js/promise.html" class="nav-link">
+  Promise规范和应用
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/js/browser.html" class="nav-link">
+  浏览器对象详解
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/js/js_oop.html" class="nav-link">
+  面向对象编程
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/js/ES6.html" class="nav-link">
+  ES6ESNext规范详解
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/js/this_chain.html" class="nav-link">
+  this指针作用域
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/js/typescript.html" class="nav-link">
+  ts初探
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/ts/basics.html" class="nav-link">
+  ts基础
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/ts/project.html" class="nav-link">
+  ts工程
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="工程化" class="dropdown-title"><span class="title">工程化</span> <span class="arrow down"></span></button> <button type="button" aria-label="工程化" class="mobile-dropdown-title"><span class="title">工程化</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/frontend/tools/js_module.html" class="nav-link">
+  模块化规范
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/tools/js_project.html" class="nav-link">
+  前端工程化
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/tools/webpack.html" class="nav-link">
+  webpack
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/tools/babel.html" class="nav-link">
+  babel
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/tools/autotest.html" class="nav-link">
+  自动化测试和部署
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/tools/ast.html" class="nav-link">
+  AST
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/tools/solution.html" class="nav-link">
+  前端方案
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/tools/js_tools.html" class="nav-link">
+  常用工具
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="vue" class="dropdown-title"><span class="title">vue</span> <span class="arrow down"></span></button> <button type="button" aria-label="vue" class="mobile-dropdown-title"><span class="title">vue</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/frontend/vue/index.html" class="nav-link">
+  vue2.0基础
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/advance.html" class="nav-link">
+  vue2.0进阶
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vue-cli.html" class="nav-link">
+  vue-cli
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vue-loader.html" class="nav-link">
+  vue-loader
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vue-router.html" class="nav-link">
+  vue-router
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vuex.html" class="nav-link">
+  vuex
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vue_ssr.html" class="nav-link">
+  vue-ssr
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vue-i18n.html" class="nav-link">
+  vue-i18n
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vue-life.html" class="nav-link">
+  生命周期
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vue_reactive.html" class="nav-link">
+  响应式原理
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vue_diff.html" class="nav-link">
+  diff原理
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vue-compiler.html" class="nav-link">
+  编译原理
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vue-refs.html" class="nav-link">
+  实战总结
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="react" class="dropdown-title"><span class="title">react</span> <span class="arrow down"></span></button> <button type="button" aria-label="react" class="mobile-dropdown-title"><span class="title">react</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/frontend/react/react.html" class="nav-link">
+  react基础
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/react/react-advance.html" class="nav-link">
+  react进阶
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/react/react-router.html" class="nav-link">
+  react-router
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/react/react-state.html" class="nav-link">
+  react状态管理
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/react/react-ssr.html" class="nav-link">
+  react同构
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/react/react-component.html" class="nav-link">
+  react组件封装
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/react/react-code.html" class="nav-link">
+  react源码分析
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/ts/react-ts.html" class="nav-link">
+  react-ts实战
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/react/react-practice.html" class="nav-link">
+  react问题整理
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="nodejs" class="dropdown-title"><span class="title">nodejs</span> <span class="arrow down"></span></button> <button type="button" aria-label="nodejs" class="mobile-dropdown-title"><span class="title">nodejs</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/frontend/nodejs/index.html" class="nav-link">
+  nodejs基础
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/nodejs/module.html" class="nav-link">
+  nodejs常用框架
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/nodejs/http.html" class="nav-link">
+  nodejs网络及部署
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/ts/express-ts.html" class="nav-link">
+  express-ts实战
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/nodejs/info.html" class="nav-link">
+  nodejs前研
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="其他" class="dropdown-title"><span class="title">其他</span> <span class="arrow down"></span></button> <button type="button" aria-label="其他" class="mobile-dropdown-title"><span class="title">其他</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/frontend/interview/" class="nav-link">
+  前端面试
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/performance/performance.html" class="nav-link">
+  前端性能优化
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/performance/explorer.html" class="nav-link">
+  浏览器进程和线程
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/else/security-control.html" class="nav-link">
+  前端网络安全
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/lowcode/lowcode.html" class="nav-link">
+  低代码平台
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/else/micro-frontend.html" class="nav-link">
+  微前端
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/else/designMode.html" class="nav-link">
+  前端设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/css/" class="nav-link">
+  css
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/mini-program/" class="nav-link">
+  小程序
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/hybrid/hybrid.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  hybrid开发及原理分析
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/else/canvas.html" class="nav-link">
+  canvas
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/else/graph.html" class="nav-link">
+  图片格式
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/else/web3.html" class="nav-link">
+  web3探索
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="算法" class="dropdown-title"><span class="title">算法</span> <span class="arrow down"></span></button> <button type="button" aria-label="算法" class="mobile-dropdown-title"><span class="title">算法</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/frontend/algorithm/graph.html" class="nav-link">
+  图的存储和遍历
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/algorithm/dpointer.html" class="nav-link">
+  双指针
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/algorithm/Levenshtein.html" class="nav-link">
+  最短编辑距离
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/algorithm/greed.html" class="nav-link">
+  贪心算法
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/algorithm/dp.html" class="nav-link">
+  动态规划
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/algorithm/leetcode.html" class="nav-link">
+  leetcode
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="后端" class="dropdown-title"><span class="title">后端</span> <span class="arrow down"></span></button> <button type="button" aria-label="后端" class="mobile-dropdown-title"><span class="title">后端</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/backend/nginx.html" class="nav-link">
+  nginx
+</a></li><li class="dropdown-item"><!----> <a href="/backend/springboot.html" class="nav-link">
+  springboot
+</a></li><li class="dropdown-item"><!----> <a href="/backend/mybatis.html" class="nav-link">
+  mybatis
+</a></li><li class="dropdown-item"><!----> <a href="/backend/uml.html" class="nav-link">
+  uml类图
+</a></li><li class="dropdown-item"><!----> <a href="/backend/ddd.html" class="nav-link">
+  领域驱动设计
+</a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>Hybrid开发及原理</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/frontend/hybrid/hybrid.html#_1、hybrid开发" class="sidebar-link">1、Hybrid开发</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/frontend/hybrid/hybrid.html#_2、js调用native" class="sidebar-link">2、Js调用Native</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/frontend/hybrid/hybrid.html#_1、注入api方式" class="sidebar-link">1、注入api方式</a></li><li class="sidebar-sub-header"><a href="/frontend/hybrid/hybrid.html#_2、拦截url-scheme" class="sidebar-link">2、拦截URL Scheme</a></li></ul></li><li><a href="/frontend/hybrid/hybrid.html#_3、native调用js" class="sidebar-link">3、Native调用Js</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/frontend/hybrid/hybrid.html#_4、现有开源解决方案" class="sidebar-link">4、现有开源解决方案</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/frontend/hybrid/hybrid.html#_5、面试题" class="sidebar-link">5、面试题</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/frontend/hybrid/hybrid.html#_1、url-schema" class="sidebar-link">1、Url schema</a></li><li class="sidebar-sub-header"><a href="/frontend/hybrid/hybrid.html#_2、注入api" class="sidebar-link">2、注入api</a></li></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="hybrid开发及原理"><a href="#hybrid开发及原理" class="header-anchor">#</a> Hybrid开发及原理</h1> <h2 id="_1、hybrid开发"><a href="#_1、hybrid开发" class="header-anchor">#</a> 1、Hybrid开发</h2> <ul><li>Hybrid开发：原生app嵌入web页面的开发模式</li> <li>jsBidge：原生app与web页面的交互沟通桥梁，一种通信方式，类比于JSONP的交互方式，只是类比的对象放到了js与native身上，native通过桥调用js的一些方法，js也能通过桥调用js的一些方法和功能。</li></ul> <h2 id="_2、js调用native"><a href="#_2、js调用native" class="header-anchor">#</a> 2、Js调用Native</h2> <h3 id="_1、注入api方式"><a href="#_1、注入api方式" class="header-anchor">#</a> 1、注入api方式</h3> <p>通过webview提供的接口，向JavaScript的window中注入对象或方法，让js调用时，直接执行相应的Native代码逻辑。webview在native中，native可控制webview。</p> <ul><li>后段注入api：jsSendMessage</li></ul> <div class="language-java line-numbers-mode"><pre class="language-java"><code><span class="token comment">//ios：使用UIWebView</span>
+<span class="token class-name">JSContext</span> <span class="token operator">*</span>context <span class="token operator">=</span> <span class="token punctuation">[</span>webView valueForKeyPath<span class="token operator">:</span>@<span class="token string">&quot;documentView.webView.mainFrame.javaScriptContext&quot;</span><span class="token punctuation">]</span><span class="token punctuation">;</span> context<span class="token punctuation">[</span>@<span class="token string">&quot;jsSendMessage&quot;</span><span class="token punctuation">]</span><span class="token operator">=</span>getJsData<span class="token punctuation">;</span>
+
+<span class="token comment">//andriod：使用addJavascriptInterface接口</span>
+<span class="token keyword">class</span> getJsData <span class="token punctuation">{</span> 
+		<span class="token annotation punctuation">@JavascriptInterface</span> <span class="token comment">//标注的方法里面是子线程，而不是主线程 </span>
+    <span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">getNativeData</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+      <span class="token keyword">return</span> <span class="token string">&quot;nativeData&quot;</span><span class="token punctuation">;</span> 
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+webView<span class="token punctuation">.</span><span class="token function">addJavascriptInterface</span><span class="token punctuation">(</span>getJsData<span class="token punctuation">,</span> <span class="token string">&quot;jsSendMessage&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br></div></div><ul><li>前端调用native</li></ul> <div class="language-js line-numbers-mode"><pre class="language-js"><code>window<span class="token punctuation">.</span><span class="token function">jsSendMessage</span><span class="token punctuation">(</span>message<span class="token punctuation">)</span>  <span class="token comment">//ios</span>
+window<span class="token punctuation">.</span>jsSendMessage<span class="token punctuation">.</span><span class="token function">getNativeData</span><span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment">//andriod</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><h3 id="_2、拦截url-scheme"><a href="#_2、拦截url-scheme" class="header-anchor">#</a> 2、拦截URL Scheme</h3> <ul><li><p>浏览器输入url即可打开app：weixin://</p></li> <li><p>协议类型：<code>scheme(应用标识)：//[path](行为即应用的某个功能)[?query](功能需要的参数)</code></p></li> <li><p>后端代码：约定bridge://loaded</p></li></ul> <div class="language-java line-numbers-mode"><pre class="language-java"><code><span class="token comment">//ios操作</span>
+<span class="token punctuation">(</span><span class="token constant">BOOL</span><span class="token punctuation">)</span>webView<span class="token operator">:</span><span class="token punctuation">(</span><span class="token class-name">UIWebView</span> <span class="token operator">*</span><span class="token punctuation">)</span>webView shouldStartLoadWithRequest<span class="token operator">:</span><span class="token punctuation">(</span><span class="token class-name">NSURLRequest</span> <span class="token operator">*</span><span class="token punctuation">)</span>request navigationType<span class="token operator">:</span><span class="token punctuation">(</span><span class="token class-name">UIWebViewNavigationType</span><span class="token punctuation">)</span>navigationType<span class="token punctuation">{</span> 
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">[</span>request<span class="token punctuation">.</span><span class="token constant">URL</span><span class="token punctuation">.</span>absoluteString hasPrefix<span class="token operator">:</span>@<span class="token string">&quot;bridge://loaded&quot;</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+    <span class="token comment">//执行native端的一些操作 </span>
+    <span class="token keyword">return</span> <span class="token constant">NO</span><span class="token punctuation">;</span> <span class="token comment">//返回NO是为了不再执行点击原链接的跳转 </span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">return</span> <span class="token constant">YES</span><span class="token punctuation">;</span> 
+<span class="token punctuation">}</span>
+
+<span class="token comment">//andriod：使用shouldOverrideUrlLoading方法对url协议进行解析</span>
+webView<span class="token punctuation">.</span><span class="token function">setWebViewClient</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">WebViewClient</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span> 
+  <span class="token annotation punctuation">@Override</span> 
+  <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">shouldOverrideUrlLoading</span><span class="token punctuation">(</span><span class="token class-name">WebView</span> view<span class="token punctuation">,</span> <span class="token class-name">String</span> url<span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">isNativeUrl</span><span class="token punctuation">(</span>url<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+      <span class="token comment">// 执行native端的一些操作 </span>
+      <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span> 
+    <span class="token punctuation">}</span> 
+  <span class="token punctuation">}</span> 
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br></div></div><ul><li>前端操作：直接请求定义好的bridge://loaded 协议就能触发native端的拦截</li></ul> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token operator">&lt;</span>a href<span class="token operator">=</span><span class="token string">&quot;bridge://loaded&quot;</span><span class="token operator">&gt;</span> 触发app <span class="token operator">&lt;</span><span class="token operator">/</span>a<span class="token operator">&gt;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><ul><li>缺点：目前不建议只使用拦截url scheme解析参数的形式，主要存在如下问题：
+<ul><li>连续调用location.href会出现消息丢失，因为webview限制了连续跳转，会过滤掉后续的请求</li> <li>url会有长度限制，一旦过长就会出现信息丢失，一般结合注入api的形式一起使用</li></ul></li></ul> <h2 id="_3、native调用js"><a href="#_3、native调用js" class="header-anchor">#</a> 3、Native调用Js</h2> <ul><li><p>调用UIWebView的stringByEvaluatingJavaScriptFromString:方法</p></li> <li><p>调用WKWebView的evaluateJavaScript:completionHandler:方法</p></li> <li><p>调用WebView.loadUrl()方法</p></li></ul> <div class="language-java line-numbers-mode"><pre class="language-java"><code><span class="token comment">//ios适用于UIWebView和WKWebView</span>
+<span class="token punctuation">[</span>self<span class="token punctuation">.</span>webView stringByEvaluatingJavaScriptFromString<span class="token operator">:</span>@<span class="token string">&quot;jsFunction('发送给js的数据')&quot;</span><span class="token punctuation">]</span><span class="token punctuation">;</span> 
+<span class="token comment">//WKWebView </span>
+<span class="token punctuation">[</span>webView evaluateJavaScript<span class="token operator">:</span>@<span class="token string">&quot;jsFunction('我是ios')&quot;</span> completionHandler<span class="token operator">:</span><span class="token operator">^</span><span class="token punctuation">(</span>id item<span class="token punctuation">,</span> <span class="token class-name">NSError</span> <span class="token operator">*</span> _Nullable error<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment">// Block中处理是否通过了或者执行JS错误的代码 </span>
+<span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token comment">//andriod</span>
+<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">javaCallJS</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span> 
+  webView<span class="token punctuation">.</span><span class="token function">loadUrl</span><span class="token punctuation">(</span><span class="token string">&quot;javascript:jsFunction('我是Android')&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br></div></div><h2 id="_4、现有开源解决方案"><a href="#_4、现有开源解决方案" class="header-anchor">#</a> 4、现有开源解决方案</h2> <ul><li>iOS：WebViewJavascriptBridge</li> <li>andriod：JsBridge</li> <li>andriod在启动webview时加载脚步，ios在webview发送scheme请求时加载脚步</li></ul> <img src="/img/jsbridge.png"> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token comment">//notation: js file can only use this kind of comments</span>
+<span class="token comment">//since comments will cause error when use in webview.loadurl,</span>
+<span class="token comment">//comments will be remove by java use regexp</span>
+<span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 错误优先-判断是否WebViewJavascriptBridge已经被注册好</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>window<span class="token punctuation">.</span>WebViewJavascriptBridge<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment">//native传过来的回调队列</span>
+    <span class="token keyword">var</span> receiveMessageQueue <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token comment">// 提供给native调js的 key=&gt;handlerName（就是native端定义的函数名）  value=&gt;页面注册的回调函数（就是页面调用native端方法 registerHandler时候的回调函数）</span>
+    <span class="token keyword">var</span> messageHandlers <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+    <span class="token comment">// 页面调用native使用 key=&gt;callbackId (页面生成的唯一标示供native找到的函数) value=&gt;页面提供native调用的函数</span>
+    <span class="token keyword">var</span> responseCallbacks <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+    <span class="token keyword">var</span> uniqueId <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+
+    <span class="token comment">//set default messageHandler  初始化默认的消息线程</span>
+    <span class="token comment">//init方法就是执行一遍native传给页面的回调队列-receiveMessageQueue队列</span>
+    <span class="token keyword">function</span> <span class="token function">init</span><span class="token punctuation">(</span><span class="token parameter">messageHandler</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>WebViewJavascriptBridge<span class="token punctuation">.</span>_messageHandler<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">Error</span><span class="token punctuation">(</span><span class="token string">'WebViewJavascriptBridge.init called twice'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        WebViewJavascriptBridge<span class="token punctuation">.</span>_messageHandler <span class="token operator">=</span> messageHandler<span class="token punctuation">;</span>
+        <span class="token keyword">var</span> receivedMessages <span class="token operator">=</span> receiveMessageQueue<span class="token punctuation">;</span>
+        receiveMessageQueue <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> receivedMessages<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+              <span class="token comment">// 将native传过来的队列依次执行一遍</span>
+            <span class="token function">_dispatchMessageFromNative</span><span class="token punctuation">(</span>receivedMessages<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">// 发送</span>
+    <span class="token comment">// 直接调用native中的send方法</span>
+    <span class="token keyword">function</span> <span class="token function">send</span><span class="token punctuation">(</span><span class="token parameter">data<span class="token punctuation">,</span> responseCallback</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">_doSend</span><span class="token punctuation">(</span><span class="token string">'send'</span><span class="token punctuation">,</span> data<span class="token punctuation">,</span> responseCallback<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">/**
+     * 页面提供函数为native调用的
+     * @param { string } handlerName native中定义的方法名
+     * @param { Function } handler 用来接收native方法执行完得到返回值的页面回调函数
+     */</span>
+    <span class="token keyword">function</span> <span class="token function">registerHandler</span><span class="token punctuation">(</span><span class="token parameter">handlerName<span class="token punctuation">,</span> handler</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        messageHandlers<span class="token punctuation">[</span>handlerName<span class="token punctuation">]</span> <span class="token operator">=</span> handler<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment">/**
+     * 页面调用native的方法
+     * @param { string } handlerName native中定义的方法名
+     * @param { string } data 页面中函数体所需要的参数
+     * @param { Function } responseCallback 页面中函数体
+     */</span>
+    <span class="token keyword">function</span> <span class="token function">callHandler</span><span class="token punctuation">(</span><span class="token parameter">handlerName<span class="token punctuation">,</span> data<span class="token punctuation">,</span> responseCallback</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// 如果方法不需要参数，只有回调函数，简化JS中的调用</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>arguments<span class="token punctuation">.</span>length <span class="token operator">==</span> <span class="token number">2</span> <span class="token operator">&amp;&amp;</span> <span class="token keyword">typeof</span> data <span class="token operator">==</span> <span class="token string">'function'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			responseCallback <span class="token operator">=</span> data<span class="token punctuation">;</span>
+			data <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+        <span class="token function">_doSend</span><span class="token punctuation">(</span>handlerName<span class="token punctuation">,</span> data<span class="token punctuation">,</span> responseCallback<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token function">callHandler</span><span class="token punctuation">(</span><span class="token string">'nativeMethod'</span><span class="token punctuation">,</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">data</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token comment">//sendMessage add message, 触发native处理 sendMessage</span>
+    <span class="token comment">/** 
+     * @param { string } handlerName 页面中函数名
+     * @param { string } message 页面中函数体所需要的参数
+     * @param { Function } responseCallback 页面中函数体
+     */</span>
+    <span class="token keyword">function</span> <span class="token function">_doSend</span><span class="token punctuation">(</span><span class="token parameter">handlerName<span class="token punctuation">,</span> message<span class="token punctuation">,</span> responseCallback</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">var</span> callbackId<span class="token punctuation">;</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token keyword">typeof</span> responseCallback <span class="token operator">===</span> <span class="token string">'string'</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            callbackId <span class="token operator">=</span> responseCallback<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>responseCallback<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            callbackId <span class="token operator">=</span> <span class="token string">'cb_'</span> <span class="token operator">+</span> <span class="token punctuation">(</span>uniqueId<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">'_'</span> <span class="token operator">+</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getTime</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            responseCallbacks<span class="token punctuation">[</span>callbackId<span class="token punctuation">]</span> <span class="token operator">=</span> responseCallback<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span>
+            <span class="token comment">// 没有回调时候</span>
+            callbackId <span class="token operator">=</span> <span class="token string">''</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">try</span> <span class="token punctuation">{</span>
+             <span class="token keyword">var</span> fn <span class="token operator">=</span> <span class="token function">eval</span><span class="token punctuation">(</span><span class="token string">'window.android.'</span> <span class="token operator">+</span> handlerName<span class="token punctuation">)</span><span class="token punctuation">;</span>
+         <span class="token punctuation">}</span> <span class="token keyword">catch</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+             console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span><span class="token punctuation">;</span>
+         <span class="token punctuation">}</span>
+         <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">typeof</span> fn <span class="token operator">===</span> <span class="token string">'function'</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+             <span class="token keyword">var</span> responseData <span class="token operator">=</span> <span class="token function">fn</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> <span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>message<span class="token punctuation">)</span><span class="token punctuation">,</span> callbackId<span class="token punctuation">)</span><span class="token punctuation">;</span>
+             <span class="token keyword">if</span><span class="token punctuation">(</span>responseData<span class="token punctuation">)</span><span class="token punctuation">{</span>
+              console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'response message: '</span><span class="token operator">+</span> responseData<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                 responseCallback <span class="token operator">=</span> responseCallbacks<span class="token punctuation">[</span>callbackId<span class="token punctuation">]</span><span class="token punctuation">;</span>
+                 <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>responseCallback<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                     <span class="token keyword">return</span><span class="token punctuation">;</span>
+                  <span class="token punctuation">}</span>
+                 <span class="token function">responseCallback</span><span class="token punctuation">(</span>responseData<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                 <span class="token keyword">delete</span> responseCallbacks<span class="token punctuation">[</span>callbackId<span class="token punctuation">]</span><span class="token punctuation">;</span>
+             <span class="token punctuation">}</span>
+         <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">//提供给native使用,</span>
+    <span class="token keyword">function</span> <span class="token function">_dispatchMessageFromNative</span><span class="token punctuation">(</span><span class="token parameter">messageJSON</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">var</span> message <span class="token operator">=</span> <span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span>messageJSON<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">var</span> responseCallback<span class="token punctuation">;</span>
+            <span class="token comment">//java call finished, now need to call js callback function </span>
+            <span class="token comment">//页面调native 执行回调</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>message<span class="token punctuation">.</span>responseId<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                responseCallback <span class="token operator">=</span> responseCallbacks<span class="token punctuation">[</span>message<span class="token punctuation">.</span>responseId<span class="token punctuation">]</span><span class="token punctuation">;</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>responseCallback<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    <span class="token keyword">return</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+                <span class="token function">responseCallback</span><span class="token punctuation">(</span>message<span class="token punctuation">.</span>responseData<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">delete</span> responseCallbacks<span class="token punctuation">[</span>message<span class="token punctuation">.</span>responseId<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+                 <span class="token comment">//有callbackId直接发送</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span>message<span class="token punctuation">.</span>callbackId<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    <span class="token keyword">var</span> callbackResponseId <span class="token operator">=</span> message<span class="token punctuation">.</span>callbackId<span class="token punctuation">;</span>
+                    <span class="token function-variable function">responseCallback</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">responseData</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                        <span class="token function">_doSend</span><span class="token punctuation">(</span><span class="token string">'response'</span><span class="token punctuation">,</span> responseData<span class="token punctuation">,</span> callbackResponseId<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+                <span class="token comment">//messageHandlers中有对应回调就执行没有其实执行的是init()方法所传入的的回调</span>
+                <span class="token keyword">var</span> handler <span class="token operator">=</span> WebViewJavascriptBridge<span class="token punctuation">.</span>_messageHandler<span class="token punctuation">;</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span>message<span class="token punctuation">.</span>handlerName<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    handler <span class="token operator">=</span> messageHandlers<span class="token punctuation">[</span>message<span class="token punctuation">.</span>handlerName<span class="token punctuation">]</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+                <span class="token comment">//查找指定handler</span>
+                <span class="token keyword">try</span> <span class="token punctuation">{</span>
+                    <span class="token function">handler</span><span class="token punctuation">(</span>message<span class="token punctuation">.</span>data<span class="token punctuation">,</span> responseCallback<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>exception<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">typeof</span> console <span class="token operator">!=</span> <span class="token string">'undefined'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;WebViewJavascriptBridge: WARNING: javascript handler threw.&quot;</span><span class="token punctuation">,</span> message<span class="token punctuation">,</span> exception<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    <span class="token punctuation">}</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">//提供给native调用,receiveMessageQueue 在会在页面加载完后赋值为null,所以</span>
+    <span class="token keyword">function</span> <span class="token function">_handleMessageFromNative</span><span class="token punctuation">(</span><span class="token parameter">messageJSON</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'handle message: '</span><span class="token operator">+</span> messageJSON<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>receiveMessageQueue<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            receiveMessageQueue<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>messageJSON<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token function">_dispatchMessageFromNative</span><span class="token punctuation">(</span>messageJSON<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">var</span> WebViewJavascriptBridge <span class="token operator">=</span> window<span class="token punctuation">.</span>WebViewJavascriptBridge <span class="token operator">=</span> <span class="token punctuation">{</span>
+        <span class="token literal-property property">init</span><span class="token operator">:</span> init<span class="token punctuation">,</span>
+        <span class="token literal-property property">send</span><span class="token operator">:</span> send<span class="token punctuation">,</span>
+        <span class="token literal-property property">registerHandler</span><span class="token operator">:</span> registerHandler<span class="token punctuation">,</span>
+        <span class="token literal-property property">callHandler</span><span class="token operator">:</span> callHandler<span class="token punctuation">,</span>
+        <span class="token literal-property property">_handleMessageFromNative</span><span class="token operator">:</span> _handleMessageFromNative
+    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">var</span> doc <span class="token operator">=</span> document<span class="token punctuation">;</span>
+    <span class="token keyword">var</span> readyEvent <span class="token operator">=</span> doc<span class="token punctuation">.</span><span class="token function">createEvent</span><span class="token punctuation">(</span><span class="token string">'Events'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">var</span> jobs <span class="token operator">=</span> window<span class="token punctuation">.</span>WVJBCallbacks <span class="token operator">||</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    readyEvent<span class="token punctuation">.</span><span class="token function">initEvent</span><span class="token punctuation">(</span><span class="token string">'WebViewJavascriptBridgeReady'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    readyEvent<span class="token punctuation">.</span>bridge <span class="token operator">=</span> WebViewJavascriptBridge<span class="token punctuation">;</span>
+    window<span class="token punctuation">.</span>WVJBCallbacks <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+    jobs<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">job</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">job</span><span class="token punctuation">(</span>WebViewJavascriptBridge<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    doc<span class="token punctuation">.</span><span class="token function">dispatchEvent</span><span class="token punctuation">(</span>readyEvent<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br><span class="line-number">79</span><br><span class="line-number">80</span><br><span class="line-number">81</span><br><span class="line-number">82</span><br><span class="line-number">83</span><br><span class="line-number">84</span><br><span class="line-number">85</span><br><span class="line-number">86</span><br><span class="line-number">87</span><br><span class="line-number">88</span><br><span class="line-number">89</span><br><span class="line-number">90</span><br><span class="line-number">91</span><br><span class="line-number">92</span><br><span class="line-number">93</span><br><span class="line-number">94</span><br><span class="line-number">95</span><br><span class="line-number">96</span><br><span class="line-number">97</span><br><span class="line-number">98</span><br><span class="line-number">99</span><br><span class="line-number">100</span><br><span class="line-number">101</span><br><span class="line-number">102</span><br><span class="line-number">103</span><br><span class="line-number">104</span><br><span class="line-number">105</span><br><span class="line-number">106</span><br><span class="line-number">107</span><br><span class="line-number">108</span><br><span class="line-number">109</span><br><span class="line-number">110</span><br><span class="line-number">111</span><br><span class="line-number">112</span><br><span class="line-number">113</span><br><span class="line-number">114</span><br><span class="line-number">115</span><br><span class="line-number">116</span><br><span class="line-number">117</span><br><span class="line-number">118</span><br><span class="line-number">119</span><br><span class="line-number">120</span><br><span class="line-number">121</span><br><span class="line-number">122</span><br><span class="line-number">123</span><br><span class="line-number">124</span><br><span class="line-number">125</span><br><span class="line-number">126</span><br><span class="line-number">127</span><br><span class="line-number">128</span><br><span class="line-number">129</span><br><span class="line-number">130</span><br><span class="line-number">131</span><br><span class="line-number">132</span><br><span class="line-number">133</span><br><span class="line-number">134</span><br><span class="line-number">135</span><br><span class="line-number">136</span><br><span class="line-number">137</span><br><span class="line-number">138</span><br><span class="line-number">139</span><br><span class="line-number">140</span><br><span class="line-number">141</span><br><span class="line-number">142</span><br><span class="line-number">143</span><br><span class="line-number">144</span><br><span class="line-number">145</span><br><span class="line-number">146</span><br><span class="line-number">147</span><br><span class="line-number">148</span><br><span class="line-number">149</span><br><span class="line-number">150</span><br><span class="line-number">151</span><br><span class="line-number">152</span><br><span class="line-number">153</span><br><span class="line-number">154</span><br><span class="line-number">155</span><br><span class="line-number">156</span><br><span class="line-number">157</span><br><span class="line-number">158</span><br><span class="line-number">159</span><br><span class="line-number">160</span><br><span class="line-number">161</span><br><span class="line-number">162</span><br><span class="line-number">163</span><br><span class="line-number">164</span><br><span class="line-number">165</span><br><span class="line-number">166</span><br><span class="line-number">167</span><br></div></div><h2 id="_5、面试题"><a href="#_5、面试题" class="header-anchor">#</a> 5、面试题</h2> <p>Hybrid混合开发：使用jsBridge，通常使用两种方法：URL schema和注入api</p> <ul><li><p>url Schema：客户端通过拦截wevview请求来完成通信</p></li> <li><p>native向webview中的js执行环境，注入api，以此来完成通信</p></li></ul> <h3 id="_1、url-schema"><a href="#_1、url-schema" class="header-anchor">#</a> 1、Url schema</h3> <h4 id="_1、原理"><a href="#_1、原理" class="header-anchor">#</a> 1、原理</h4> <p>webview中发出的网络请求，都会被客户端监听和捕获到，H5与webview交互的私有协议为url schema</p> <ul><li><p>webview发出请求：使用iframe发送请求或使用location.href的方式（不适合并发场景）</p></li> <li><p>客户端拦截协议请求：解析到请求协议时，进行相关操作，设置处理逻辑</p> <ul><li>IOS：shouldStartLoadWithRequest</li> <li>Android：shouldOverrideUrlLoading</li></ul></li> <li><p>客户端请求处理后回调：</p> <ul><li>webview请求时使用window.addEventListener设置自定义事件</li> <li>客户端处理完成后，调用jsBridge中的dispatch携带回调的数据触发自定义事件window.dispatchEvent</li></ul></li></ul> <h4 id="_2、问题"><a href="#_2、问题" class="header-anchor">#</a> 2、问题</h4> <ul><li>连续调用location.href会出现消息丢失，因为webview限制了连续跳转，会过滤掉后续的请求</li> <li>url会有长度限制，一旦过长就会出现信息丢失，一般结合注入api的形式一起使用</li></ul> <h3 id="_2、注入api"><a href="#_2、注入api" class="header-anchor">#</a> 2、注入api</h3> <h4 id="_1、原理-2"><a href="#_1、原理-2" class="header-anchor">#</a> 1、原理</h4> <p>通过webview提供的接口，向JavaScript的window中注入对象或方法，让js调用时，直接执行相应的Native代码逻辑。</p> <ul><li>客户端给webview中的window中注入方法</li> <li>webview中调用注入的方法，并传入回调函数</li> <li>客户端处理完成后，调用回调函数</li></ul></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">Last Updated:</span> <span class="time">10/3/2021, 9:23:14 PM</span></div></footer> <!----> </main></div><div class="global-ui"><!----><!----></div></div>
+    <script src="/assets/js/app.9e441e61.js" defer></script><script src="/assets/js/2.36bde0fd.js" defer></script><script src="/assets/js/28.ce11023f.js" defer></script><script src="/assets/js/3.5a07e503.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>nginx总结 | Jian‘s blog</title>
+    <meta name="generator" content="VuePress 1.9.9">
+    <link rel="icon" href="/jian_x48.png">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="apple-touch-icon" href="/jian_x192.png">
+    <meta name="description" content="每天进步一点点">
+    <meta name="theme-color" content="#3eaf7c">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="msapplication-TileImage" content="/jian_x192.png">
+    <meta name="msapplication-TileColor" content="#000000">
+    
+    <link rel="preload" href="/assets/css/0.styles.19232fe9.css" as="style"><link rel="preload" href="/assets/js/app.9e441e61.js" as="script"><link rel="preload" href="/assets/js/2.36bde0fd.js" as="script"><link rel="preload" href="/assets/js/11.ead9b8ca.js" as="script"><link rel="preload" href="/assets/js/3.5a07e503.js" as="script"><link rel="prefetch" href="/assets/js/10.bc82d67b.js"><link rel="prefetch" href="/assets/js/12.a048ccaa.js"><link rel="prefetch" href="/assets/js/13.3e4cc077.js"><link rel="prefetch" href="/assets/js/14.58cd0fa5.js"><link rel="prefetch" href="/assets/js/15.98e26beb.js"><link rel="prefetch" href="/assets/js/16.4cf1daea.js"><link rel="prefetch" href="/assets/js/17.c190a7fe.js"><link rel="prefetch" href="/assets/js/18.89814285.js"><link rel="prefetch" href="/assets/js/19.77f58842.js"><link rel="prefetch" href="/assets/js/20.9920ac2c.js"><link rel="prefetch" href="/assets/js/21.6a8c9cfe.js"><link rel="prefetch" href="/assets/js/22.cfd89a61.js"><link rel="prefetch" href="/assets/js/23.48f5d9f7.js"><link rel="prefetch" href="/assets/js/24.a8c5ac10.js"><link rel="prefetch" href="/assets/js/25.842b3853.js"><link rel="prefetch" href="/assets/js/26.9c5fe1dd.js"><link rel="prefetch" href="/assets/js/27.c4f0a52b.js"><link rel="prefetch" href="/assets/js/28.ce11023f.js"><link rel="prefetch" href="/assets/js/29.9001ac2f.js"><link rel="prefetch" href="/assets/js/30.5edf0dc1.js"><link rel="prefetch" href="/assets/js/31.57d2aeed.js"><link rel="prefetch" href="/assets/js/32.db6f674e.js"><link rel="prefetch" href="/assets/js/33.038cad31.js"><link rel="prefetch" href="/assets/js/34.bff4a907.js"><link rel="prefetch" href="/assets/js/35.e9272942.js"><link rel="prefetch" href="/assets/js/36.896895d7.js"><link rel="prefetch" href="/assets/js/37.91a5bb8c.js"><link rel="prefetch" href="/assets/js/38.3f6a6f29.js"><link rel="prefetch" href="/assets/js/39.270d8c27.js"><link rel="prefetch" href="/assets/js/4.0800d99b.js"><link rel="prefetch" href="/assets/js/40.b379e318.js"><link rel="prefetch" href="/assets/js/41.f3073d82.js"><link rel="prefetch" href="/assets/js/42.867935ca.js"><link rel="prefetch" href="/assets/js/43.30335621.js"><link rel="prefetch" href="/assets/js/44.993aea4e.js"><link rel="prefetch" href="/assets/js/45.60eb5226.js"><link rel="prefetch" href="/assets/js/46.8501be1f.js"><link rel="prefetch" href="/assets/js/47.ba2302fc.js"><link rel="prefetch" href="/assets/js/48.e932482f.js"><link rel="prefetch" href="/assets/js/49.c1af1af4.js"><link rel="prefetch" href="/assets/js/5.1d8a5d7f.js"><link rel="prefetch" href="/assets/js/50.e7715e10.js"><link rel="prefetch" href="/assets/js/51.ab6021ba.js"><link rel="prefetch" href="/assets/js/52.c5c5c3ef.js"><link rel="prefetch" href="/assets/js/53.7157cd05.js"><link rel="prefetch" href="/assets/js/54.f4abd89d.js"><link rel="prefetch" href="/assets/js/55.c86bbebc.js"><link rel="prefetch" href="/assets/js/56.ee48a85c.js"><link rel="prefetch" href="/assets/js/57.90d4c487.js"><link rel="prefetch" href="/assets/js/58.1d4866f8.js"><link rel="prefetch" href="/assets/js/59.75c6bc90.js"><link rel="prefetch" href="/assets/js/6.90059570.js"><link rel="prefetch" href="/assets/js/60.c5e61798.js"><link rel="prefetch" href="/assets/js/61.54457b0e.js"><link rel="prefetch" href="/assets/js/62.2e0af734.js"><link rel="prefetch" href="/assets/js/63.07cece40.js"><link rel="prefetch" href="/assets/js/64.e6ab0174.js"><link rel="prefetch" href="/assets/js/65.663550a9.js"><link rel="prefetch" href="/assets/js/66.64ad9de7.js"><link rel="prefetch" href="/assets/js/67.cc5c5ab3.js"><link rel="prefetch" href="/assets/js/68.d76b1a45.js"><link rel="prefetch" href="/assets/js/69.06c85095.js"><link rel="prefetch" href="/assets/js/7.e0481b37.js"><link rel="prefetch" href="/assets/js/70.5fa17108.js"><link rel="prefetch" href="/assets/js/71.ea8df0ea.js"><link rel="prefetch" href="/assets/js/72.12d99daf.js"><link rel="prefetch" href="/assets/js/73.8b6c81cd.js"><link rel="prefetch" href="/assets/js/74.e089a7e8.js"><link rel="prefetch" href="/assets/js/75.eda86622.js"><link rel="prefetch" href="/assets/js/76.451d3bf2.js"><link rel="prefetch" href="/assets/js/77.5a71a520.js"><link rel="prefetch" href="/assets/js/78.5e4673c6.js"><link rel="prefetch" href="/assets/js/79.f657e29d.js"><link rel="prefetch" href="/assets/js/8.e1e88656.js"><link rel="prefetch" href="/assets/js/80.d7b2d65d.js"><link rel="prefetch" href="/assets/js/81.c9dc1609.js"><link rel="prefetch" href="/assets/js/82.2b309c6c.js"><link rel="prefetch" href="/assets/js/9.54f76d53.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.19232fe9.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/img/jian.jpeg" alt="Jian‘s blog" class="logo"> <span class="site-name can-hide">Jian‘s blog</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="js" class="dropdown-title"><span class="title">js</span> <span class="arrow down"></span></button> <button type="button" aria-label="js" class="mobile-dropdown-title"><span class="title">js</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/frontend/js/" class="nav-link">
+  js杂记
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/js/promise.html" class="nav-link">
+  Promise规范和应用
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/js/browser.html" class="nav-link">
+  浏览器对象详解
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/js/js_oop.html" class="nav-link">
+  面向对象编程
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/js/ES6.html" class="nav-link">
+  ES6ESNext规范详解
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/js/this_chain.html" class="nav-link">
+  this指针作用域
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/js/typescript.html" class="nav-link">
+  ts初探
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/ts/basics.html" class="nav-link">
+  ts基础
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/ts/project.html" class="nav-link">
+  ts工程
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="工程化" class="dropdown-title"><span class="title">工程化</span> <span class="arrow down"></span></button> <button type="button" aria-label="工程化" class="mobile-dropdown-title"><span class="title">工程化</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/frontend/tools/js_module.html" class="nav-link">
+  模块化规范
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/tools/js_project.html" class="nav-link">
+  前端工程化
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/tools/webpack.html" class="nav-link">
+  webpack
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/tools/babel.html" class="nav-link">
+  babel
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/tools/autotest.html" class="nav-link">
+  自动化测试和部署
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/tools/ast.html" class="nav-link">
+  AST
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/tools/solution.html" class="nav-link">
+  前端方案
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/tools/js_tools.html" class="nav-link">
+  常用工具
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="vue" class="dropdown-title"><span class="title">vue</span> <span class="arrow down"></span></button> <button type="button" aria-label="vue" class="mobile-dropdown-title"><span class="title">vue</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/frontend/vue/index.html" class="nav-link">
+  vue2.0基础
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/advance.html" class="nav-link">
+  vue2.0进阶
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vue-cli.html" class="nav-link">
+  vue-cli
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vue-loader.html" class="nav-link">
+  vue-loader
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vue-router.html" class="nav-link">
+  vue-router
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vuex.html" class="nav-link">
+  vuex
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vue_ssr.html" class="nav-link">
+  vue-ssr
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vue-i18n.html" class="nav-link">
+  vue-i18n
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vue-life.html" class="nav-link">
+  生命周期
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vue_reactive.html" class="nav-link">
+  响应式原理
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vue_diff.html" class="nav-link">
+  diff原理
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vue-compiler.html" class="nav-link">
+  编译原理
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vue-refs.html" class="nav-link">
+  实战总结
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="react" class="dropdown-title"><span class="title">react</span> <span class="arrow down"></span></button> <button type="button" aria-label="react" class="mobile-dropdown-title"><span class="title">react</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/frontend/react/react.html" class="nav-link">
+  react基础
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/react/react-advance.html" class="nav-link">
+  react进阶
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/react/react-router.html" class="nav-link">
+  react-router
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/react/react-state.html" class="nav-link">
+  react状态管理
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/react/react-ssr.html" class="nav-link">
+  react同构
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/react/react-component.html" class="nav-link">
+  react组件封装
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/react/react-code.html" class="nav-link">
+  react源码分析
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/ts/react-ts.html" class="nav-link">
+  react-ts实战
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/react/react-practice.html" class="nav-link">
+  react问题整理
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="nodejs" class="dropdown-title"><span class="title">nodejs</span> <span class="arrow down"></span></button> <button type="button" aria-label="nodejs" class="mobile-dropdown-title"><span class="title">nodejs</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/frontend/nodejs/index.html" class="nav-link">
+  nodejs基础
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/nodejs/module.html" class="nav-link">
+  nodejs常用框架
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/nodejs/http.html" class="nav-link">
+  nodejs网络及部署
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/ts/express-ts.html" class="nav-link">
+  express-ts实战
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/nodejs/info.html" class="nav-link">
+  nodejs前研
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="其他" class="dropdown-title"><span class="title">其他</span> <span class="arrow down"></span></button> <button type="button" aria-label="其他" class="mobile-dropdown-title"><span class="title">其他</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/frontend/interview/" class="nav-link">
+  前端面试
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/performance/performance.html" class="nav-link">
+  前端性能优化
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/performance/explorer.html" class="nav-link">
+  浏览器进程和线程
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/else/security-control.html" class="nav-link">
+  前端网络安全
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/lowcode/lowcode.html" class="nav-link">
+  低代码平台
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/else/micro-frontend.html" class="nav-link">
+  微前端
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/else/designMode.html" class="nav-link">
+  前端设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/css/" class="nav-link">
+  css
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/mini-program/" class="nav-link">
+  小程序
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/hybrid/hybrid.html" class="nav-link">
+  hybrid开发及原理分析
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/else/canvas.html" class="nav-link">
+  canvas
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/else/graph.html" class="nav-link">
+  图片格式
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/else/web3.html" class="nav-link">
+  web3探索
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="算法" class="dropdown-title"><span class="title">算法</span> <span class="arrow down"></span></button> <button type="button" aria-label="算法" class="mobile-dropdown-title"><span class="title">算法</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/frontend/algorithm/graph.html" class="nav-link">
+  图的存储和遍历
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/algorithm/dpointer.html" class="nav-link">
+  双指针
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/algorithm/Levenshtein.html" class="nav-link">
+  最短编辑距离
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/algorithm/greed.html" class="nav-link">
+  贪心算法
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/algorithm/dp.html" class="nav-link">
+  动态规划
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/algorithm/leetcode.html" class="nav-link">
+  leetcode
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="后端" class="dropdown-title"><span class="title">后端</span> <span class="arrow down"></span></button> <button type="button" aria-label="后端" class="mobile-dropdown-title"><span class="title">后端</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/backend/nginx.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  nginx
+</a></li><li class="dropdown-item"><!----> <a href="/backend/springboot.html" class="nav-link">
+  springboot
+</a></li><li class="dropdown-item"><!----> <a href="/backend/mybatis.html" class="nav-link">
+  mybatis
+</a></li><li class="dropdown-item"><!----> <a href="/backend/uml.html" class="nav-link">
+  uml类图
+</a></li><li class="dropdown-item"><!----> <a href="/backend/ddd.html" class="nav-link">
+  领域驱动设计
+</a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="js" class="dropdown-title"><span class="title">js</span> <span class="arrow down"></span></button> <button type="button" aria-label="js" class="mobile-dropdown-title"><span class="title">js</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/frontend/js/" class="nav-link">
+  js杂记
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/js/promise.html" class="nav-link">
+  Promise规范和应用
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/js/browser.html" class="nav-link">
+  浏览器对象详解
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/js/js_oop.html" class="nav-link">
+  面向对象编程
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/js/ES6.html" class="nav-link">
+  ES6ESNext规范详解
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/js/this_chain.html" class="nav-link">
+  this指针作用域
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/js/typescript.html" class="nav-link">
+  ts初探
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/ts/basics.html" class="nav-link">
+  ts基础
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/ts/project.html" class="nav-link">
+  ts工程
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="工程化" class="dropdown-title"><span class="title">工程化</span> <span class="arrow down"></span></button> <button type="button" aria-label="工程化" class="mobile-dropdown-title"><span class="title">工程化</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/frontend/tools/js_module.html" class="nav-link">
+  模块化规范
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/tools/js_project.html" class="nav-link">
+  前端工程化
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/tools/webpack.html" class="nav-link">
+  webpack
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/tools/babel.html" class="nav-link">
+  babel
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/tools/autotest.html" class="nav-link">
+  自动化测试和部署
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/tools/ast.html" class="nav-link">
+  AST
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/tools/solution.html" class="nav-link">
+  前端方案
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/tools/js_tools.html" class="nav-link">
+  常用工具
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="vue" class="dropdown-title"><span class="title">vue</span> <span class="arrow down"></span></button> <button type="button" aria-label="vue" class="mobile-dropdown-title"><span class="title">vue</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/frontend/vue/index.html" class="nav-link">
+  vue2.0基础
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/advance.html" class="nav-link">
+  vue2.0进阶
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vue-cli.html" class="nav-link">
+  vue-cli
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vue-loader.html" class="nav-link">
+  vue-loader
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vue-router.html" class="nav-link">
+  vue-router
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vuex.html" class="nav-link">
+  vuex
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vue_ssr.html" class="nav-link">
+  vue-ssr
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vue-i18n.html" class="nav-link">
+  vue-i18n
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vue-life.html" class="nav-link">
+  生命周期
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vue_reactive.html" class="nav-link">
+  响应式原理
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vue_diff.html" class="nav-link">
+  diff原理
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vue-compiler.html" class="nav-link">
+  编译原理
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vue-refs.html" class="nav-link">
+  实战总结
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="react" class="dropdown-title"><span class="title">react</span> <span class="arrow down"></span></button> <button type="button" aria-label="react" class="mobile-dropdown-title"><span class="title">react</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/frontend/react/react.html" class="nav-link">
+  react基础
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/react/react-advance.html" class="nav-link">
+  react进阶
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/react/react-router.html" class="nav-link">
+  react-router
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/react/react-state.html" class="nav-link">
+  react状态管理
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/react/react-ssr.html" class="nav-link">
+  react同构
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/react/react-component.html" class="nav-link">
+  react组件封装
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/react/react-code.html" class="nav-link">
+  react源码分析
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/ts/react-ts.html" class="nav-link">
+  react-ts实战
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/react/react-practice.html" class="nav-link">
+  react问题整理
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="nodejs" class="dropdown-title"><span class="title">nodejs</span> <span class="arrow down"></span></button> <button type="button" aria-label="nodejs" class="mobile-dropdown-title"><span class="title">nodejs</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/frontend/nodejs/index.html" class="nav-link">
+  nodejs基础
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/nodejs/module.html" class="nav-link">
+  nodejs常用框架
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/nodejs/http.html" class="nav-link">
+  nodejs网络及部署
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/ts/express-ts.html" class="nav-link">
+  express-ts实战
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/nodejs/info.html" class="nav-link">
+  nodejs前研
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="其他" class="dropdown-title"><span class="title">其他</span> <span class="arrow down"></span></button> <button type="button" aria-label="其他" class="mobile-dropdown-title"><span class="title">其他</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/frontend/interview/" class="nav-link">
+  前端面试
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/performance/performance.html" class="nav-link">
+  前端性能优化
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/performance/explorer.html" class="nav-link">
+  浏览器进程和线程
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/else/security-control.html" class="nav-link">
+  前端网络安全
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/lowcode/lowcode.html" class="nav-link">
+  低代码平台
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/else/micro-frontend.html" class="nav-link">
+  微前端
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/else/designMode.html" class="nav-link">
+  前端设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/css/" class="nav-link">
+  css
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/mini-program/" class="nav-link">
+  小程序
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/hybrid/hybrid.html" class="nav-link">
+  hybrid开发及原理分析
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/else/canvas.html" class="nav-link">
+  canvas
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/else/graph.html" class="nav-link">
+  图片格式
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/else/web3.html" class="nav-link">
+  web3探索
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="算法" class="dropdown-title"><span class="title">算法</span> <span class="arrow down"></span></button> <button type="button" aria-label="算法" class="mobile-dropdown-title"><span class="title">算法</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/frontend/algorithm/graph.html" class="nav-link">
+  图的存储和遍历
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/algorithm/dpointer.html" class="nav-link">
+  双指针
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/algorithm/Levenshtein.html" class="nav-link">
+  最短编辑距离
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/algorithm/greed.html" class="nav-link">
+  贪心算法
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/algorithm/dp.html" class="nav-link">
+  动态规划
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/algorithm/leetcode.html" class="nav-link">
+  leetcode
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="后端" class="dropdown-title"><span class="title">后端</span> <span class="arrow down"></span></button> <button type="button" aria-label="后端" class="mobile-dropdown-title"><span class="title">后端</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/backend/nginx.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  nginx
+</a></li><li class="dropdown-item"><!----> <a href="/backend/springboot.html" class="nav-link">
+  springboot
+</a></li><li class="dropdown-item"><!----> <a href="/backend/mybatis.html" class="nav-link">
+  mybatis
+</a></li><li class="dropdown-item"><!----> <a href="/backend/uml.html" class="nav-link">
+  uml类图
+</a></li><li class="dropdown-item"><!----> <a href="/backend/ddd.html" class="nav-link">
+  领域驱动设计
+</a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>nginx总结</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/backend/nginx.html#_1、简介" class="sidebar-link">1、简介</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/backend/nginx.html#_1、nginx简介" class="sidebar-link">1、nginx简介</a></li><li class="sidebar-sub-header"><a href="/backend/nginx.html#_2、优缺点" class="sidebar-link">2、优缺点</a></li><li class="sidebar-sub-header"><a href="/backend/nginx.html#_3、应用场景" class="sidebar-link">3、应用场景</a></li><li class="sidebar-sub-header"><a href="/backend/nginx.html#_3、正向与反向代理" class="sidebar-link">3、正向与反向代理</a></li></ul></li><li><a href="/backend/nginx.html#_2、nginx配置" class="sidebar-link">2、nginx配置</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/backend/nginx.html#_1、程序目录结构" class="sidebar-link">1、程序目录结构</a></li><li class="sidebar-sub-header"><a href="/backend/nginx.html#_2、配置文件" class="sidebar-link">2、配置文件</a></li><li class="sidebar-sub-header"><a href="/backend/nginx.html#_3、常用命令" class="sidebar-link">3、常用命令</a></li><li class="sidebar-sub-header"><a href="/backend/nginx.html#_4、http头部解析" class="sidebar-link">4、http头部解析</a></li></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="nginx总结"><a href="#nginx总结" class="header-anchor">#</a> nginx总结</h1> <blockquote><p>参考资料:</p> <p>1、<a href="https://www.hangge.com/blog/cache/detail_2979.html" target="_blank" rel="noopener noreferrer">nginx反向代理location和proxy_pass参数<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <p>2、<a href="https://blog.csdn.net/u010391029/article/details/50395680" target="_blank" rel="noopener noreferrer">nginx之proxy_redirect详解<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <p>3、<a href="https://blog.csdn.net/weixin_43122090/article/details/105461971" target="_blank" rel="noopener noreferrer">Nginx面试题<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <p>4、<a href="https://blog.csdn.net/wangbin_0729/article/details/82109693" target="_blank" rel="noopener noreferrer">Nginx配置文件详解<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <p>5、<a href="https://blog.csdn.net/tjcyjd/article/details/50695922" target="_blank" rel="noopener noreferrer">Nginx配置文件解析<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p></blockquote> <h2 id="_1、简介"><a href="#_1、简介" class="header-anchor">#</a> 1、简介</h2> <h3 id="_1、nginx简介"><a href="#_1、nginx简介" class="header-anchor">#</a> 1、nginx简介</h3> <p>Nginx是一个轻量级、高性能的反向代理Web服务器，他实现非常高效的反向代理、负载平衡，他可以处理2-3万并发连接数，官方监测能支持5万并发。</p> <h3 id="_2、优缺点"><a href="#_2、优缺点" class="header-anchor">#</a> 2、优缺点</h3> <ul><li>优点
+<ul><li>占内存小，高并发处理响应快：开启10个nginx才占150M内存、2-3万并发连接数</li> <li>配置简单，功能强大：可实现http服务器、虚拟主机、反向代理、负载均衡</li> <li>稳定性高，节省带宽：宕机的概率非常小，支持GZIP压缩，可以添加浏览器本地缓存</li></ul></li> <li>缺点：nginx处理静态文件好,耗费内存少，动态处理差例如处理动态页面，一般前端用nginx作为反向代理抗住压力</li></ul> <h3 id="_3、应用场景"><a href="#_3、应用场景" class="header-anchor">#</a> 3、应用场景</h3> <ul><li>http服务器：可以独立提供http服务，做网页静态服务器。</li> <li>虚拟主机：可以实现在一台服务器虚拟出多个网站，例如个人网站使用的虚拟机。</li> <li>反向代理，负载均衡：当网站的访问量达到一定程度后，单台服务器不能满足用户的请求时，需要用多台服务器集群可以使用nginx做反向代理。并且多台服务器可以平均分担负载，不会应为某台服务器负载高宕机而某台服务器闲置的情况。</li> <li>安全控制：可以配置安全管理、比如防sql注入，比如可以使用Nginx搭建API接口网关，对每个接口服务进行拦截。</li></ul> <h3 id="_3、正向与反向代理"><a href="#_3、正向与反向代理" class="header-anchor">#</a> 3、正向与反向代理</h3> <ul><li>正向代理（发送请求方的代理）
+<ul><li>正向代理屏蔽客户端，当我们想要访问外网时，先经过正向代理服务器，去帮我们访问互联网</li> <li>正向代理可以添加访问资源的控制策略</li></ul></li> <li>反向代理（服务接收方的代理）
+<ul><li>反向代理屏蔽服务器，当外网想访问我们的服务器时，先访问反向代理服务器，再转发到我们的服务器</li> <li>对服务器起到保护作用，隐藏源服务器的存在和特性，用于安全控制，可充当互联网云和web服务器的中间层</li> <li>应用：解决“同源策略”造成的跨域问题，浏览器发送请求后，统一被nginx反向代理服务器接收，不同路由通过location+upstream进行分发给后端的业务处理服务器进行处理</li></ul></li></ul> <h2 id="_2、nginx配置"><a href="#_2、nginx配置" class="header-anchor">#</a> 2、nginx配置</h2> <h3 id="_1、程序目录结构"><a href="#_1、程序目录结构" class="header-anchor">#</a> 1、程序目录结构</h3> <div class="language-shell line-numbers-mode"><pre class="language-shell"><code><span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment"># tree /usr/local/nginx</span>
+/usr/local/nginx
+├── client_body_temp
+├── conf                             <span class="token comment"># Nginx所有配置文件的目录</span>
+│   ├── fastcgi.conf                 <span class="token comment"># fastcgi相关参数的配置文件</span>
+│   ├── fastcgi.conf.default         <span class="token comment"># fastcgi.conf的原始备份文件</span>
+│   ├── fastcgi_params               <span class="token comment"># fastcgi的参数文件</span>
+│   ├── fastcgi_params.default       
+│   ├── koi-utf
+│   ├── koi-win
+│   ├── mime.types                   <span class="token comment"># 媒体类型</span>
+│   ├── mime.types.default
+│   ├── nginx.conf                   <span class="token comment"># Nginx主配置文件</span>
+│   ├── nginx.conf.default
+│   ├── scgi_params                  <span class="token comment"># scgi相关参数文件</span>
+│   ├── scgi_params.default  
+│   ├── uwsgi_params                 <span class="token comment"># uwsgi相关参数文件</span>
+│   ├── uwsgi_params.default
+│   └── win-utf
+├── fastcgi_temp                     <span class="token comment"># fastcgi临时数据目录</span>
+├── html                             <span class="token comment"># Nginx默认站点目录</span>
+│   ├── 50x.html                     <span class="token comment"># 错误页面优雅替代显示文件，例如当出现502错误时会调用此页面</span>
+│   └── index.html                   <span class="token comment"># 默认的首页文件</span>
+├── logs                             <span class="token comment"># Nginx日志目录</span>
+│   ├── access.log                   <span class="token comment"># 访问日志文件</span>
+│   ├── error.log                    <span class="token comment"># 错误日志文件</span>
+│   └── nginx.pid                    <span class="token comment"># pid文件，Nginx进程启动后，会把所有进程的ID号写到此文件</span>
+├── proxy_temp                       <span class="token comment"># 临时目录</span>
+├── sbin                             <span class="token comment"># Nginx命令目录</span>
+│   └── nginx                        <span class="token comment"># Nginx的启动命令</span>
+├── scgi_temp                        <span class="token comment"># 临时目录</span>
+└── uwsgi_temp                       <span class="token comment"># 临时目录</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br></div></div><h3 id="_2、配置文件"><a href="#_2、配置文件" class="header-anchor">#</a> 2、配置文件</h3> <h4 id="_1、总体简介"><a href="#_1、总体简介" class="header-anchor">#</a> 1、总体简介</h4> <p>nginx.conf由多个块组成，最外面的块是main，main包含Events和HTTP，HTTP包含upstream和多个Server，Server又包含多个location：main（全局设置）、server（主机设置）、upstream（负载均衡服务器设置）和 location（URL匹配特定位置的设置）。</p> <ul><li>main块设置的指令将影响其他所有设置；</li> <li>server块的指令主要用于指定主机和端口；</li> <li>upstream指令主要用于负载均衡，设置一系列的后端服务器；</li> <li>location块用于匹配网页位置。</li></ul> <p>这四者之间的关系式：server继承main，location继承server，upstream既不会继承其他设置也不会被继承。
+在这四个部分当中，每个部分都包含若干指令，这些指令主要包含Nginx的主模块指令、事件模块指令、HTTP核心模块指令，同时每个部分还可以使用其他HTTP模块指令，例如Http SSL模块、HttpGzip Static模块和Http Addition模块等。</p> <img src="/img/nginxconf.png"> <div class="language-shell line-numbers-mode"><pre class="language-shell"><code>user root<span class="token punctuation">;</span>                        <span class="token comment">#主模块指令，指定Nginx Worker进程运行用户以及用户组</span>
+worker_processes  auto；          <span class="token comment">#指定nginx要开启的进程树，每个进程平均耗费10M-12M内存，建议和cpu的数量一致</span>
+error_log  /data/nginx/log/error.log<span class="token punctuation">;</span>  <span class="token comment">#全局错误日志文件,日志输出级别有debug、info、notice、warn、error、crit可供选择</span>
+pid /data/nginx/log/nginx.pid<span class="token punctuation">;</span>    <span class="token comment">#用来指定进程pid（进程标识符）的存储文件位置</span>
+
+<span class="token comment"># 事件区块开始</span>
+events <span class="token punctuation">{</span>                            
+    worker_connections  <span class="token number">1024</span>；      <span class="token comment"># 每个worker进程支持的最大连接数</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment"># HTTP区块开始</span>
+http <span class="token punctuation">{</span>                              
+    include       mime.types；      <span class="token comment"># Nginx支持的媒体类型库文件，类型由mime.type文件定义</span>
+    default_type  text/plain；      <span class="token comment"># 默认的媒体类型</span>
+    sendfile        on；       		 <span class="token comment"># 开启高效传输模式</span>
+    keepalive_timeout  <span class="token number">65</span>；       	 <span class="token comment"># 连接超时</span>
+    server_tokens off<span class="token punctuation">;</span>              <span class="token comment"># 关闭nginx版本提示</span>
+    client_max_body_size 50m<span class="token punctuation">;</span>       <span class="token comment"># 设置允许客户端请求的最大的单个文件字节数</span>
+    <span class="token function">gzip</span> on<span class="token punctuation">;</span>                        <span class="token comment"># 开启gzip压缩输出，减少网络传输</span>
+    
+    <span class="token comment">#log_format是Nginx的HttpLog模块指令，用于指定Nginx日志的输出格式， main和log404为此日志输出格式的名称</span>
+    log_format main <span class="token string">'$remote_addr - $remote_user [$time_local] &quot;$request&quot; '</span>
+    <span class="token string">'$status $body_bytes_sent &quot;$http_referer&quot; '</span>
+    <span class="token string">'&quot;$http_user_agent&quot; &quot;$http_x_forwarded_for&quot;'</span><span class="token punctuation">;</span>
+    log_format log404 <span class="token string">'$status [$time_local] $remote_addr $host$request_uri $sent_http_location'</span><span class="token punctuation">;</span>
+
+		<span class="token comment">#指定了一个负载均衡器的名称subloanIntrantDomain,在后面需要的地方直接调用即可。</span>
+    upstream subloanIntrantDomain <span class="token punctuation">{</span> <span class="token comment">#默认策略为轮训</span>
+    		ip_hash<span class="token punctuation">;</span>
+    		<span class="token comment">#hash $request_uri;</span>
+    	  server <span class="token number">122.70</span>.77.84:9081<span class="token punctuation">;</span>
+    	  server <span class="token number">122.70</span>.77.84:9090 down<span class="token punctuation">;</span>   <span class="token comment">#当前的server暂时不参与负载均衡</span>
+    	  <span class="token comment">#允许请求失败的次数3,当超过最大次数时，返回proxy_next_upstream 模块定义的错误；</span>
+    	  <span class="token comment">#在经历了max_fails次失败后，暂停服务的时间20s</span>
+    	  server <span class="token number">122.70</span>.77.84:9091 <span class="token assign-left variable">max_fails</span><span class="token operator">=</span><span class="token number">3</span> <span class="token assign-left variable">fail_timeout</span><span class="token operator">=</span>20s<span class="token punctuation">;</span> 
+    <span class="token punctuation">}</span>
+    
+    <span class="token comment"># 第一个Server区块开始，表示一个独立的虚拟主机站点</span>
+    server <span class="token punctuation">{</span>            								
+        listen       <span class="token number">80</span>；      							<span class="token comment"># 提供服务的端口，默认80</span>
+        server_name  localhost；       			<span class="token comment"># 提供服务的域名主机名</span>
+        
+        <span class="token comment">#设置日志按照时间进行分割，$year-$month-$day-$hour-access.log定义按天进行分割</span>
+        if<span class="token punctuation">(</span><span class="token variable">$time_iso8601</span> ~ <span class="token string">&quot;^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})&quot;</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        	 <span class="token builtin class-name">set</span> <span class="token variable">$year</span> <span class="token variable">$1</span><span class="token punctuation">;</span>
+        	 <span class="token builtin class-name">set</span> <span class="token variable">$month</span> <span class="token variable">$2</span><span class="token punctuation">;</span>
+        	 <span class="token builtin class-name">set</span> <span class="token variable">$day</span> <span class="token variable">$3</span><span class="token punctuation">;</span>
+        	 <span class="token builtin class-name">set</span> <span class="token variable">$hour</span> <span class="token variable">$4</span><span class="token punctuation">;</span>
+        	 <span class="token builtin class-name">set</span> <span class="token variable">$minutes</span> <span class="token variable">$5</span><span class="token punctuation">;</span>
+        	 <span class="token builtin class-name">set</span> <span class="token variable">$seconds</span> <span class="token variable">$6</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token comment">#access_log用来指定此虚拟主机的访问日志存放路径，最后的main用于指定访问日志的输出格式</span>
+        access_log /data/nginx/log/<span class="token variable">$year</span>-<span class="token variable">$month</span>-<span class="token variable">$day</span>-<span class="token variable">$hour</span>-access.log main<span class="token punctuation">;</span>
+        
+        <span class="token comment"># 第一个location区块开始，动态请求</span>
+        location ^~ /ICBCWAPBankB7HR/api/ <span class="token punctuation">{</span>
+        	proxy_http_version <span class="token number">1.1</span><span class="token punctuation">;</span>
+        	proxy_set_header Host <span class="token variable">$host</span><span class="token punctuation">;</span>
+        	proxy_set_header X-Real-IP <span class="token variable">$remote_addr</span><span class="token punctuation">;</span>   <span class="token comment">#记录客户端ip，被HTTP代理用来表示与它产生TCP连接的设备IP</span>
+        	proxy_set_header X-Forwarder-For <span class="token variable">$proxy_add_x_forwarded_for</span><span class="token punctuation">;</span> <span class="token comment">#记录HTTP请求端真实IP</span>
+        	<span class="token comment">#以上三行，目的是将代理服务器收到的用户的信息传到真实服务器上</span>
+        	proxy_set_header Accept-Encording <span class="token string">''</span><span class="token punctuation">;</span>
+        	proxy_set_header Connection <span class="token string">&quot;Keep-Alive&quot;</span><span class="token punctuation">;</span>
+        	proxy_pass http://subloanIntrantDomain/ICBCWAPBankB7HR/<span class="token punctuation">;</span>
+        	proxy_redirect off<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        
+         <span class="token comment"># 第二个location区块开始，静态页面</span>
+        location ^~ /ICBCWAPBankB7HR/ <span class="token punctuation">{</span>
+          <span class="token builtin class-name">alias</span> /data/nginx/client/<span class="token punctuation">;</span>   <span class="token comment">#http://xxxx/ICBCWAPBankB7HR/ -&gt;访问：/data/nginx/client/</span>
+          index index.html<span class="token punctuation">;</span>    <span class="token comment"># 默认的首页文件，多个用空格分开</span>
+          add_header X-Frame-options <span class="token string">'SAMEORIGIN'</span><span class="token punctuation">;</span> <span class="token comment">#同源可在 &lt;frame&gt;, &lt;/iframe&gt; 或者 &lt;object&gt; 中展现</span>
+          <span class="token comment">#启用XSS过滤，如果检测到攻击，浏览器将不会清除页面，而是阻止页面加载</span>
+          add_header X-XSS-Protection <span class="token string">'1;mode=block'</span><span class="token punctuation">;</span> 
+          add_header X-Content-Type-Options <span class="token string">'nosniff'</span><span class="token punctuation">;</span>
+          expires 4h<span class="token punctuation">;</span>  <span class="token comment">#缓存4h</span>
+        <span class="token punctuation">}</span>
+      									
+        error_page   <span class="token number">403</span>  /error.html；     		<span class="token comment"># 出现对应的http状态码时，使用error.html回应客户</span>
+        
+        <span class="token comment"># location区块开始，访问50x.html</span>
+        location <span class="token operator">=</span> /err.html <span class="token punctuation">{</span>          		
+            root /ICBCWAPBankB7HR；      			<span class="token comment"># 指定对应的站点目录为html</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    
+    <span class="token comment">##安全控制，防sql注入以及xss</span>
+    if<span class="token punctuation">(</span><span class="token variable">$request_method</span> <span class="token operator">!</span>~* GET<span class="token operator">|</span>POST<span class="token operator">|</span>PUT<span class="token operator">|</span>DELETE<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    	<span class="token builtin class-name">return</span> <span class="token number">444</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token punctuation">..</span><span class="token punctuation">..</span>.
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br><span class="line-number">79</span><br><span class="line-number">80</span><br><span class="line-number">81</span><br><span class="line-number">82</span><br><span class="line-number">83</span><br><span class="line-number">84</span><br><span class="line-number">85</span><br><span class="line-number">86</span><br><span class="line-number">87</span><br><span class="line-number">88</span><br><span class="line-number">89</span><br><span class="line-number">90</span><br><span class="line-number">91</span><br><span class="line-number">92</span><br></div></div><h4 id="_2、location描述"><a href="#_2、location描述" class="header-anchor">#</a> 2、location描述</h4> <p>location指令的作用是根据用户请求的URI来执行不同的应用，也就是根据用户请求的网站URL进行匹配，匹配成功即进行相关的操作。location支持正则表达式匹配，也支持条件判断匹配，用户可以通过location指令实现Nginx对动、静态网页进行过滤处理。使用location URL匹配配置还可以实现反向代理，用于实现PHP动态解析或者负载负载均衡。</p> <ul><li>语法</li></ul> <table><thead><tr><th>匹配符</th> <th>匹配规则</th> <th>优先级</th></tr></thead> <tbody><tr><td>=</td> <td>精确匹配</td> <td>1</td></tr> <tr><td>^~</td> <td>以某个字符串开头</td> <td>2</td></tr> <tr><td>~</td> <td>区分大小写的正则匹配</td> <td>3</td></tr> <tr><td>~*</td> <td>不区分大小写的正则匹配</td> <td>4</td></tr> <tr><td>!~</td> <td>区分大小写不匹配的正则</td> <td>5</td></tr> <tr><td>!~*</td> <td>不区分大小写不匹配的正则</td> <td>6</td></tr> <tr><td>/</td> <td>通用匹配，任何请求都会匹配到</td> <td>7</td></tr></tbody></table> <div class="language-nginx line-numbers-mode"><pre class="language-nginx"><code><span class="token comment">#优先级1,精确匹配，根路径，eg：https://baidu.com.cn/</span>
+<span class="token directive"><span class="token keyword">location</span> =/</span> <span class="token punctuation">{</span>
+  <span class="token directive"><span class="token keyword">return</span> <span class="token number">400</span></span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">#优先级2,以某个字符串开头, 从域名开始以av开头的，优先匹配这里，区分大小写，～代表输入字符</span>
+<span class="token comment">#eg: https://baidu.com.cn/av/login/匹配，https://baidu.com.cn/login/av不匹配</span>
+<span class="token comment">#root实际访问路径：https://baidu.com.cn/data/av/av/</span>
+<span class="token directive"><span class="token keyword">location</span> ^~ /av</span> <span class="token punctuation">{</span>
+  <span class="token directive"><span class="token keyword">root</span> /data/av/</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">#优先级3，区分大小写的正则匹配，匹配/media*****路径</span>
+<span class="token directive"><span class="token keyword">location</span> ~ /media</span> <span class="token punctuation">{</span>
+  <span class="token directive"><span class="token keyword">alias</span> /data/static/</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">#优先级4 ，不区分大小写的正则匹配，所有的****.jpg|gif|png 都走这里</span>
+<span class="token directive"><span class="token keyword">location</span> ~* .*\.(jpg|gif|png|js|css)$</span> <span class="token punctuation">{</span>
+  <span class="token directive"><span class="token keyword">root</span>  /data/av/</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">#优先7，通用匹配</span>
+<span class="token directive"><span class="token keyword">location</span> /</span> <span class="token punctuation">{</span>
+  <span class="token directive"><span class="token keyword">return</span> <span class="token number">403</span></span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br></div></div><ul><li>常用指令
+<ul><li>proxy_pass：代理转发
+<ul><li>url加上/为绝对路径，则 Nginx不会把 location 中匹配的路径部分加入代理 uri</li> <li>url不加/，则 Nginx会把 location 中匹配的路径部分加入代理 uri</li></ul></li> <li>proxy_redirect：修改被代理服务器返回的响应头中的location头域跟refresh头域数值
+<ul><li>值为：default|off|redirect replacement
+<ul><li>default：默认</li> <li>off：禁止所有的proxy_redirect指令</li></ul></li> <li>代替的字段中可以不写服务器名，使用\ ，使用服务器的基本名称和端口</li></ul></li> <li>nginx指定文件路径有两种方式root和alias，root与alias主要区别在于nginx如何解释location后面的uri，这会使两者分别以不同的方式将请求映射到服务器文件上,说白了就是两者拼接文件路径的手段不一样。
+<ul><li>root的处理结果是：root路径＋location路径</li> <li>alias的处理结果是：使用alias路径替换location路径</li></ul></li> <li>expires：设置缓存时间
+<ul><li>时间戳会设置expires报文头</li> <li>正数或零：设置cache-control：max-age=x</li> <li>负数：nocache</li></ul></li> <li>proxy_cache：服务器的缓存配置，可在转发请求时对资源进行缓存</li></ul></li></ul> <div class="language-nginx line-numbers-mode"><pre class="language-nginx"><code><span class="token directive"><span class="token keyword">server</span></span> <span class="token punctuation">{</span>
+  <span class="token directive"><span class="token keyword">listen</span>   <span class="token number">80</span></span><span class="token punctuation">;</span>
+  <span class="token directive"><span class="token keyword">server_name</span>  www.boke.com</span><span class="token punctuation">;</span>
+  <span class="token directive"><span class="token keyword">location</span> /</span> <span class="token punctuation">{</span>
+    //重定向至该地址和端口
+    <span class="token directive"><span class="token keyword">proxy_pass</span> http://192.168.1.154:8080</span><span class="token punctuation">;</span> 
+    //修改返回的响应头中的location
+    <span class="token directive"><span class="token keyword">proxy_redirect</span> http://192.168.1.154:8080/wuman/  http://www.boke.com/wuman/</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">#测试</span>
+[root@localhost <span class="token directive"><span class="token keyword">nginx]#</span> curl -I http://www.boke.com/wuman
+HTTP/1.1 <span class="token number">301</span> Moved Permanently
+Server: nginx
+Date: Thu, <span class="token number">24</span> Dec <span class="token number">2015</span> 12:08:34 GMT
+Content-Type: text/html</span><span class="token punctuation">;</span> <span class="token directive"><span class="token keyword">charset=iso-8859-1</span>
+Connection: keep-alive
+Location: http://www.boke.com/wuman/
+
+
+//4h的强缓存
+location ^~ /xxxx/</span><span class="token punctuation">{</span>
+  <span class="token directive"><span class="token keyword">alias</span> /data/nginx/client/</span><span class="token punctuation">;</span>
+  <span class="token directive"><span class="token keyword">index</span> index.html</span><span class="token punctuation">;</span>
+  <span class="token directive"><span class="token keyword">expires</span> <span class="token number">4h</span></span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br></div></div><h4 id="_3、负载均衡配置"><a href="#_3、负载均衡配置" class="header-anchor">#</a> 3、负载均衡配置</h4> <p>upstream是Nginx的HTTP Upstream模块，这个模块通过一个简单的调度算法来实现客户端IP到后端服务器的负载均衡。</p> <p>Nginx的负载均衡模块目前支持4种调度算法，后两项属于第三方的调度方法。</p> <ul><li>轮询（默认）：每个请求按时间顺序逐一分配到不同的后端服务器，如果后端某台服务器宕机，故障系统被自动剔除，使用户访问不受影响；</li> <li>Weight：指定轮询权值，Weight值越大，分配到的访问机率越高，主要用于后端每个服务器性能不均的情况下；</li> <li>ip_hash：每个请求按访问IP的hash结果分配，这样来自同一个IP的访客固定访问一个后端服务器，有效解决了动态网页存在的session共享问题；</li> <li>fair：比上面两个更加智能的负载均衡算法。此种算法可以依据页面大小和加载时间长短智能地进行负载均衡，也就是根据后端服务器的响应时间来分配请求，响应时间短的优先分配。Nginx本身是不支持fair的，如果需要使用这种调度算法，必须下载Nginx的upstream_fair模块；</li> <li>url_hash：按访问url的hash结果来分配请求，使每个url定向到同一个后端服务器，可以进一步提高后端缓存服务器的效率。Nginx本身是不支持url_hash的，如果需要使用这种调度算法，必须安装Nginx 的hash软件包。</li></ul> <p>在HTTP Upstream模块中，可以通过server指令指定后端服务器的IP地址和端口，同时还可以设定每个后端服务器在负载均衡调度中的状态。常用的状态有：</p> <ul><li>down：表示当前的server暂时不参与负载均衡；</li> <li>backup：预留的备份机器。当其他所有的非backup机器出现故障或者忙的时候，才会请求backup机器，因此这台机器的压力最轻；</li> <li>max_fails：允许请求失败的次数，默认为1。当超过最大次数时，返回proxy_next_upstream 模块定义的错误；</li> <li>fail_timeout：在经历了max_fails次失败后，暂停服务的时间。max_fails可以和fail_timeout一起使用。</li></ul> <p>注意，当负载调度算法为ip_hash时，后端服务器在负载均衡调度中的状态不能是weight和backup。</p> <h4 id="_4、使用变量解析"><a href="#_4、使用变量解析" class="header-anchor">#</a> 4、使用变量解析</h4> <ul><li><p>日志格式设置：</p> <ul><li><p>$remote_addr与$http_x_forwarded_for用以记录客户端的ip地址；</p></li> <li><p>$remote_user：用来记录客户端用户名称；</p></li> <li><p>$time_local： 用来记录访问时间与时区；</p></li> <li><p>$request： 用来记录请求的url与http协议；</p></li> <li><p>$status： 用来记录请求状态；成功是200，</p></li> <li><p>$body_bytes_sent ：记录发送给客户端文件主体内容大小；</p></li> <li><p>$http_referer：用来记录从那个页面链接访问过来的；</p></li> <li><p>$http_user_agent：记录客户浏览器的相关信息；</p></li></ul> <p>通常web服务器放在反向代理的后面，这样就不能获取到客户的IP地址了，通过$remote_add拿到的IP地址是反向代理服务器的iP地址。反向代理服务器在转发请求的http头信息中，可以增加x_forwarded_for信息，用以记录原有客户端的IP地址和原来客户端的请求的服务器地址。</p></li> <li><p>其他变量</p> <p>$args此变量与请求行中的参数相等</p> <p>$content_length等于请求行的“Content_Length”的值。</p> <p>$content_type等同与请求头部的”Content_Type”的值</p> <p>$document_root等同于当前请求的root指令指定的值</p> <p>$document_uri与$uri一样</p> <p>$host与请求头部中“Host”行指定的值或是request到达的server的名字（没有Host行）一样</p> <p>$limit_rate允许限制的连接速率</p> <p>$request_method等同于request的method，通常是“GET”或“POST”</p> <p>$remote_addr客户端ip</p> <p>$remote_port客户端port</p> <p>$remote_user等同于用户名，由ngx_http_auth_basic_module认证</p> <p>$request_filename当前请求的文件的路径名，由root或alias和URI request组合而成</p> <p>$request_body_file</p> <p>$request_uri含有参数的完整的初始URI</p> <p>$query_string与$args一样</p> <p>$sheeme http模式（http,https）尽在要求是评估例如</p> <p>Rewrite ^(.+)$ $sheme://example.com$; Redirect;</p> <p>$server_protocol等同于request的协议，使用“HTTP/或“HTTP/</p> <p>$server_addr request到达的server的ip，一般获得此变量的值的目的是进行系统调用。为了避免系统调用，有必要在listen指令中指明ip，并使用bind参数。</p> <p>$server_name请求到达的服务器名</p> <p>$server_port请求到达的服务器的端口号</p> <p>$uri等同于当前request中的URI，可不同于初始值，例如内部重定向时或使用index</p></li></ul> <h3 id="_3、常用命令"><a href="#_3、常用命令" class="header-anchor">#</a> 3、常用命令</h3> <div class="language-shell line-numbers-mode"><pre class="language-shell"><code>nginx <span class="token parameter variable">-t</span>  <span class="token comment">#检测配置文件是否有语法错误，然后退出</span>
+nginx <span class="token parameter variable">-s</span> reopen <span class="token comment">#重启Nginx</span>
+nginx <span class="token parameter variable">-s</span> reload <span class="token comment">#重新加载Nginx配置文件，然后以优雅的方式重启Nginx</span>
+nginx <span class="token parameter variable">-s</span> stop <span class="token comment">#强制停止Nginx服务</span>
+nginx <span class="token parameter variable">-s</span> quit <span class="token comment">#优雅地停止Nginx服务（即处理完所有请求后再停止服务）</span>
+nginx <span class="token parameter variable">-v</span> <span class="token comment">#显示版本信息并退出</span>
+<span class="token function">killall</span> nginx  <span class="token comment">#杀死所有nginx进程</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><h3 id="_4、http头部解析"><a href="#_4、http头部解析" class="header-anchor">#</a> 4、http头部解析</h3> <h4 id="_1、x-frame-options"><a href="#_1、x-frame-options" class="header-anchor">#</a> 1、X-Frame-Options</h4> <p>HTTP 响应头是用来给浏览器指示允许一个页面可否在 <code>&lt;frame&gt;</code>, <code>&lt;/iframe&gt;</code> 或者 <code>&lt;object&gt;</code>中展现的标记</p> <ul><li><p>DENY：表示该页面不允许在frame中展示，即便是在相同域名的页面中嵌套也不允许。</p></li> <li><p>SAMEORIGIN：表示该页面可以在相同域名页面的frame中展示。</p></li> <li><p>ALLOW-FROM uri：表示该页面可以在指定来源的frame中展示</p></li></ul> <h4 id="_2、host、x-real-ip、x-forwarder-for"><a href="#_2、host、x-real-ip、x-forwarder-for" class="header-anchor">#</a> 2、Host、X-Real-IP、X-Forwarder-For</h4> <p>参考资料：<a href="https://www.runoob.com/w3cnote/http-x-forwarded-for.html" target="_blank" rel="noopener noreferrer">HTTP X-Forwarded-For 介绍<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <p>X-Forwarded-For 是一个 HTTP 扩展头部。HTTP/1.1（RFC 2616）协议并没有对它的定义，它最开始是由 Squid 这个缓存代理软件引入，用来表示 HTTP 请求端真实 IP。</p> <p>XFF 的内容由「英文逗号 + 空格」隔开的多个部分组成，最开始的是离服务端最远的设备 IP，然后是每一级代理设备的 IP。</p> <p>如果一个 HTTP 请求到达服务器之前，经过了三个代理 Proxy1、Proxy2、Proxy3，IP 分别为 IP1、IP2、IP3，用户真实 IP 为 IP0，那么按照 XFF 标准，服务端最终会收到以下信息：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>X-Forwarded-For: IP0, IP1, IP2
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>X-Real-IP 通常被 HTTP 代理用来表示与它产生 TCP 连接的设备 IP，这个设备可能是其他代理，也可能是真正的请求端。需要注意的是，X-Real-IP 目前并不属于任何标准，代理和 Web 应用之间可以约定用任何自定义头来传递这个信息。</p> <p>解析：X-Forwarded-For用于负载均衡算法，基于XFF的会话保护，对x-forwarded-for字段的内容进行hash，根据哈希结果进行负载转发，x-forwarded-for字段的内容相同，就会负载到同一台后端服务器上。其他手段：基于cookie的会话保持，安全属性httponly（只读）、secure（https传输）、same-site=none（任何第三方携带）/strict（同源携带）</p> <h4 id="_3、x-xss-protection"><a href="#_3、x-xss-protection" class="header-anchor">#</a> 3、X-XSS-Protection</h4> <p>HTTP <strong><code>X-XSS-Protection</code></strong> 响应头是 Internet Explorer，Chrome 和 Safari 的一个特性，当检测到跨站脚本攻击 (<a href="https://developer.mozilla.org/en-US/docs/Glossary/Cross-site_scripting" target="_blank" rel="noopener noreferrer">XSS (en-US)<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>)时，浏览器将停止加载页面。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>X-XSS-Protection: 0
+X-XSS-Protection: 1
+X-XSS-Protection: 1; mode=block
+X-XSS-Protection: 1; report=&lt;reporting-uri&gt;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><ul><li><p>0</p> <p>禁止XSS过滤。</p></li> <li><p>1</p> <p>启用XSS过滤（通常浏览器是默认的）。 如果检测到跨站脚本攻击，浏览器将清除页面（删除不安全的部分）。</p></li> <li><p>1;mode=block</p> <p>启用XSS过滤。 如果检测到攻击，浏览器将不会清除页面，而是阻止页面加载。</p></li> <li><p>1; report=<code>&lt;reporting-URI&gt;</code>(Chromium only)</p> <p>启用XSS过滤。 如果检测到跨站脚本攻击，浏览器将清除页面并使用CSP <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/report-uri" target="_blank" rel="noopener noreferrer">report-uri (en-US)<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>指令的功能发送违规报告。</p></li></ul> <h4 id="_4、x-content-type-options"><a href="#_4、x-content-type-options" class="header-anchor">#</a> 4、X-Content-Type-Options</h4> <p><code>X-Content-Type-Options</code> HTTP 消息头相当于一个提示标志，被服务器用来提示客户端一定要遵循在 <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Content-Type" target="_blank" rel="noopener noreferrer"><code>Content-Type</code><span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> 首部中对 <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types" target="_blank" rel="noopener noreferrer">MIME 类型<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> 的设定，而不能对其进行修改。这就禁用了客户端的 <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types#MIME_sniffing" target="_blank" rel="noopener noreferrer">MIME 类型嗅探<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>行为，换句话说，也就是意味着网站管理员确定自己的设置没有问题。</p> <div class="language-html line-numbers-mode"><pre class="language-html"><code>X-Content-Type-Options: nosniff
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>下面两种情况的请求将被阻止：</p> <ul><li>请求类型是&quot;<code>style</code>&quot; 但是 MIME 类型不是 &quot;<code>text/css</code>&quot;，</li> <li>请求类型是&quot;<code>script</code>&quot; 但是 MIME 类型不是 <a href="https://html.spec.whatwg.org/multipage/scripting.html#javascript-mime-type" target="_blank" rel="noopener noreferrer">JavaScript MIME 类型<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul> <h4 id="_5、cache-control、expires、max-age"><a href="#_5、cache-control、expires、max-age" class="header-anchor">#</a> 5、Cache-control、Expires、max-age</h4> <ul><li>Cache-control 用于控制HTTP缓存（在HTTP/1.0中可能部分没实现，仅仅实现了 Pragma: no-cache）</li> <li>Expires 表示存在时间，允许客户端在这个时间之前不去检查（发请求），等同max-age的效果。但是如果同时存在，则被Cache-Control的max-age覆盖。</li></ul> <div class="language-http line-numbers-mode"><pre class="language-http"><code>Respense Headers
+<span class="token header"><span class="token header-name keyword">cache-control</span><span class="token punctuation">:</span> <span class="token header-value">max-age=2592000           缓存的持续时间</span></span>
+<span class="token header"><span class="token header-name keyword">expires</span><span class="token punctuation">:</span> <span class="token header-value">Thu, 04 Apr 2019 09:22:20 GMT   缓存的到期时间</span></span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">Last Updated:</span> <span class="time">10/14/2021, 3:29:51 PM</span></div></footer> <!----> </main></div><div class="global-ui"><!----><!----></div></div>
+    <script src="/assets/js/app.9e441e61.js" defer></script><script src="/assets/js/2.36bde0fd.js" defer></script><script src="/assets/js/11.ead9b8ca.js" defer></script><script src="/assets/js/3.5a07e503.js" defer></script>
+  </body>
+</html>

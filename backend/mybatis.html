@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>mybatis相关梳理 | Jian‘s blog</title>
+    <meta name="generator" content="VuePress 1.9.9">
+    <link rel="icon" href="/jian_x48.png">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="apple-touch-icon" href="/jian_x192.png">
+    <meta name="description" content="每天进步一点点">
+    <meta name="theme-color" content="#3eaf7c">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="msapplication-TileImage" content="/jian_x192.png">
+    <meta name="msapplication-TileColor" content="#000000">
+    
+    <link rel="preload" href="/assets/css/0.styles.19232fe9.css" as="style"><link rel="preload" href="/assets/js/app.9e441e61.js" as="script"><link rel="preload" href="/assets/js/2.36bde0fd.js" as="script"><link rel="preload" href="/assets/js/10.bc82d67b.js" as="script"><link rel="preload" href="/assets/js/3.5a07e503.js" as="script"><link rel="prefetch" href="/assets/js/11.ead9b8ca.js"><link rel="prefetch" href="/assets/js/12.a048ccaa.js"><link rel="prefetch" href="/assets/js/13.3e4cc077.js"><link rel="prefetch" href="/assets/js/14.58cd0fa5.js"><link rel="prefetch" href="/assets/js/15.98e26beb.js"><link rel="prefetch" href="/assets/js/16.4cf1daea.js"><link rel="prefetch" href="/assets/js/17.c190a7fe.js"><link rel="prefetch" href="/assets/js/18.89814285.js"><link rel="prefetch" href="/assets/js/19.77f58842.js"><link rel="prefetch" href="/assets/js/20.9920ac2c.js"><link rel="prefetch" href="/assets/js/21.6a8c9cfe.js"><link rel="prefetch" href="/assets/js/22.cfd89a61.js"><link rel="prefetch" href="/assets/js/23.48f5d9f7.js"><link rel="prefetch" href="/assets/js/24.a8c5ac10.js"><link rel="prefetch" href="/assets/js/25.842b3853.js"><link rel="prefetch" href="/assets/js/26.9c5fe1dd.js"><link rel="prefetch" href="/assets/js/27.c4f0a52b.js"><link rel="prefetch" href="/assets/js/28.ce11023f.js"><link rel="prefetch" href="/assets/js/29.9001ac2f.js"><link rel="prefetch" href="/assets/js/30.5edf0dc1.js"><link rel="prefetch" href="/assets/js/31.57d2aeed.js"><link rel="prefetch" href="/assets/js/32.db6f674e.js"><link rel="prefetch" href="/assets/js/33.038cad31.js"><link rel="prefetch" href="/assets/js/34.bff4a907.js"><link rel="prefetch" href="/assets/js/35.e9272942.js"><link rel="prefetch" href="/assets/js/36.896895d7.js"><link rel="prefetch" href="/assets/js/37.91a5bb8c.js"><link rel="prefetch" href="/assets/js/38.3f6a6f29.js"><link rel="prefetch" href="/assets/js/39.270d8c27.js"><link rel="prefetch" href="/assets/js/4.0800d99b.js"><link rel="prefetch" href="/assets/js/40.b379e318.js"><link rel="prefetch" href="/assets/js/41.f3073d82.js"><link rel="prefetch" href="/assets/js/42.867935ca.js"><link rel="prefetch" href="/assets/js/43.30335621.js"><link rel="prefetch" href="/assets/js/44.993aea4e.js"><link rel="prefetch" href="/assets/js/45.60eb5226.js"><link rel="prefetch" href="/assets/js/46.8501be1f.js"><link rel="prefetch" href="/assets/js/47.ba2302fc.js"><link rel="prefetch" href="/assets/js/48.e932482f.js"><link rel="prefetch" href="/assets/js/49.c1af1af4.js"><link rel="prefetch" href="/assets/js/5.1d8a5d7f.js"><link rel="prefetch" href="/assets/js/50.e7715e10.js"><link rel="prefetch" href="/assets/js/51.ab6021ba.js"><link rel="prefetch" href="/assets/js/52.c5c5c3ef.js"><link rel="prefetch" href="/assets/js/53.7157cd05.js"><link rel="prefetch" href="/assets/js/54.f4abd89d.js"><link rel="prefetch" href="/assets/js/55.c86bbebc.js"><link rel="prefetch" href="/assets/js/56.ee48a85c.js"><link rel="prefetch" href="/assets/js/57.90d4c487.js"><link rel="prefetch" href="/assets/js/58.1d4866f8.js"><link rel="prefetch" href="/assets/js/59.75c6bc90.js"><link rel="prefetch" href="/assets/js/6.90059570.js"><link rel="prefetch" href="/assets/js/60.c5e61798.js"><link rel="prefetch" href="/assets/js/61.54457b0e.js"><link rel="prefetch" href="/assets/js/62.2e0af734.js"><link rel="prefetch" href="/assets/js/63.07cece40.js"><link rel="prefetch" href="/assets/js/64.e6ab0174.js"><link rel="prefetch" href="/assets/js/65.663550a9.js"><link rel="prefetch" href="/assets/js/66.64ad9de7.js"><link rel="prefetch" href="/assets/js/67.cc5c5ab3.js"><link rel="prefetch" href="/assets/js/68.d76b1a45.js"><link rel="prefetch" href="/assets/js/69.06c85095.js"><link rel="prefetch" href="/assets/js/7.e0481b37.js"><link rel="prefetch" href="/assets/js/70.5fa17108.js"><link rel="prefetch" href="/assets/js/71.ea8df0ea.js"><link rel="prefetch" href="/assets/js/72.12d99daf.js"><link rel="prefetch" href="/assets/js/73.8b6c81cd.js"><link rel="prefetch" href="/assets/js/74.e089a7e8.js"><link rel="prefetch" href="/assets/js/75.eda86622.js"><link rel="prefetch" href="/assets/js/76.451d3bf2.js"><link rel="prefetch" href="/assets/js/77.5a71a520.js"><link rel="prefetch" href="/assets/js/78.5e4673c6.js"><link rel="prefetch" href="/assets/js/79.f657e29d.js"><link rel="prefetch" href="/assets/js/8.e1e88656.js"><link rel="prefetch" href="/assets/js/80.d7b2d65d.js"><link rel="prefetch" href="/assets/js/81.c9dc1609.js"><link rel="prefetch" href="/assets/js/82.2b309c6c.js"><link rel="prefetch" href="/assets/js/9.54f76d53.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.19232fe9.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/img/jian.jpeg" alt="Jian‘s blog" class="logo"> <span class="site-name can-hide">Jian‘s blog</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="js" class="dropdown-title"><span class="title">js</span> <span class="arrow down"></span></button> <button type="button" aria-label="js" class="mobile-dropdown-title"><span class="title">js</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/frontend/js/" class="nav-link">
+  js杂记
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/js/promise.html" class="nav-link">
+  Promise规范和应用
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/js/browser.html" class="nav-link">
+  浏览器对象详解
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/js/js_oop.html" class="nav-link">
+  面向对象编程
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/js/ES6.html" class="nav-link">
+  ES6ESNext规范详解
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/js/this_chain.html" class="nav-link">
+  this指针作用域
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/js/typescript.html" class="nav-link">
+  ts初探
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/ts/basics.html" class="nav-link">
+  ts基础
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/ts/project.html" class="nav-link">
+  ts工程
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="工程化" class="dropdown-title"><span class="title">工程化</span> <span class="arrow down"></span></button> <button type="button" aria-label="工程化" class="mobile-dropdown-title"><span class="title">工程化</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/frontend/tools/js_module.html" class="nav-link">
+  模块化规范
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/tools/js_project.html" class="nav-link">
+  前端工程化
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/tools/webpack.html" class="nav-link">
+  webpack
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/tools/babel.html" class="nav-link">
+  babel
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/tools/autotest.html" class="nav-link">
+  自动化测试和部署
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/tools/ast.html" class="nav-link">
+  AST
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/tools/solution.html" class="nav-link">
+  前端方案
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/tools/js_tools.html" class="nav-link">
+  常用工具
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="vue" class="dropdown-title"><span class="title">vue</span> <span class="arrow down"></span></button> <button type="button" aria-label="vue" class="mobile-dropdown-title"><span class="title">vue</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/frontend/vue/index.html" class="nav-link">
+  vue2.0基础
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/advance.html" class="nav-link">
+  vue2.0进阶
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vue-cli.html" class="nav-link">
+  vue-cli
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vue-loader.html" class="nav-link">
+  vue-loader
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vue-router.html" class="nav-link">
+  vue-router
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vuex.html" class="nav-link">
+  vuex
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vue_ssr.html" class="nav-link">
+  vue-ssr
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vue-i18n.html" class="nav-link">
+  vue-i18n
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vue-life.html" class="nav-link">
+  生命周期
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vue_reactive.html" class="nav-link">
+  响应式原理
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vue_diff.html" class="nav-link">
+  diff原理
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vue-compiler.html" class="nav-link">
+  编译原理
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vue-refs.html" class="nav-link">
+  实战总结
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="react" class="dropdown-title"><span class="title">react</span> <span class="arrow down"></span></button> <button type="button" aria-label="react" class="mobile-dropdown-title"><span class="title">react</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/frontend/react/react.html" class="nav-link">
+  react基础
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/react/react-advance.html" class="nav-link">
+  react进阶
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/react/react-router.html" class="nav-link">
+  react-router
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/react/react-state.html" class="nav-link">
+  react状态管理
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/react/react-ssr.html" class="nav-link">
+  react同构
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/react/react-component.html" class="nav-link">
+  react组件封装
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/react/react-code.html" class="nav-link">
+  react源码分析
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/ts/react-ts.html" class="nav-link">
+  react-ts实战
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/react/react-practice.html" class="nav-link">
+  react问题整理
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="nodejs" class="dropdown-title"><span class="title">nodejs</span> <span class="arrow down"></span></button> <button type="button" aria-label="nodejs" class="mobile-dropdown-title"><span class="title">nodejs</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/frontend/nodejs/index.html" class="nav-link">
+  nodejs基础
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/nodejs/module.html" class="nav-link">
+  nodejs常用框架
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/nodejs/http.html" class="nav-link">
+  nodejs网络及部署
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/ts/express-ts.html" class="nav-link">
+  express-ts实战
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/nodejs/info.html" class="nav-link">
+  nodejs前研
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="其他" class="dropdown-title"><span class="title">其他</span> <span class="arrow down"></span></button> <button type="button" aria-label="其他" class="mobile-dropdown-title"><span class="title">其他</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/frontend/interview/" class="nav-link">
+  前端面试
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/performance/performance.html" class="nav-link">
+  前端性能优化
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/performance/explorer.html" class="nav-link">
+  浏览器进程和线程
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/else/security-control.html" class="nav-link">
+  前端网络安全
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/lowcode/lowcode.html" class="nav-link">
+  低代码平台
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/else/micro-frontend.html" class="nav-link">
+  微前端
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/else/designMode.html" class="nav-link">
+  前端设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/css/" class="nav-link">
+  css
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/mini-program/" class="nav-link">
+  小程序
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/hybrid/hybrid.html" class="nav-link">
+  hybrid开发及原理分析
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/else/canvas.html" class="nav-link">
+  canvas
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/else/graph.html" class="nav-link">
+  图片格式
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/else/web3.html" class="nav-link">
+  web3探索
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="算法" class="dropdown-title"><span class="title">算法</span> <span class="arrow down"></span></button> <button type="button" aria-label="算法" class="mobile-dropdown-title"><span class="title">算法</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/frontend/algorithm/graph.html" class="nav-link">
+  图的存储和遍历
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/algorithm/dpointer.html" class="nav-link">
+  双指针
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/algorithm/Levenshtein.html" class="nav-link">
+  最短编辑距离
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/algorithm/greed.html" class="nav-link">
+  贪心算法
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/algorithm/dp.html" class="nav-link">
+  动态规划
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/algorithm/leetcode.html" class="nav-link">
+  leetcode
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="后端" class="dropdown-title"><span class="title">后端</span> <span class="arrow down"></span></button> <button type="button" aria-label="后端" class="mobile-dropdown-title"><span class="title">后端</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/backend/nginx.html" class="nav-link">
+  nginx
+</a></li><li class="dropdown-item"><!----> <a href="/backend/springboot.html" class="nav-link">
+  springboot
+</a></li><li class="dropdown-item"><!----> <a href="/backend/mybatis.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  mybatis
+</a></li><li class="dropdown-item"><!----> <a href="/backend/uml.html" class="nav-link">
+  uml类图
+</a></li><li class="dropdown-item"><!----> <a href="/backend/ddd.html" class="nav-link">
+  领域驱动设计
+</a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="js" class="dropdown-title"><span class="title">js</span> <span class="arrow down"></span></button> <button type="button" aria-label="js" class="mobile-dropdown-title"><span class="title">js</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/frontend/js/" class="nav-link">
+  js杂记
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/js/promise.html" class="nav-link">
+  Promise规范和应用
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/js/browser.html" class="nav-link">
+  浏览器对象详解
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/js/js_oop.html" class="nav-link">
+  面向对象编程
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/js/ES6.html" class="nav-link">
+  ES6ESNext规范详解
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/js/this_chain.html" class="nav-link">
+  this指针作用域
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/js/typescript.html" class="nav-link">
+  ts初探
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/ts/basics.html" class="nav-link">
+  ts基础
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/ts/project.html" class="nav-link">
+  ts工程
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="工程化" class="dropdown-title"><span class="title">工程化</span> <span class="arrow down"></span></button> <button type="button" aria-label="工程化" class="mobile-dropdown-title"><span class="title">工程化</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/frontend/tools/js_module.html" class="nav-link">
+  模块化规范
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/tools/js_project.html" class="nav-link">
+  前端工程化
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/tools/webpack.html" class="nav-link">
+  webpack
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/tools/babel.html" class="nav-link">
+  babel
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/tools/autotest.html" class="nav-link">
+  自动化测试和部署
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/tools/ast.html" class="nav-link">
+  AST
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/tools/solution.html" class="nav-link">
+  前端方案
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/tools/js_tools.html" class="nav-link">
+  常用工具
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="vue" class="dropdown-title"><span class="title">vue</span> <span class="arrow down"></span></button> <button type="button" aria-label="vue" class="mobile-dropdown-title"><span class="title">vue</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/frontend/vue/index.html" class="nav-link">
+  vue2.0基础
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/advance.html" class="nav-link">
+  vue2.0进阶
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vue-cli.html" class="nav-link">
+  vue-cli
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vue-loader.html" class="nav-link">
+  vue-loader
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vue-router.html" class="nav-link">
+  vue-router
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vuex.html" class="nav-link">
+  vuex
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vue_ssr.html" class="nav-link">
+  vue-ssr
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vue-i18n.html" class="nav-link">
+  vue-i18n
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vue-life.html" class="nav-link">
+  生命周期
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vue_reactive.html" class="nav-link">
+  响应式原理
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vue_diff.html" class="nav-link">
+  diff原理
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vue-compiler.html" class="nav-link">
+  编译原理
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vue-refs.html" class="nav-link">
+  实战总结
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="react" class="dropdown-title"><span class="title">react</span> <span class="arrow down"></span></button> <button type="button" aria-label="react" class="mobile-dropdown-title"><span class="title">react</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/frontend/react/react.html" class="nav-link">
+  react基础
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/react/react-advance.html" class="nav-link">
+  react进阶
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/react/react-router.html" class="nav-link">
+  react-router
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/react/react-state.html" class="nav-link">
+  react状态管理
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/react/react-ssr.html" class="nav-link">
+  react同构
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/react/react-component.html" class="nav-link">
+  react组件封装
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/react/react-code.html" class="nav-link">
+  react源码分析
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/ts/react-ts.html" class="nav-link">
+  react-ts实战
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/react/react-practice.html" class="nav-link">
+  react问题整理
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="nodejs" class="dropdown-title"><span class="title">nodejs</span> <span class="arrow down"></span></button> <button type="button" aria-label="nodejs" class="mobile-dropdown-title"><span class="title">nodejs</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/frontend/nodejs/index.html" class="nav-link">
+  nodejs基础
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/nodejs/module.html" class="nav-link">
+  nodejs常用框架
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/nodejs/http.html" class="nav-link">
+  nodejs网络及部署
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/ts/express-ts.html" class="nav-link">
+  express-ts实战
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/nodejs/info.html" class="nav-link">
+  nodejs前研
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="其他" class="dropdown-title"><span class="title">其他</span> <span class="arrow down"></span></button> <button type="button" aria-label="其他" class="mobile-dropdown-title"><span class="title">其他</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/frontend/interview/" class="nav-link">
+  前端面试
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/performance/performance.html" class="nav-link">
+  前端性能优化
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/performance/explorer.html" class="nav-link">
+  浏览器进程和线程
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/else/security-control.html" class="nav-link">
+  前端网络安全
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/lowcode/lowcode.html" class="nav-link">
+  低代码平台
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/else/micro-frontend.html" class="nav-link">
+  微前端
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/else/designMode.html" class="nav-link">
+  前端设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/css/" class="nav-link">
+  css
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/mini-program/" class="nav-link">
+  小程序
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/hybrid/hybrid.html" class="nav-link">
+  hybrid开发及原理分析
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/else/canvas.html" class="nav-link">
+  canvas
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/else/graph.html" class="nav-link">
+  图片格式
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/else/web3.html" class="nav-link">
+  web3探索
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="算法" class="dropdown-title"><span class="title">算法</span> <span class="arrow down"></span></button> <button type="button" aria-label="算法" class="mobile-dropdown-title"><span class="title">算法</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/frontend/algorithm/graph.html" class="nav-link">
+  图的存储和遍历
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/algorithm/dpointer.html" class="nav-link">
+  双指针
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/algorithm/Levenshtein.html" class="nav-link">
+  最短编辑距离
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/algorithm/greed.html" class="nav-link">
+  贪心算法
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/algorithm/dp.html" class="nav-link">
+  动态规划
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/algorithm/leetcode.html" class="nav-link">
+  leetcode
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="后端" class="dropdown-title"><span class="title">后端</span> <span class="arrow down"></span></button> <button type="button" aria-label="后端" class="mobile-dropdown-title"><span class="title">后端</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/backend/nginx.html" class="nav-link">
+  nginx
+</a></li><li class="dropdown-item"><!----> <a href="/backend/springboot.html" class="nav-link">
+  springboot
+</a></li><li class="dropdown-item"><!----> <a href="/backend/mybatis.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  mybatis
+</a></li><li class="dropdown-item"><!----> <a href="/backend/uml.html" class="nav-link">
+  uml类图
+</a></li><li class="dropdown-item"><!----> <a href="/backend/ddd.html" class="nav-link">
+  领域驱动设计
+</a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>mybatis相关梳理</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/backend/mybatis.html#_1、简介" class="sidebar-link">1、简介</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/backend/mybatis.html#_2、mybatics映射器" class="sidebar-link">2、mybatics映射器</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/backend/mybatis.html#_3、select-标签" class="sidebar-link">3、select 标签</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/backend/mybatis.html#_1、标签属性" class="sidebar-link">1、标签属性</a></li><li class="sidebar-sub-header"><a href="/backend/mybatis.html#_2、传递参数方法" class="sidebar-link">2、传递参数方法</a></li></ul></li><li><a href="/backend/mybatis.html#_4、insert标签" class="sidebar-link">4、insert标签</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/backend/mybatis.html#_1、标签属性-2" class="sidebar-link">1、标签属性</a></li><li class="sidebar-sub-header"><a href="/backend/mybatis.html#_2、主键处理" class="sidebar-link">2、主键处理</a></li></ul></li><li><a href="/backend/mybatis.html#_5、resultmap标签" class="sidebar-link">5、resultMap标签</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/backend/mybatis.html#_6、注解" class="sidebar-link">6、注解</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/backend/mybatis.html#_7、动态sql" class="sidebar-link">7、动态SQL</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/backend/mybatis.html#_1、if标签" class="sidebar-link">1、if标签</a></li><li class="sidebar-sub-header"><a href="/backend/mybatis.html#_2、choose标签" class="sidebar-link">2、choose标签</a></li><li class="sidebar-sub-header"><a href="/backend/mybatis.html#_3、where标签" class="sidebar-link">3、where标签</a></li><li class="sidebar-sub-header"><a href="/backend/mybatis.html#_4、set标签" class="sidebar-link">4、set标签</a></li><li class="sidebar-sub-header"><a href="/backend/mybatis.html#_5、foreach标签" class="sidebar-link">5、foreach标签</a></li><li class="sidebar-sub-header"><a href="/backend/mybatis.html#_6、bind标签" class="sidebar-link">6、bind标签</a></li><li class="sidebar-sub-header"><a href="/backend/mybatis.html#_7、trim标签" class="sidebar-link">7、trim标签</a></li></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="mybatis相关梳理"><a href="#mybatis相关梳理" class="header-anchor">#</a> mybatis相关梳理</h1> <blockquote><p>参考资料：<a href="http://c.biancheng.net/mybatis/what-is-mybatis.html" target="_blank" rel="noopener noreferrer">mybatis简易教程<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p></blockquote> <h2 id="_1、简介"><a href="#_1、简介" class="header-anchor">#</a> 1、简介</h2> <p>MyBatis 是一个开源、轻量级的数据持久化框架，是 JDBC 和 Hibernate 的替代方案。MyBatis 内部封装了 JDBC，简化了加载驱动、创建连接、创建 statement 等繁杂的过程，开发者只需要关注 SQL 语句本身。</p> <p>MyBatis 支持定制化 SQL、存储过程以及高级映射，可以在实体类和 SQL 语句之间建立映射关系，是一种半自动化的 ORM 实现。其封装性低于 Hibernate，但性能优秀、小巧、简单易学、应用广泛。</p> <p>解析：</p> <ul><li>数据持久化：将内存中的数据模型转换为存储模型，以及将存储模型转换为内存中数据模型的统称。例如，文件的存储、数据的读取以及对数据表的增删改查等都是数据持久化操作。</li> <li>ORM：（Object Relational Mapping，对象关系映射）是一种数据持久化技术，它在对象模型和关系型数据库之间建立起对应关系，并且提供了一种机制，通过 JavaBean 对象去操作数据库表中的数据。</li></ul> <p>MyBatis三个基本要素：</p> <ul><li>核心接口和类</li> <li>MyBatis核心配置文件（mybatis-config.xml）</li> <li>sql映射文件（mapper.xml）</li></ul> <h2 id="_2、mybatics映射器"><a href="#_2、mybatics映射器" class="header-anchor">#</a> 2、mybatics映射器</h2> <p>映射文件和接口在同一package下：WebsiteMapper.java、WebsiteMapper.xml，映射器mapper.xml主要元素：</p> <ul><li>mapper：根节点，只有一个namespace属性，全局唯一绑定Dao接口（WebsiteMapper.java），不用写实现类。</li> <li>select、insert、update、delete</li> <li>parameterMap：定义参数映射关系</li> <li>sql：定义一部分sql，在其他地方引用</li> <li>resultMap：描述数据库结果集与对象对应关系</li> <li>cache：配置给定命名空间的缓存</li> <li>cache-ref：其他命名空间缓存的引用</li></ul> <h2 id="_3、select-标签"><a href="#_3、select-标签" class="header-anchor">#</a> 3、select 标签</h2> <h3 id="_1、标签属性"><a href="#_1、标签属性" class="header-anchor">#</a> 1、标签属性</h3> <ul><li>id：唯一标识，保证namespace + id全局唯一</li> <li>parameterType：传入参数类型的全限定名或别名，可选</li> <li>resultType：SQL 语句执行后返回的类型（全限定名或者别名）</li> <li>resultMap：映射集的引用，与 <code>&lt;resultMap&gt;</code>元素一起使用，返回时可以使用resultType或resultMap之一</li> <li>fetchSize：获取记录总条数，默认值为数据库厂商提供的 JDBC 驱动所设置的条数</li> <li>timeout：超时时间，单位s</li> <li>flushCache：用于设置在调用 SQL 语句后是否要求 MyBatis 清空之前查询的本地缓存和二级缓存，默认值为 false，如果设置为 true，则任何时候只要 SQL</li> <li>useCache：启动二级缓存的开关，默认值为 true，表示将査询结果存入二级缓存中</li> <li>statementType：告诉 MyBatis 使用哪个 JDBC 的 Statement 工作，取值为 STATEMENT（Statement）普通的不带参的查询SQL、 PREPARED（PreparedStatement）支持可变参数的SQL、CALLABLE（CallableStatement）支持调用存储过程，提供了对输出和输入/输出参数(INOUT)的支持。</li> <li>resultSetType：这是针对 JDBC 的 ResultSet 接口而言，其值可设置为 FORWARD_ONLY（只允许向前访问）、SCROLL_SENSITIVE（双向滚动，但不及时更新）、SCROLLJNSENSITIVE（双向滚动，及时更新）</li></ul> <h3 id="_2、传递参数方法"><a href="#_2、传递参数方法" class="header-anchor">#</a> 2、传递参数方法</h3> <h4 id="_1、使用map传递参数"><a href="#_1、使用map传递参数" class="header-anchor">#</a> 1、使用map传递参数</h4> <p>使用map接口作为参数实现</p> <div class="language-java line-numbers-mode"><pre class="language-java"><code><span class="token comment">//WebsiteMapper.xml</span>
+<span class="token operator">&lt;</span>select id<span class="token operator">=</span><span class="token string">&quot;selectWebsiteByMap&quot;</span> resultType<span class="token operator">=</span><span class="token string">&quot;net.biancheng.po.Website&quot;</span> parameterType<span class="token operator">=</span><span class="token string">&quot;map&quot;</span><span class="token operator">&gt;</span>
+    <span class="token class-name">SELECT</span> id<span class="token punctuation">,</span><span class="token constant">NAME</span><span class="token punctuation">,</span>url <span class="token constant">FROM</span> website
+    <span class="token constant">WHERE</span> name <span class="token class-name">LIKE</span> <span class="token constant">CONCAT</span> <span class="token punctuation">(</span><span class="token char">'%'</span><span class="token punctuation">,</span>#<span class="token punctuation">{</span>name<span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token char">'%'</span><span class="token punctuation">)</span>
+    <span class="token constant">AND</span> url <span class="token class-name">LIKE</span> <span class="token constant">CONCAT</span> <span class="token punctuation">(</span><span class="token char">'%'</span><span class="token punctuation">,</span>#<span class="token punctuation">{</span>url<span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token char">'%'</span><span class="token punctuation">)</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>select<span class="token operator">&gt;</span>
+
+<span class="token comment">//WebsiteMapper.java</span>
+<span class="token keyword">public</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Website</span><span class="token punctuation">&gt;</span></span> <span class="token function">selectWebsiteByMap</span><span class="token punctuation">(</span><span class="token class-name">Map</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">String</span><span class="token punctuation">&gt;</span></span> params<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">//使用案例：map传入name、url参数</span>
+<span class="token class-name">Map</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span><span class="token class-name">String</span><span class="token punctuation">&gt;</span></span> paramsMap <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HashMap</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span><span class="token class-name">String</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+paramsMap<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">&quot;name&quot;</span><span class="token punctuation">,</span><span class="token string">&quot;编程&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+paramsMap<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">&quot;url&quot;</span><span class="token punctuation">,</span><span class="token string">&quot;biancheng&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+websiteMapper<span class="token punctuation">.</span><span class="token function">selectWebsiteByMap</span><span class="token punctuation">(</span>paramsMap<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br></div></div><h4 id="_2、使用注解传递参数"><a href="#_2、使用注解传递参数" class="header-anchor">#</a> 2、使用注解传递参数</h4> <p>使用注解@Param()传递参数</p> <div class="language-java line-numbers-mode"><pre class="language-java"><code><span class="token comment">//WebsiteMapper.xml</span>
+<span class="token operator">&lt;</span>select id<span class="token operator">=</span><span class="token string">&quot;selectWebsiteByMap&quot;</span> resultType<span class="token operator">=</span><span class="token string">&quot;net.biancheng.po.Website&quot;</span> parameterType<span class="token operator">=</span><span class="token string">&quot;map&quot;</span><span class="token operator">&gt;</span>
+    <span class="token class-name">SELECT</span> id<span class="token punctuation">,</span><span class="token constant">NAME</span><span class="token punctuation">,</span>url <span class="token constant">FROM</span> website
+    <span class="token constant">WHERE</span> name <span class="token class-name">LIKE</span> <span class="token constant">CONCAT</span> <span class="token punctuation">(</span><span class="token char">'%'</span><span class="token punctuation">,</span>#<span class="token punctuation">{</span>name<span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token char">'%'</span><span class="token punctuation">)</span>
+    <span class="token constant">AND</span> url <span class="token class-name">LIKE</span> <span class="token constant">CONCAT</span> <span class="token punctuation">(</span><span class="token char">'%'</span><span class="token punctuation">,</span>#<span class="token punctuation">{</span>url<span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token char">'%'</span><span class="token punctuation">)</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>select<span class="token operator">&gt;</span>
+  
+<span class="token comment">//WebsiteMapper.java</span>
+<span class="token keyword">public</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Website</span><span class="token punctuation">&gt;</span></span> <span class="token function">selectWebsiteByMap</span><span class="token punctuation">(</span><span class="token annotation punctuation">@Param</span><span class="token punctuation">(</span><span class="token string">&quot;name&quot;</span><span class="token punctuation">)</span> <span class="token class-name">String</span> name<span class="token punctuation">,</span> <span class="token annotation punctuation">@Param</span><span class="token punctuation">(</span><span class="token string">&quot;url&quot;</span><span class="token punctuation">)</span> <span class="token class-name">String</span> url<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><h4 id="_3、使用javabean传递参数"><a href="#_3、使用javabean传递参数" class="header-anchor">#</a> 3、使用javaBean传递参数</h4> <p>在参数过多的情况下，MyBatis 允许组织一个 JavaBean，通过简单的 setter 和 getter 方法设置参数，提高可读性</p> <div class="language-java line-numbers-mode"><pre class="language-java"><code><span class="token comment">//WebsiteMapper.xml</span>
+<span class="token operator">&lt;</span>select id<span class="token operator">=</span><span class="token string">&quot;selectWebsiteByMap&quot;</span> resultType<span class="token operator">=</span><span class="token string">&quot;net.biancheng.po.Website&quot;</span> parameterType<span class="token operator">=</span><span class="token string">&quot;map&quot;</span><span class="token operator">&gt;</span>
+    <span class="token class-name">SELECT</span> id<span class="token punctuation">,</span><span class="token constant">NAME</span><span class="token punctuation">,</span>url <span class="token constant">FROM</span> website
+    <span class="token constant">WHERE</span> name <span class="token class-name">LIKE</span> <span class="token constant">CONCAT</span> <span class="token punctuation">(</span><span class="token char">'%'</span><span class="token punctuation">,</span>#<span class="token punctuation">{</span>name<span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token char">'%'</span><span class="token punctuation">)</span>
+    <span class="token constant">AND</span> url <span class="token class-name">LIKE</span> <span class="token constant">CONCAT</span> <span class="token punctuation">(</span><span class="token char">'%'</span><span class="token punctuation">,</span>#<span class="token punctuation">{</span>url<span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token char">'%'</span><span class="token punctuation">)</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>select<span class="token operator">&gt;</span>
+  
+<span class="token comment">//WebsiteMapper.java</span>
+<span class="token keyword">public</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Website</span><span class="token punctuation">&gt;</span></span> <span class="token function">selectWebsiteByAn</span><span class="token punctuation">(</span><span class="token class-name">Website</span> website<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><h2 id="_4、insert标签"><a href="#_4、insert标签" class="header-anchor">#</a> 4、insert标签</h2> <h3 id="_1、标签属性-2"><a href="#_1、标签属性-2" class="header-anchor">#</a> 1、标签属性</h3> <ul><li>id、parameterType、flushCache、flushCache：同上</li> <li>keyProperty：将插入操作的返回值赋给 PO 类的某个属性，通常为主键对应的属性。如果是联合主键，可以将多个值用逗号隔开。</li> <li>keyColumn：该属性用于设置第几列是主键，当主键列不是表中的第 1 列时，就需要设置该属性。如果是联合主键，可以将多个值用逗号隔开。</li> <li>useGeneratedKe：用来设置，是否使用 JDBC 提供的 getGenereatedKeys() 方法，获取数据库内部产生的主键并赋值到 keyProperty 属性设置的请求对象的属性中，例如 MySQL、SQL Server 等自动递增的字段，其默认值为 false。该属性值设置为 true 后，会将数据库生成的主键回填到请求对象中，以供其他业务使用。</li> <li>databaseId：取值范围 oracle、mysql 等，表示数据库厂家；元素内部可通过 <code>&lt;if test=&quot;_databaseId = 'oracle'&quot;&gt;</code>来为特定数据库指定不同的 sql 语句。</li></ul> <h3 id="_2、主键处理"><a href="#_2、主键处理" class="header-anchor">#</a> 2、主键处理</h3> <h4 id="_1、自动递增"><a href="#_1、自动递增" class="header-anchor">#</a> 1、自动递增</h4> <p>MySQL、SQL Server 等数据库表可以采用自动递增的字段作为其主键，当向这样的数据库表插入数据时，即使不指定自增主键的值，数据库也会根据自增规则自动生成主键并插入到表中。一些特殊情况下，我们可能需要将这个刚刚生成的主键回填到请求对象（原本不包含主键信息的请求对象）中，供其他业务使用。此时，我们就可以通过在 insert 标签中添加 keyProperty 和 useGeneratedKeys 属性，来实现该功能。</p> <div class="language-java line-numbers-mode"><pre class="language-java"><code><span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span> <span class="token class-name">WebsiteMapper</span><span class="token punctuation">.</span>xml <span class="token operator">--</span><span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span>insert id<span class="token operator">=</span><span class="token string">&quot;addWebsite&quot;</span> parameterType<span class="token operator">=</span><span class="token string">&quot;net.biancheng.po.Website&quot;</span> keyProperty<span class="token operator">=</span><span class="token string">&quot;id&quot;</span> useGeneratedKeys<span class="token operator">=</span><span class="token string">&quot;true&quot;</span><span class="token operator">&gt;</span>
+    insert into <span class="token class-name">Website</span> <span class="token punctuation">(</span>name<span class="token punctuation">,</span>url<span class="token punctuation">)</span> <span class="token function">values</span><span class="token punctuation">(</span>#<span class="token punctuation">{</span>name<span class="token punctuation">}</span><span class="token punctuation">,</span>#<span class="token punctuation">{</span>url<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>insert<span class="token operator">&gt;</span>
+  
+<span class="token comment">// 添加一个网站信息</span>
+<span class="token class-name">Website</span> addsite <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Website</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">//插入的对象中不包含主键 id </span>
+addsite<span class="token punctuation">.</span><span class="token function">setName</span><span class="token punctuation">(</span><span class="token string">&quot;jian&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+addsite<span class="token punctuation">.</span><span class="token function">setUrl</span><span class="token punctuation">(</span><span class="token string">&quot;https://www.baidu.com/&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> num <span class="token operator">=</span> websiteMapper<span class="token punctuation">.</span><span class="token function">addWebsite</span><span class="token punctuation">(</span>addsite<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;添加了 &quot;</span> <span class="token operator">+</span> num <span class="token operator">+</span> <span class="token string">&quot; 条记录&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;添加记录的主键是:&quot;</span> <span class="token operator">+</span> addsite<span class="token punctuation">.</span><span class="token function">getId</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br></div></div><h4 id="_2、自定义主键"><a href="#_2、自定义主键" class="header-anchor">#</a> 2、自定义主键</h4> <p>若数据库不支持主键自动递增（例如 Oracle），或者取消了主键自动递增的规则，我们可以使用 MyBatis 的 <code>&lt;selectKey&gt;</code>标签自定义生成主键。</p> <p><code>&lt;selectKey&gt;</code> 标签中属性说明如下：</p> <ul><li>keyProperty：用于指定主键值对应的 PO 类的属性。</li> <li>order：该属性取值可以为 BEFORE 或 AFTER。BEFORE 表示先执行 <code>&lt;selectKey&gt;</code> 标签内的语句，再执行插入语句；AFTER 表示先执行插入语句再执行<code>&lt;selectKey&gt;</code>标签内的语句。</li></ul> <div class="language-java line-numbers-mode"><pre class="language-java"><code><span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span> 添加一个网站，#<span class="token punctuation">{</span>name<span class="token punctuation">}</span>为 <span class="token class-name"><span class="token namespace">net<span class="token punctuation">.</span>biancheng<span class="token punctuation">.</span>po<span class="token punctuation">.</span></span>Website</span> 的属性值 <span class="token operator">--</span><span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span>insert id<span class="token operator">=</span><span class="token string">&quot;insertWebsite&quot;</span> parameterType<span class="token operator">=</span><span class="token string">&quot;net.biancheng.po.Website&quot;</span><span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span> 先使用selectKey标签定义主键，然后再定义<span class="token constant">SQL</span>语句 <span class="token operator">--</span><span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span>selectKey keyProperty<span class="token operator">=</span><span class="token string">&quot;id&quot;</span> resultType<span class="token operator">=</span><span class="token string">&quot;Integer&quot;</span> order<span class="token operator">=</span><span class="token string">&quot;BEFORE&quot;</span><span class="token operator">&gt;</span>
+        select <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">max</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span> is <span class="token keyword">null</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token function">max</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span><span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span> as newId from <span class="token class-name">Website</span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>selectKey<span class="token operator">&gt;</span>
+    insert into <span class="token class-name">Website</span> <span class="token punctuation">(</span>id<span class="token punctuation">,</span>name<span class="token punctuation">,</span>url<span class="token punctuation">)</span> <span class="token function">values</span><span class="token punctuation">(</span>#<span class="token punctuation">{</span>id<span class="token punctuation">}</span><span class="token punctuation">,</span>#<span class="token punctuation">{</span>name<span class="token punctuation">}</span><span class="token punctuation">,</span>#<span class="token punctuation">{</span>url<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>insert<span class="token operator">&gt;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><h2 id="_5、resultmap标签"><a href="#_5、resultmap标签" class="header-anchor">#</a> 5、resultMap标签</h2> <p>用于解决实体类属性名与数据库表中字段名不一致的情况，可以将查询结果映射成实体对象</p> <div class="language-xml line-numbers-mode"><pre class="language-xml"><code><span class="token comment">&lt;!-- id为唯一标识，type属性表示需要的POJO --&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>resultMap</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>BaseResultMap<span class="token punctuation">&quot;</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>com.icbc.inforisk.rule.entity.AfwMagParameterArea<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span> 
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>constructor</span><span class="token punctuation">&gt;</span></span>					<span class="token comment">&lt;!-- 类在实例化时用来注入结果到构造方法 --&gt;</span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>idArg</span><span class="token punctuation">/&gt;</span></span>					<span class="token comment">&lt;!-- ID参数，结果为ID --&gt;</span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>arg</span><span class="token punctuation">/&gt;</span></span>						<span class="token comment">&lt;!-- 注入到构造方法的一个普通结果 --&gt;</span> 
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>constructor</span><span class="token punctuation">&gt;</span></span>
+    <span class="token comment">&lt;!-- 用于表示哪个列是主键 --&gt;</span>
+  	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>id</span> <span class="token attr-name">column</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>TABLE_NAME<span class="token punctuation">&quot;</span></span> <span class="token attr-name">jdbcType</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>VARCHAR<span class="token punctuation">&quot;</span></span> <span class="token attr-name">property</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>tableName<span class="token punctuation">&quot;</span></span><span class="token punctuation">/&gt;</span></span>
+    <span class="token comment">&lt;!-- 用于表示POJO和SQL列名的映射关系 --&gt;</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>result</span> <span class="token attr-name">column</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>PARA_VALUE_1<span class="token punctuation">&quot;</span></span> <span class="token attr-name">jdbcType</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>VARCHAR<span class="token punctuation">&quot;</span></span> <span class="token attr-name">property</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>paraValue1<span class="token punctuation">&quot;</span></span><span class="token punctuation">/&gt;</span></span>							
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>association</span> <span class="token attr-name">property</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span><span class="token punctuation">&quot;</span></span><span class="token punctuation">/&gt;</span></span>			<span class="token comment">&lt;!-- 用于一对一关联 --&gt;</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>collection</span> <span class="token attr-name">property</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span><span class="token punctuation">&quot;</span></span><span class="token punctuation">/&gt;</span></span>				<span class="token comment">&lt;!-- 用于一对多、多对多关联 --&gt;</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>discriminator</span> <span class="token attr-name">javaType</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span><span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>			<span class="token comment">&lt;!-- 使用结果值来决定使用哪个结果映射 --&gt;</span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>case</span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span><span class="token punctuation">&quot;</span></span><span class="token punctuation">/&gt;</span></span>						<span class="token comment">&lt;!-- 基于某些值的结果映射 --&gt;</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>discriminator</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>resultMap</span><span class="token punctuation">&gt;</span></span>
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br></div></div><p>id和result常用，有如下属性：</p> <ul><li>property：映射到列结果的字段或属性</li> <li>column：对应sql列</li> <li>javaType：配置java类型，可以是特定的类完全限定名或别名</li> <li>jdbcType：配置数据库类型</li> <li>typeHandler：类型处理器，需要指定jdbcType和javaType相互转化的规则</li></ul> <h2 id="_6、注解"><a href="#_6、注解" class="header-anchor">#</a> 6、注解</h2> <p>可在mybatis-x.x.x.jar/org.apache.ibatis.annotations中查看</p> <ul><li>sql语句映射：@Insert、@Select、@Delete、@Param等</li> <li>结果集映射：@Result、@Results、@ResultMap</li> <li>关系映射：@one、@many</li></ul> <h2 id="_7、动态sql"><a href="#_7、动态sql" class="header-anchor">#</a> 7、动态SQL</h2> <p>在映射xml文件里配置动态sql，有几种元素</p> <ul><li>if：判断语句</li> <li>choose（when、otherwise）：多条件判断，类似switch和case语句</li> <li>trim、where：辅助元素，处理sql拼接问题</li> <li>foreach：循环语句，在in语句等列举条件常用</li> <li>bind：辅助元素，拼接参数</li></ul> <h3 id="_1、if标签"><a href="#_1、if标签" class="header-anchor">#</a> 1、if标签</h3> <div class="language-xml line-numbers-mode"><pre class="language-xml"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>select</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>selectAllWebsite<span class="token punctuation">&quot;</span></span> <span class="token attr-name">resultMap</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>myResult<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+    select id,name,url from website
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>if</span> <span class="token attr-name">test</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>name != null<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+        where name like #{name}
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>if</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>select</span><span class="token punctuation">&gt;</span></span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><h3 id="_2、choose标签"><a href="#_2、choose标签" class="header-anchor">#</a> 2、choose标签</h3> <div class="language-xml line-numbers-mode"><pre class="language-xml"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>mapper</span> <span class="token attr-name">namespace</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>net.biancheng.mapper.WebsiteMapper<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>select</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>selectWebsite<span class="token punctuation">&quot;</span></span>
+        <span class="token attr-name">parameterType</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>net.biancheng.po.Website<span class="token punctuation">&quot;</span></span>
+        <span class="token attr-name">resultType</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>net.biancheng.po.Website<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+        SELECT id,name,url,age,country
+        FROM website WHERE 1=1
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>choose</span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>when</span> <span class="token attr-name">test</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>name != null and name !=''<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+                AND name LIKE CONCAT('%',#{name},'%')
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>when</span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>when</span> <span class="token attr-name">test</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>url != null and url !=''<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+                AND url LIKE CONCAT('%',#{url},'%')
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>when</span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>otherwise</span><span class="token punctuation">&gt;</span></span>
+                AND age is not null
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>otherwise</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>choose</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>select</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>mapper</span><span class="token punctuation">&gt;</span></span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br></div></div><h3 id="_3、where标签"><a href="#_3、where标签" class="header-anchor">#</a> 3、where标签</h3> <p>用于简化and、or语句，类型于where语句：if 语句中判断条件为 true 时，where 关键字才会加入到组装的 SQL 里面，否则就不加入。where 会检索语句，它会将 where 后的第一个 SQL 条件语句的 AND 或者 OR 关键词去掉。</p> <div class="language-xml line-numbers-mode"><pre class="language-xml"><code><span class="token comment">&lt;!-- if条件成立时，才会引入where语句 --&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>select</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>selectWebsite<span class="token punctuation">&quot;</span></span> <span class="token attr-name">resultType</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>net.biancheng.po.Website<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+    select id,name,url from website
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>where</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>if</span> <span class="token attr-name">test</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>name != null<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+            AND name like #{name}
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>if</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>if</span> <span class="token attr-name">test</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>url!= null<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+            AND url like #{url}
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>if</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>where</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>select</span><span class="token punctuation">&gt;</span></span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br></div></div><h3 id="_4、set标签"><a href="#_4、set标签" class="header-anchor">#</a> 4、set标签</h3> <p>update 语句可以使用 set 标签动态更新列。set 标签可以为 SQL 语句动态的添加 set 关键字，剔除追加到条件末尾多余的逗号。</p> <div class="language-xml line-numbers-mode"><pre class="language-xml"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>update</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>updateWebsite<span class="token punctuation">&quot;</span></span> <span class="token attr-name">parameterType</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>net.biancheng.po.Website<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+  UPDATE website
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>set</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>if</span> <span class="token attr-name">test</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>name!=null<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>name=#{name}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>if</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>if</span> <span class="token attr-name">test</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>url!=null<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>url=#{url}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>if</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>set</span><span class="token punctuation">&gt;</span></span>
+  WHERE id=#{id}
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>update</span><span class="token punctuation">&gt;</span></span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><h3 id="_5、foreach标签"><a href="#_5、foreach标签" class="header-anchor">#</a> 5、foreach标签</h3> <p>对于一些 SQL 语句中含有 in 条件，需要迭代条件集合来生成的情况，可以使用 foreach 来实现 SQL 条件的迭代。</p> <ol><li>foreach 标签主要有以下属性:</li></ol> <ul><li>item：表示集合中每一个元素进行迭代时的别名</li> <li>index：指定一个名字，表示在迭代过程中每次迭代到的位置</li> <li>open：表示该语句以什么开始（既然是 in 条件语句，所以必然以<code>(</code>开始）</li> <li>separator：表示在每次进行迭代之间以什么符号作为分隔符（既然是 in 条件语句，所以必然以<code>,</code>作为分隔符）</li></ul> <ul><li>close：表示该语句以什么结束（既然是 in 条件语句，所以必然以<code>)</code>开始）</li></ul> <ol start="2"><li>使用 foreach 标签时，最关键、最容易出错的是 collection 属性，该属性是必选的，但在不同情况下该属性的值是不一样的，主要有以下 3 种情况：</li></ol> <ul><li>如果传入的是单参数且参数类型是一个 List，collection 属性值为 list</li> <li>如果传入的是单参数且参数类型是一个 array 数组，collection 的属性值为 array</li> <li>如果传入的参数是多个，需要把它们封装成一个 Map，当然单参数也可以封装成 Map。Map 的 key 是参数名，collection 属性值是传入的 List 或 array 对象在自己封装的 Map 中的 key</li></ul> <div class="language-java line-numbers-mode"><pre class="language-java"><code><span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span> <span class="token class-name">WebsiteMapper</span><span class="token punctuation">.</span>xml <span class="token operator">--</span><span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span>select id<span class="token operator">=</span><span class="token string">&quot;selectWebsite&quot;</span> parameterType<span class="token operator">=</span><span class="token string">&quot;net.biancheng.po.Website&quot;</span> resultType<span class="token operator">=</span><span class="token string">&quot;net.biancheng.po.Website&quot;</span><span class="token operator">&gt;</span>
+    <span class="token class-name">SELECT</span> id<span class="token punctuation">,</span>name<span class="token punctuation">,</span>url<span class="token punctuation">,</span>age<span class="token punctuation">,</span>country
+    <span class="token constant">FROM</span> website <span class="token constant">WHERE</span> age in
+    <span class="token operator">&lt;</span>foreach item<span class="token operator">=</span><span class="token string">&quot;age&quot;</span> index<span class="token operator">=</span><span class="token string">&quot;index&quot;</span> collection<span class="token operator">=</span><span class="token string">&quot;list&quot;</span> <span class="token keyword">open</span><span class="token operator">=</span><span class="token string">&quot;(&quot;</span> separator<span class="token operator">=</span><span class="token string">&quot;,&quot;</span> close<span class="token operator">=</span><span class="token string">&quot;)&quot;</span><span class="token operator">&gt;</span>
+        #<span class="token punctuation">{</span>age<span class="token punctuation">}</span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>foreach<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>select<span class="token operator">&gt;</span>
+
+<span class="token comment">//WebsiteMapper.java</span>
+<span class="token keyword">public</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Website</span><span class="token punctuation">&gt;</span></span> <span class="token function">selectWebsite</span><span class="token punctuation">(</span><span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">&gt;</span></span> ageList<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">//test.java</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Test</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">IOException</span> <span class="token punctuation">{</span>
+        <span class="token comment">// 读取配置文件mybatis-config.xml</span>
+        <span class="token class-name">InputStream</span> config <span class="token operator">=</span> <span class="token class-name">Resources</span><span class="token punctuation">.</span><span class="token function">getResourceAsStream</span><span class="token punctuation">(</span><span class="token string">&quot;mybatis-config.xml&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 根据配置文件构建</span>
+        <span class="token class-name">SqlSessionFactory</span> ssf <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">SqlSessionFactoryBuilder</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">build</span><span class="token punctuation">(</span>config<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">// 通过SqlSessionFactory创建SqlSession</span>
+        <span class="token class-name">SqlSession</span> ss <span class="token operator">=</span> ssf<span class="token punctuation">.</span><span class="token function">openSession</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">&gt;</span></span> ageList <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        ageList<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        ageList<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token number">12</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Website</span><span class="token punctuation">&gt;</span></span> siteList <span class="token operator">=</span> ss<span class="token punctuation">.</span><span class="token function">selectList</span><span class="token punctuation">(</span><span class="token string">&quot;net.biancheng.mapper.WebsiteMapper.selectWebsite&quot;</span><span class="token punctuation">,</span> ageList<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token class-name">Website</span> ws <span class="token operator">:</span> siteList<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>ws<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br></div></div><h3 id="_6、bind标签"><a href="#_6、bind标签" class="header-anchor">#</a> 6、bind标签</h3> <p>bind 标签可以通过 OGNL 表达式自定义一个上下文变量</p> <div class="language-java line-numbers-mode"><pre class="language-java"><code><span class="token operator">&lt;</span>select id<span class="token operator">=</span><span class="token string">&quot;selectWebsite&quot;</span> resultType<span class="token operator">=</span><span class="token string">&quot;net.biancheng.po.Website&quot;</span><span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span>bind name<span class="token operator">=</span><span class="token string">&quot;pattern&quot;</span> value<span class="token operator">=</span><span class="token string">&quot;'%'+_parameter+'%'&quot;</span> <span class="token operator">/</span><span class="token operator">&gt;</span>
+    <span class="token class-name">SELECT</span> id<span class="token punctuation">,</span>name<span class="token punctuation">,</span>url<span class="token punctuation">,</span>age<span class="token punctuation">,</span>country
+    <span class="token constant">FROM</span> website
+    <span class="token constant">WHERE</span> name like #<span class="token punctuation">{</span>pattern<span class="token punctuation">}</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>select<span class="token operator">&gt;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><h3 id="_7、trim标签"><a href="#_7、trim标签" class="header-anchor">#</a> 7、trim标签</h3> <p>在 MyBatis 中除了使用 if+where 实现多条件查询，还有一个更为灵活的元素 trim 能够替代之前的做法。</p> <p>trim 一般用于去除 SQL 语句中多余的 AND 关键字、逗号<code>，</code>或者给 SQL 语句前拼接 where、set 等后缀，可用于选择性插入、更新、删除或者条件查询等操作。</p> <div class="language-xml line-numbers-mode"><pre class="language-xml"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>select</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>selectWebsite<span class="token punctuation">&quot;</span></span> <span class="token attr-name">resultType</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>net.biancheng.po.Website<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+    SELECT id,name,url,age,country
+    FROM website
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>trim</span> <span class="token attr-name">prefix</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>where<span class="token punctuation">&quot;</span></span> <span class="token attr-name">prefixOverrides</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>and<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>if</span> <span class="token attr-name">test</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>name != null and name !=''<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+            AND name LIKE CONCAT ('%',#{name},'%')
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>if</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>if</span> <span class="token attr-name">test</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>url!= null<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+            AND url like concat ('%',#{url},'%')
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>if</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>trim</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>select</span><span class="token punctuation">&gt;</span></span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br></div></div></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">Last Updated:</span> <span class="time">11/11/2021, 11:04:53 AM</span></div></footer> <!----> </main></div><div class="global-ui"><!----><!----></div></div>
+    <script src="/assets/js/app.9e441e61.js" defer></script><script src="/assets/js/2.36bde0fd.js" defer></script><script src="/assets/js/10.bc82d67b.js" defer></script><script src="/assets/js/3.5a07e503.js" defer></script>
+  </body>
+</html>

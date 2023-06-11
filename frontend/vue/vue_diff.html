@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Vue原理-diff算法 | Jian‘s blog</title>
+    <meta name="generator" content="VuePress 1.9.9">
+    <link rel="icon" href="/jian_x48.png">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="apple-touch-icon" href="/jian_x192.png">
+    <meta name="description" content="每天进步一点点">
+    <meta name="theme-color" content="#3eaf7c">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="msapplication-TileImage" content="/jian_x192.png">
+    <meta name="msapplication-TileColor" content="#000000">
+    
+    <link rel="preload" href="/assets/css/0.styles.19232fe9.css" as="style"><link rel="preload" href="/assets/js/app.9e441e61.js" as="script"><link rel="preload" href="/assets/js/2.36bde0fd.js" as="script"><link rel="preload" href="/assets/js/78.5e4673c6.js" as="script"><link rel="preload" href="/assets/js/3.5a07e503.js" as="script"><link rel="prefetch" href="/assets/js/10.bc82d67b.js"><link rel="prefetch" href="/assets/js/11.ead9b8ca.js"><link rel="prefetch" href="/assets/js/12.a048ccaa.js"><link rel="prefetch" href="/assets/js/13.3e4cc077.js"><link rel="prefetch" href="/assets/js/14.58cd0fa5.js"><link rel="prefetch" href="/assets/js/15.98e26beb.js"><link rel="prefetch" href="/assets/js/16.4cf1daea.js"><link rel="prefetch" href="/assets/js/17.c190a7fe.js"><link rel="prefetch" href="/assets/js/18.89814285.js"><link rel="prefetch" href="/assets/js/19.77f58842.js"><link rel="prefetch" href="/assets/js/20.9920ac2c.js"><link rel="prefetch" href="/assets/js/21.6a8c9cfe.js"><link rel="prefetch" href="/assets/js/22.cfd89a61.js"><link rel="prefetch" href="/assets/js/23.48f5d9f7.js"><link rel="prefetch" href="/assets/js/24.a8c5ac10.js"><link rel="prefetch" href="/assets/js/25.842b3853.js"><link rel="prefetch" href="/assets/js/26.9c5fe1dd.js"><link rel="prefetch" href="/assets/js/27.c4f0a52b.js"><link rel="prefetch" href="/assets/js/28.ce11023f.js"><link rel="prefetch" href="/assets/js/29.9001ac2f.js"><link rel="prefetch" href="/assets/js/30.5edf0dc1.js"><link rel="prefetch" href="/assets/js/31.57d2aeed.js"><link rel="prefetch" href="/assets/js/32.db6f674e.js"><link rel="prefetch" href="/assets/js/33.038cad31.js"><link rel="prefetch" href="/assets/js/34.bff4a907.js"><link rel="prefetch" href="/assets/js/35.e9272942.js"><link rel="prefetch" href="/assets/js/36.896895d7.js"><link rel="prefetch" href="/assets/js/37.91a5bb8c.js"><link rel="prefetch" href="/assets/js/38.3f6a6f29.js"><link rel="prefetch" href="/assets/js/39.270d8c27.js"><link rel="prefetch" href="/assets/js/4.0800d99b.js"><link rel="prefetch" href="/assets/js/40.b379e318.js"><link rel="prefetch" href="/assets/js/41.f3073d82.js"><link rel="prefetch" href="/assets/js/42.867935ca.js"><link rel="prefetch" href="/assets/js/43.30335621.js"><link rel="prefetch" href="/assets/js/44.993aea4e.js"><link rel="prefetch" href="/assets/js/45.60eb5226.js"><link rel="prefetch" href="/assets/js/46.8501be1f.js"><link rel="prefetch" href="/assets/js/47.ba2302fc.js"><link rel="prefetch" href="/assets/js/48.e932482f.js"><link rel="prefetch" href="/assets/js/49.c1af1af4.js"><link rel="prefetch" href="/assets/js/5.1d8a5d7f.js"><link rel="prefetch" href="/assets/js/50.e7715e10.js"><link rel="prefetch" href="/assets/js/51.ab6021ba.js"><link rel="prefetch" href="/assets/js/52.c5c5c3ef.js"><link rel="prefetch" href="/assets/js/53.7157cd05.js"><link rel="prefetch" href="/assets/js/54.f4abd89d.js"><link rel="prefetch" href="/assets/js/55.c86bbebc.js"><link rel="prefetch" href="/assets/js/56.ee48a85c.js"><link rel="prefetch" href="/assets/js/57.90d4c487.js"><link rel="prefetch" href="/assets/js/58.1d4866f8.js"><link rel="prefetch" href="/assets/js/59.75c6bc90.js"><link rel="prefetch" href="/assets/js/6.90059570.js"><link rel="prefetch" href="/assets/js/60.c5e61798.js"><link rel="prefetch" href="/assets/js/61.54457b0e.js"><link rel="prefetch" href="/assets/js/62.2e0af734.js"><link rel="prefetch" href="/assets/js/63.07cece40.js"><link rel="prefetch" href="/assets/js/64.e6ab0174.js"><link rel="prefetch" href="/assets/js/65.663550a9.js"><link rel="prefetch" href="/assets/js/66.64ad9de7.js"><link rel="prefetch" href="/assets/js/67.cc5c5ab3.js"><link rel="prefetch" href="/assets/js/68.d76b1a45.js"><link rel="prefetch" href="/assets/js/69.06c85095.js"><link rel="prefetch" href="/assets/js/7.e0481b37.js"><link rel="prefetch" href="/assets/js/70.5fa17108.js"><link rel="prefetch" href="/assets/js/71.ea8df0ea.js"><link rel="prefetch" href="/assets/js/72.12d99daf.js"><link rel="prefetch" href="/assets/js/73.8b6c81cd.js"><link rel="prefetch" href="/assets/js/74.e089a7e8.js"><link rel="prefetch" href="/assets/js/75.eda86622.js"><link rel="prefetch" href="/assets/js/76.451d3bf2.js"><link rel="prefetch" href="/assets/js/77.5a71a520.js"><link rel="prefetch" href="/assets/js/79.f657e29d.js"><link rel="prefetch" href="/assets/js/8.e1e88656.js"><link rel="prefetch" href="/assets/js/80.d7b2d65d.js"><link rel="prefetch" href="/assets/js/81.c9dc1609.js"><link rel="prefetch" href="/assets/js/82.2b309c6c.js"><link rel="prefetch" href="/assets/js/9.54f76d53.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.19232fe9.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/img/jian.jpeg" alt="Jian‘s blog" class="logo"> <span class="site-name can-hide">Jian‘s blog</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="js" class="dropdown-title"><span class="title">js</span> <span class="arrow down"></span></button> <button type="button" aria-label="js" class="mobile-dropdown-title"><span class="title">js</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/frontend/js/" class="nav-link">
+  js杂记
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/js/promise.html" class="nav-link">
+  Promise规范和应用
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/js/browser.html" class="nav-link">
+  浏览器对象详解
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/js/js_oop.html" class="nav-link">
+  面向对象编程
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/js/ES6.html" class="nav-link">
+  ES6ESNext规范详解
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/js/this_chain.html" class="nav-link">
+  this指针作用域
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/js/typescript.html" class="nav-link">
+  ts初探
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/ts/basics.html" class="nav-link">
+  ts基础
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/ts/project.html" class="nav-link">
+  ts工程
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="工程化" class="dropdown-title"><span class="title">工程化</span> <span class="arrow down"></span></button> <button type="button" aria-label="工程化" class="mobile-dropdown-title"><span class="title">工程化</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/frontend/tools/js_module.html" class="nav-link">
+  模块化规范
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/tools/js_project.html" class="nav-link">
+  前端工程化
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/tools/webpack.html" class="nav-link">
+  webpack
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/tools/babel.html" class="nav-link">
+  babel
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/tools/autotest.html" class="nav-link">
+  自动化测试和部署
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/tools/ast.html" class="nav-link">
+  AST
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/tools/solution.html" class="nav-link">
+  前端方案
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/tools/js_tools.html" class="nav-link">
+  常用工具
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="vue" class="dropdown-title"><span class="title">vue</span> <span class="arrow down"></span></button> <button type="button" aria-label="vue" class="mobile-dropdown-title"><span class="title">vue</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/frontend/vue/index.html" class="nav-link">
+  vue2.0基础
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/advance.html" class="nav-link">
+  vue2.0进阶
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vue-cli.html" class="nav-link">
+  vue-cli
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vue-loader.html" class="nav-link">
+  vue-loader
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vue-router.html" class="nav-link">
+  vue-router
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vuex.html" class="nav-link">
+  vuex
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vue_ssr.html" class="nav-link">
+  vue-ssr
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vue-i18n.html" class="nav-link">
+  vue-i18n
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vue-life.html" class="nav-link">
+  生命周期
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vue_reactive.html" class="nav-link">
+  响应式原理
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vue_diff.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  diff原理
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vue-compiler.html" class="nav-link">
+  编译原理
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vue-refs.html" class="nav-link">
+  实战总结
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="react" class="dropdown-title"><span class="title">react</span> <span class="arrow down"></span></button> <button type="button" aria-label="react" class="mobile-dropdown-title"><span class="title">react</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/frontend/react/react.html" class="nav-link">
+  react基础
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/react/react-advance.html" class="nav-link">
+  react进阶
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/react/react-router.html" class="nav-link">
+  react-router
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/react/react-state.html" class="nav-link">
+  react状态管理
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/react/react-ssr.html" class="nav-link">
+  react同构
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/react/react-component.html" class="nav-link">
+  react组件封装
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/react/react-code.html" class="nav-link">
+  react源码分析
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/ts/react-ts.html" class="nav-link">
+  react-ts实战
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/react/react-practice.html" class="nav-link">
+  react问题整理
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="nodejs" class="dropdown-title"><span class="title">nodejs</span> <span class="arrow down"></span></button> <button type="button" aria-label="nodejs" class="mobile-dropdown-title"><span class="title">nodejs</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/frontend/nodejs/index.html" class="nav-link">
+  nodejs基础
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/nodejs/module.html" class="nav-link">
+  nodejs常用框架
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/nodejs/http.html" class="nav-link">
+  nodejs网络及部署
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/ts/express-ts.html" class="nav-link">
+  express-ts实战
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/nodejs/info.html" class="nav-link">
+  nodejs前研
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="其他" class="dropdown-title"><span class="title">其他</span> <span class="arrow down"></span></button> <button type="button" aria-label="其他" class="mobile-dropdown-title"><span class="title">其他</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/frontend/interview/" class="nav-link">
+  前端面试
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/performance/performance.html" class="nav-link">
+  前端性能优化
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/performance/explorer.html" class="nav-link">
+  浏览器进程和线程
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/else/security-control.html" class="nav-link">
+  前端网络安全
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/lowcode/lowcode.html" class="nav-link">
+  低代码平台
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/else/micro-frontend.html" class="nav-link">
+  微前端
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/else/designMode.html" class="nav-link">
+  前端设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/css/" class="nav-link">
+  css
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/mini-program/" class="nav-link">
+  小程序
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/hybrid/hybrid.html" class="nav-link">
+  hybrid开发及原理分析
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/else/canvas.html" class="nav-link">
+  canvas
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/else/graph.html" class="nav-link">
+  图片格式
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/else/web3.html" class="nav-link">
+  web3探索
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="算法" class="dropdown-title"><span class="title">算法</span> <span class="arrow down"></span></button> <button type="button" aria-label="算法" class="mobile-dropdown-title"><span class="title">算法</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/frontend/algorithm/graph.html" class="nav-link">
+  图的存储和遍历
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/algorithm/dpointer.html" class="nav-link">
+  双指针
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/algorithm/Levenshtein.html" class="nav-link">
+  最短编辑距离
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/algorithm/greed.html" class="nav-link">
+  贪心算法
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/algorithm/dp.html" class="nav-link">
+  动态规划
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/algorithm/leetcode.html" class="nav-link">
+  leetcode
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="后端" class="dropdown-title"><span class="title">后端</span> <span class="arrow down"></span></button> <button type="button" aria-label="后端" class="mobile-dropdown-title"><span class="title">后端</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/backend/nginx.html" class="nav-link">
+  nginx
+</a></li><li class="dropdown-item"><!----> <a href="/backend/springboot.html" class="nav-link">
+  springboot
+</a></li><li class="dropdown-item"><!----> <a href="/backend/mybatis.html" class="nav-link">
+  mybatis
+</a></li><li class="dropdown-item"><!----> <a href="/backend/uml.html" class="nav-link">
+  uml类图
+</a></li><li class="dropdown-item"><!----> <a href="/backend/ddd.html" class="nav-link">
+  领域驱动设计
+</a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="js" class="dropdown-title"><span class="title">js</span> <span class="arrow down"></span></button> <button type="button" aria-label="js" class="mobile-dropdown-title"><span class="title">js</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/frontend/js/" class="nav-link">
+  js杂记
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/js/promise.html" class="nav-link">
+  Promise规范和应用
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/js/browser.html" class="nav-link">
+  浏览器对象详解
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/js/js_oop.html" class="nav-link">
+  面向对象编程
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/js/ES6.html" class="nav-link">
+  ES6ESNext规范详解
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/js/this_chain.html" class="nav-link">
+  this指针作用域
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/js/typescript.html" class="nav-link">
+  ts初探
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/ts/basics.html" class="nav-link">
+  ts基础
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/ts/project.html" class="nav-link">
+  ts工程
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="工程化" class="dropdown-title"><span class="title">工程化</span> <span class="arrow down"></span></button> <button type="button" aria-label="工程化" class="mobile-dropdown-title"><span class="title">工程化</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/frontend/tools/js_module.html" class="nav-link">
+  模块化规范
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/tools/js_project.html" class="nav-link">
+  前端工程化
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/tools/webpack.html" class="nav-link">
+  webpack
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/tools/babel.html" class="nav-link">
+  babel
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/tools/autotest.html" class="nav-link">
+  自动化测试和部署
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/tools/ast.html" class="nav-link">
+  AST
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/tools/solution.html" class="nav-link">
+  前端方案
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/tools/js_tools.html" class="nav-link">
+  常用工具
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="vue" class="dropdown-title"><span class="title">vue</span> <span class="arrow down"></span></button> <button type="button" aria-label="vue" class="mobile-dropdown-title"><span class="title">vue</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/frontend/vue/index.html" class="nav-link">
+  vue2.0基础
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/advance.html" class="nav-link">
+  vue2.0进阶
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vue-cli.html" class="nav-link">
+  vue-cli
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vue-loader.html" class="nav-link">
+  vue-loader
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vue-router.html" class="nav-link">
+  vue-router
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vuex.html" class="nav-link">
+  vuex
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vue_ssr.html" class="nav-link">
+  vue-ssr
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vue-i18n.html" class="nav-link">
+  vue-i18n
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vue-life.html" class="nav-link">
+  生命周期
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vue_reactive.html" class="nav-link">
+  响应式原理
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vue_diff.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  diff原理
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vue-compiler.html" class="nav-link">
+  编译原理
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/vue/vue-refs.html" class="nav-link">
+  实战总结
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="react" class="dropdown-title"><span class="title">react</span> <span class="arrow down"></span></button> <button type="button" aria-label="react" class="mobile-dropdown-title"><span class="title">react</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/frontend/react/react.html" class="nav-link">
+  react基础
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/react/react-advance.html" class="nav-link">
+  react进阶
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/react/react-router.html" class="nav-link">
+  react-router
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/react/react-state.html" class="nav-link">
+  react状态管理
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/react/react-ssr.html" class="nav-link">
+  react同构
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/react/react-component.html" class="nav-link">
+  react组件封装
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/react/react-code.html" class="nav-link">
+  react源码分析
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/ts/react-ts.html" class="nav-link">
+  react-ts实战
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/react/react-practice.html" class="nav-link">
+  react问题整理
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="nodejs" class="dropdown-title"><span class="title">nodejs</span> <span class="arrow down"></span></button> <button type="button" aria-label="nodejs" class="mobile-dropdown-title"><span class="title">nodejs</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/frontend/nodejs/index.html" class="nav-link">
+  nodejs基础
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/nodejs/module.html" class="nav-link">
+  nodejs常用框架
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/nodejs/http.html" class="nav-link">
+  nodejs网络及部署
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/ts/express-ts.html" class="nav-link">
+  express-ts实战
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/nodejs/info.html" class="nav-link">
+  nodejs前研
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="其他" class="dropdown-title"><span class="title">其他</span> <span class="arrow down"></span></button> <button type="button" aria-label="其他" class="mobile-dropdown-title"><span class="title">其他</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/frontend/interview/" class="nav-link">
+  前端面试
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/performance/performance.html" class="nav-link">
+  前端性能优化
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/performance/explorer.html" class="nav-link">
+  浏览器进程和线程
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/else/security-control.html" class="nav-link">
+  前端网络安全
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/lowcode/lowcode.html" class="nav-link">
+  低代码平台
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/else/micro-frontend.html" class="nav-link">
+  微前端
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/else/designMode.html" class="nav-link">
+  前端设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/css/" class="nav-link">
+  css
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/mini-program/" class="nav-link">
+  小程序
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/hybrid/hybrid.html" class="nav-link">
+  hybrid开发及原理分析
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/else/canvas.html" class="nav-link">
+  canvas
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/else/graph.html" class="nav-link">
+  图片格式
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/else/web3.html" class="nav-link">
+  web3探索
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="算法" class="dropdown-title"><span class="title">算法</span> <span class="arrow down"></span></button> <button type="button" aria-label="算法" class="mobile-dropdown-title"><span class="title">算法</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/frontend/algorithm/graph.html" class="nav-link">
+  图的存储和遍历
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/algorithm/dpointer.html" class="nav-link">
+  双指针
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/algorithm/Levenshtein.html" class="nav-link">
+  最短编辑距离
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/algorithm/greed.html" class="nav-link">
+  贪心算法
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/algorithm/dp.html" class="nav-link">
+  动态规划
+</a></li><li class="dropdown-item"><!----> <a href="/frontend/algorithm/leetcode.html" class="nav-link">
+  leetcode
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="后端" class="dropdown-title"><span class="title">后端</span> <span class="arrow down"></span></button> <button type="button" aria-label="后端" class="mobile-dropdown-title"><span class="title">后端</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/backend/nginx.html" class="nav-link">
+  nginx
+</a></li><li class="dropdown-item"><!----> <a href="/backend/springboot.html" class="nav-link">
+  springboot
+</a></li><li class="dropdown-item"><!----> <a href="/backend/mybatis.html" class="nav-link">
+  mybatis
+</a></li><li class="dropdown-item"><!----> <a href="/backend/uml.html" class="nav-link">
+  uml类图
+</a></li><li class="dropdown-item"><!----> <a href="/backend/ddd.html" class="nav-link">
+  领域驱动设计
+</a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>Vue原理-diff算法</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/frontend/vue/vue_diff.html#_1、diff算法简介" class="sidebar-link">1、diff算法简介</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/frontend/vue/vue_diff.html#_2、为什么diff" class="sidebar-link">2、为什么diff</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/frontend/vue/vue_diff.html#_3、为什么o-n-3" class="sidebar-link">3、为什么o(n^3)</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/frontend/vue/vue_diff.html#_4、为什么o-n" class="sidebar-link">4、为什么o(n)</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/frontend/vue/vue_diff.html#_5、how-o-n" class="sidebar-link">5、how O(n)</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/frontend/vue/vue_diff.html#_6、同级元素的key" class="sidebar-link">6、同级元素的key</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/frontend/vue/vue_diff.html#_1、为什么添加key" class="sidebar-link">1、为什么添加key</a></li><li class="sidebar-sub-header"><a href="/frontend/vue/vue_diff.html#_2、key的使用" class="sidebar-link">2、key的使用</a></li></ul></li><li><a href="/frontend/vue/vue_diff.html#_7、虚拟dom的实现" class="sidebar-link">7、虚拟dom的实现</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/frontend/vue/vue_diff.html#_1、什么是虚拟dom" class="sidebar-link">1、什么是虚拟dom</a></li><li class="sidebar-sub-header"><a href="/frontend/vue/vue_diff.html#_2、怎么创建虚拟dom" class="sidebar-link">2、怎么创建虚拟dom</a></li><li class="sidebar-sub-header"><a href="/frontend/vue/vue_diff.html#_3、如何使用虚拟dom" class="sidebar-link">3、如何使用虚拟dom</a></li><li class="sidebar-sub-header"><a href="/frontend/vue/vue_diff.html#_4、虚拟dom的渲染" class="sidebar-link">4、虚拟dom的渲染</a></li><li class="sidebar-sub-header"><a href="/frontend/vue/vue_diff.html#_5、diff-相关-patch" class="sidebar-link">5、diff 相关(patch)</a></li></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="vue原理-diff算法"><a href="#vue原理-diff算法" class="header-anchor">#</a> Vue原理-diff算法</h1> <blockquote><p>参考资料</p> <ul><li><a href="https://www.html5rocks.com/zh/tutorials/internals/howbrowserswork/" target="_blank" rel="noopener noreferrer">浏览器工作原理揭秘<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li> <li><a href="https://www.bilibili.com/video/av35265997/" target="_blank" rel="noopener noreferrer">像素的一生<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li> <li><a href="https://en.wikipedia.org/wiki/Levenshtein_distance" target="_blank" rel="noopener noreferrer">Levenshtein<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li> <li><a href="https://github.com/infernojs/inferno" target="_blank" rel="noopener noreferrer">inferno<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li> <li><a href="https://www.zhihu.com/topic/19864220/hot" target="_blank" rel="noopener noreferrer">启发式算法<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li> <li><a href="https://en.wikipedia.org/wiki/Longest_increasing_subsequence" target="_blank" rel="noopener noreferrer">最长上升子序列算法<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li> <li><a href="https://grfia.dlsi.ua.es/ml/algorithms/references/editsurvey_bille.pdf" target="_blank" rel="noopener noreferrer">diff算法O(n^3)<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></blockquote> <h2 id="_1、diff算法简介"><a href="#_1、diff算法简介" class="header-anchor">#</a> 1、diff算法简介</h2> <ul><li>上古时期：o(m^3n^3)</li> <li>2011年：o(n^3)，n为节点总数</li> <li>react提出近代同层比较算法：o(n)</li></ul> <p>解析：时间复杂度：最好时间复杂度、最坏时间复杂度、平均时间复杂度、均摊时间复杂度</p> <p>Eg：遍历列表（长度n）</p> <ul><li><p>最好时间复杂度：1（第一个就找到）</p></li> <li><p>最坏时间复杂度：n（最后一个元素找到）</p></li> <li><p>平均时间复杂度：总操作数 / 总情况数  = 1 + 2 + 3 ... + n / (n + 1(not found)) = n</p></li> <li><p>均摊时间复杂度：最坏时间复杂度均摊 = n / n  = 1</p></li></ul> <h2 id="_2、为什么diff"><a href="#_2、为什么diff" class="header-anchor">#</a> 2、为什么diff</h2> <ul><li>在数据模型和视图模型中使用虚拟dom，使用diff算法避免直接操作dom提升性能，数据模型 -&gt; virtual dom -&gt; 视图（dom)</li> <li>virtual dom可使用DSL(领域特定语言)： {type: 'div', props: {}, ...} -&gt; DOM 结构，用对象表示dom</li> <li>虚拟dom渲染不一定比原生dom渲染快，本质是原生的dom渲染，前端框架svelte未使用vm及diff</li> <li>数据和视图隔离：f(state) -&gt; view，通过操作状态实现视图更新</li></ul> <h2 id="_3、为什么o-n-3"><a href="#_3、为什么o-n-3" class="header-anchor">#</a> 3、为什么o(n^3)</h2> <ul><li>字符串的比较，通过「替换」「插入」「删除」，执行这三种操作后使两个字符串一致的最小操作数，就是最短编辑距离。经典解决方法：Levenshtein（莱文斯坦）算法，复杂度o(n^2)</li> <li>树的比较使用该模型，进行替换、插入、删除操作变为一致，具体进行操作时需要遍历树，即 diff 还要做一次 patch（找到差异后还要计算最小转换方式）这个时候还要在之前遍历的基础上再遍历一次，所以累计起来就是 O(n^3) 了</li></ul> <h2 id="_4、为什么o-n"><a href="#_4、为什么o-n" class="header-anchor">#</a> 4、为什么o(n)</h2> <p>react和vue的diff算法，严格意义上不是o(n)，复杂度其实是 O(nm)，这里只是有一些技巧可以优化成 O(n)</p> <div class="language-js line-numbers-mode"><pre class="language-js"><code> <span class="token comment">/*
+ *   a       a
+ *  | |     | |
+ *  c b     c d
+ * 只做同层比较：
+ * [a, a] 相同，不处理
+ * [c, c] 相同，不处理
+ * [b, d] 不相同，替换
+ */</span>
+ <span class="token keyword">const</span> arr <span class="token operator">=</span> <span class="token punctuation">[</span>a<span class="token punctuation">,</span> b<span class="token punctuation">,</span> c<span class="token punctuation">]</span> 
+ <span class="token keyword">const</span> newArr <span class="token operator">=</span> <span class="token punctuation">[</span>b<span class="token punctuation">,</span> d<span class="token punctuation">,</span> e<span class="token punctuation">,</span> f<span class="token punctuation">]</span>
+ <span class="token comment">/* 比较过程
+ * [a, b]
+ * [b, d]
+ * [c, e]
+ * [null, f]
+ */</span>
+<span class="token comment">//技巧，减少一次for循环，变为O(n)</span>
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> len <span class="token operator">=</span> oldNodes<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i <span class="token operator">&lt;</span> len<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token function">compare</span><span class="token punctuation">(</span>oldNodes<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> newNodes<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+<span class="token comment">//react写法：复杂度o(m*n)，m是父节点、n是子节点</span>
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> len <span class="token operator">=</span> oldNodes<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i <span class="token operator">&lt;</span> len<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+   <span class="token keyword">if</span> <span class="token punctuation">(</span>oldNodes<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>type <span class="token operator">!==</span> newNodes<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>type<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">replace</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+   <span class="token comment">// 如果没有这一层，假设 type 全不相同，那么就是 O(n)，最坏复杂度 O(nm)</span>
+   <span class="token punctuation">}</span><span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>oldNodes<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>children <span class="token operator">&amp;&amp;</span> oldNodes<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>children<span class="token punctuation">.</span>length<span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+	 <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token comment">//vue，使用inferno算法（最长上升子序列），复杂度能到 O(mlogn)</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br></div></div><h2 id="_5、how-o-n"><a href="#_5、how-o-n" class="header-anchor">#</a> 5、how O(n)</h2> <p>react 是怎么设计将复杂度砍下来呢？</p> <p>其实就是在算法复杂度、虚拟 dom 渲染机制、性能中找了一个平衡，react 采用了启发式的算法，做了如下最优假设：</p> <ul><li>如果节点类型相同，那么以该节点为根节点的 tree 结构，大概率是相同的，所以如果类型不同，可以直接「删除」原节点，「插入」新节点</li> <li>跨层级移动子 tree 结构的情况比较少见，或者可以培养用户使用习惯来规避这种情况，遇到这种情况同样是采用先「删除」再「插入」的方式，这样就避免了跨层级移动</li> <li>同一层级的子元素，可以通过 key 来缓存实例，然后根据算法采取「插入」「删除」「移动」的操作，尽量复用，减少性能开销</li> <li>完全相同的节点，其虚拟 dom 也是完全一致的</li></ul> <p>基于这些假设，可以将 diff 抽象成只需要做同层比较的算法，这样复杂度就直线降低了</p> <h2 id="_6、同级元素的key"><a href="#_6、同级元素的key" class="header-anchor">#</a> 6、同级元素的key</h2> <h3 id="_1、为什么添加key"><a href="#_1、为什么添加key" class="header-anchor">#</a> 1、为什么添加key</h3> <p>官方文档就有说明：https://cn.vuejs.org/v2/api/#key</p> <ul><li>key 的特殊 attribute 主要用在 Vue 的虚拟 DOM 算法，在新旧 nodes 对比时辨识 VNodes：如果不使用 key，Vue 会使用一种最大限度减少动态元素并且尽可能的尝试就地修改/复用相同类型元素的算法。而使用 key 时，它会基于 key 的变化重新排列元素顺序，并且会移除 key 不存在的元素。</li></ul> <p>举个例子，假设原来有 [1, 2, 3] 三个子节点渲染了，假设我们这么操作了一波，将顺序打乱变成 [3, 1, 2]，并且删除了最后一个，变成 [3, 1]。那，最优的 diff 思路应该是复用 3, 1组件，移动一下位置，去掉 2 组件，这样整体是开销最小的，如果有 key 的话，这波操作水到渠成，如果没有 key 的话，那么就要多一些操作了:</p> <ul><li>判断哪些可以复用，有 key 只需要从映射中看看 3, 1在不在，没有 key 的话，可能就执行替换了，肯定比「复用」「移动」开销大了</li> <li>删除了哪一个？新增了哪一个？有 key 的话是不是很好判断嘛，之前的映射没有的 key，比如变成 [3, 1, 4]那这个 4 很容易判断出应该是新建的，删除也同理但是没有 key 的话就麻烦一些了</li></ul> <h3 id="_2、key的使用"><a href="#_2、key的使用" class="header-anchor">#</a> 2、key的使用</h3> <ul><li>不使用随机数：不利于diff算法，无意义，需全部重绘</li> <li>不使用数组下标
+<ul><li>vue中使用数组下标会导致删除异常</li> <li>react中会全部列表重绘</li></ul></li></ul> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token comment">//1、vue</span>
+<span class="token comment">//执行结果 1，2，3 -&gt; 1, 2</span>
+<span class="token comment">//解析：vue中key值【0，1，2】-&gt; [0, 1]，比较时认为删除了第三个，实际需删除第一个</span>
+<span class="token operator">&lt;</span>ul<span class="token operator">&gt;</span>
+  <span class="token operator">&lt;</span>li v<span class="token operator">-</span><span class="token keyword">for</span><span class="token operator">=</span><span class="token string">&quot;(value, index) in arr&quot;</span> <span class="token operator">:</span>key<span class="token operator">=</span><span class="token string">&quot;index&quot;</span><span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span>test<span class="token operator">/</span><span class="token operator">&gt;</span>
+  <span class="token operator">&lt;</span><span class="token operator">/</span>li<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>ul<span class="token operator">&gt;</span>
+<span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">arr</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token literal-property property">methods</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+   <span class="token function">handleDelete</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+     <span class="token keyword">this</span><span class="token punctuation">.</span>arr<span class="token punctuation">.</span><span class="token function">splice</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span>
+   <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">//2、react中会出现警告，会全部重写渲染，现象正常，删除首个</span>
+<span class="token comment">//[0('a'), 1, 2, 3, 4] -&gt; [0('b'), 1, 2, 3]</span>
+<span class="token comment">/*
+ * function sameVnode (a, b) {
+ *  return (
+ *    a.key === b.key &amp;&amp;  // key值
+ *    a.tag === b.tag &amp;&amp;  // 标签名
+ *    a.isComment === b.isComment &amp;&amp;  // 是否为注释节点
+ *    // 是否都定义了data，data包含一些具体信息，例如onclick , style
+ *   isDef(a.data) === isDef(b.data) &amp;&amp;  
+ *    sameInputType(a, b) // 当标签是&lt;input&gt;的时候，type必须相同
+ *  )
+ * }
+ */</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br></div></div><h2 id="_7、虚拟dom的实现"><a href="#_7、虚拟dom的实现" class="header-anchor">#</a> 7、虚拟dom的实现</h2> <h3 id="_1、什么是虚拟dom"><a href="#_1、什么是虚拟dom" class="header-anchor">#</a> 1、什么是虚拟dom</h3> <p>虚拟dom为嵌套结构的对象树，与dom结构类似</p> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token punctuation">{</span>
+  <span class="token literal-property property">type</span><span class="token operator">:</span> <span class="token string">'div'</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">props</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">children</span><span class="token operator">:</span> <span class="token punctuation">[</span> <span class="token comment">//子节点  </span>
+    <span class="token punctuation">]</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">el</span><span class="token operator">:</span> xxx
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><h3 id="_2、怎么创建虚拟dom"><a href="#_2、怎么创建虚拟dom" class="header-anchor">#</a> 2、怎么创建虚拟dom</h3> <p>h、createElement：function h(type, props) { return { type, props } }</p> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token comment">//h.js</span>
+<span class="token keyword">export</span> <span class="token keyword">const</span> <span class="token constant">NODE_FLAG</span> <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//使用位运算进行元素类型判断：元素1，text2</span>
+  <span class="token comment">//type &amp; NODE_FLAG.EL = true 元素节点</span>
+  <span class="token comment">//1 &amp; 1 = 1为true，2 &amp; 1 = 0 为false</span>
+  <span class="token comment">//1 &amp; 2 = 0为false，2 &amp; 2 = 2 为true</span>
+  <span class="token constant">EL</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token comment">// 元素 element</span>
+  <span class="token constant">TEXT</span><span class="token operator">:</span> <span class="token number">1</span> <span class="token operator">&lt;&lt;</span> <span class="token number">1</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span>  <span class="token function-variable function">createText</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">text</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">type</span><span class="token operator">:</span> <span class="token string">''</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">props</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token literal-property property">nodeValue</span><span class="token operator">:</span> text <span class="token operator">+</span> <span class="token string">''</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">$$</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token literal-property property">flag</span><span class="token operator">:</span> <span class="token constant">NODE_FLAG</span><span class="token punctuation">.</span><span class="token constant">TEXT</span> <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> <span class="token function-variable function">createVnode</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">type<span class="token punctuation">,</span> props<span class="token punctuation">,</span> key<span class="token punctuation">,</span> $$</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token comment">// step1. 定义虚拟 DOM 的数据结构</span>
+  <span class="token keyword">return</span> <span class="token punctuation">{</span>
+    type<span class="token punctuation">,</span>   <span class="token comment">// div / CompoentA / ''(文本)</span>
+    props<span class="token punctuation">,</span>  <span class="token comment">// children放置在props中</span>
+    key<span class="token punctuation">,</span>
+    $$      <span class="token comment">//存在内部使用属性</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> <span class="token function-variable function">normalize</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">children <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span></span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  children<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token parameter">child</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    <span class="token keyword">typeof</span> child <span class="token operator">===</span> <span class="token string">'string'</span> <span class="token operator">?</span> <span class="token function">createText</span><span class="token punctuation">(</span>child<span class="token punctuation">)</span> <span class="token operator">:</span> child
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/**
+ * step2. 定义生成虚拟DOM对象的方法
+ * h('div', { className: 'padding20'}, 'hello world!')
+ * const nextVNode = h(
+      'ul',
+      {
+        style: {
+          width: '100px',
+          height: '100px',
+          backgroundColor: 'green'
+        }
+      },
+      [
+        h('li', { key: 'li-a' }, 'this is li a'),
+        h('li', { key: 'li-b' }, 'this is li b'),
+        h('li', { key: 'li-c' }, 'this is li c'),
+        h('li', { key: 'li-d' }, 'this is li d'),
+      ]
+    )
+ */</span>
+<span class="token keyword">export</span> <span class="token keyword">const</span> <span class="token function-variable function">h</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">type<span class="token punctuation">,</span> props<span class="token punctuation">,</span> <span class="token operator">...</span>kids</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  props <span class="token operator">=</span> props <span class="token operator">||</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+  <span class="token keyword">let</span> key <span class="token operator">=</span> props<span class="token punctuation">.</span>key <span class="token operator">||</span> <span class="token keyword">void</span> <span class="token number">0</span>
+  <span class="token comment">//支持props.children以及直接children属性情况</span>
+  kids <span class="token operator">=</span> <span class="token function">normalize</span><span class="token punctuation">(</span>props<span class="token punctuation">.</span>children <span class="token operator">||</span> kids<span class="token punctuation">)</span>
+  
+  <span class="token comment">//props.children三种情况</span>
+  <span class="token comment">//1、为空：null void 0</span>
+  <span class="token comment">//2、单个对象：{ type: 'div', ... }</span>
+  <span class="token comment">//3、多个子对象（数组）：[{xx}, {xxx}]</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>kids<span class="token punctuation">.</span>length<span class="token punctuation">)</span> props<span class="token punctuation">.</span>children <span class="token operator">=</span> kids<span class="token punctuation">.</span>length <span class="token operator">===</span> <span class="token number">1</span> <span class="token operator">?</span> kids<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">:</span> kids
+
+  <span class="token keyword">const</span> $$ <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+  $$<span class="token punctuation">.</span>el <span class="token operator">=</span> <span class="token keyword">null</span>
+  $$<span class="token punctuation">.</span>flag <span class="token operator">=</span> type <span class="token operator">===</span> <span class="token string">''</span> <span class="token operator">?</span> <span class="token constant">NODE_FLAG</span><span class="token punctuation">.</span><span class="token constant">TEXT</span> <span class="token operator">:</span> <span class="token constant">NODE_FLAG</span><span class="token punctuation">.</span><span class="token constant">EL</span>
+
+  <span class="token keyword">return</span> <span class="token function">createVnode</span><span class="token punctuation">(</span>type<span class="token punctuation">,</span> props<span class="token punctuation">,</span> key<span class="token punctuation">,</span> $$<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br></div></div><h3 id="_3、如何使用虚拟dom"><a href="#_3、如何使用虚拟dom" class="header-anchor">#</a> 3、如何使用虚拟dom</h3> <p>编写模版，模版template、jsx通过工具转换为createELement、h函数</p> <div class="language-js line-numbers-mode"><pre class="language-js"><code> <span class="token comment">/*
+ * JSX:
+ * &lt;div&gt;
+ *   &lt;ul className='padding-20'&gt;
+ *     &lt;li key='li-01'&gt;this is li 01&lt;/li&gt;
+ *   &lt;/ul&gt;
+ * &lt;/div&gt;
+ * 
+ * 经过一些工具转一下：
+ * createElement('div', {
+ *   children: [
+ *     createElement('ul', { className: 'padding-20' },
+ *        createElement('li', { key: 'li-01'}, 'this is li 01'))
+ *   ]
+ * })
+ */</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br></div></div><h3 id="_4、虚拟dom的渲染"><a href="#_4、虚拟dom的渲染" class="header-anchor">#</a> 4、虚拟dom的渲染</h3> <p>使用dom相关函数：createElement、insert、insertbefore等dom方法进行操作</p> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token comment">// f(vnode) -&gt; view</span>
+<span class="token function">f</span><span class="token punctuation">(</span><span class="token parameter">vnode</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  document<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token operator">...</span><span class="token punctuation">.</span>
+  parent<span class="token punctuation">.</span><span class="token function">insert</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span> insertBefore
+<span class="token punctuation">}</span>
+
+<span class="token keyword">export</span> <span class="token keyword">const</span> <span class="token function-variable function">render</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">vnode<span class="token punctuation">,</span> parent</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>  <span class="token punctuation">}</span>
+<span class="token operator">&lt;</span>div id<span class="token operator">=</span><span class="token string">'app'</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+
+
+<span class="token comment">//render.js</span>
+<span class="token comment">/*
+ * step3. 渲染 f(vnode, parent)
+ */</span>
+<span class="token keyword">export</span> <span class="token keyword">const</span> <span class="token function-variable function">render</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">vnode<span class="token punctuation">,</span> parent</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">let</span> prev <span class="token operator">=</span> parent<span class="token punctuation">.</span>_vnode
+
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>prev<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment">//首次创建</span>
+    <span class="token function">mount</span><span class="token punctuation">(</span>vnode<span class="token punctuation">,</span> parent<span class="token punctuation">)</span>
+    parent<span class="token punctuation">.</span>_vnode <span class="token operator">=</span> vnode
+  <span class="token punctuation">}</span>
+  <span class="token keyword">else</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>vnode<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment">// 新旧两个 vnodeTree 都存在，patch</span>
+      <span class="token function">patch</span><span class="token punctuation">(</span>prev<span class="token punctuation">,</span> vnode<span class="token punctuation">,</span> parent<span class="token punctuation">)</span>
+      parent<span class="token punctuation">.</span>_vnode <span class="token operator">=</span> vnode
+    <span class="token punctuation">}</span>
+    <span class="token keyword">else</span> <span class="token punctuation">{</span> <span class="token comment">//旧存在、新不存在直接删除</span>
+      parent<span class="token punctuation">.</span><span class="token function">removeChild</span><span class="token punctuation">(</span>prev<span class="token punctuation">.</span>$$<span class="token punctuation">.</span>el<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">//mount.js</span>
+<span class="token keyword">export</span> <span class="token keyword">const</span> <span class="token function-variable function">mount</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">vnode<span class="token punctuation">,</span> parent<span class="token punctuation">,</span> refNode</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>parent<span class="token punctuation">)</span> <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">Error</span><span class="token punctuation">(</span><span class="token string">'你可能忘了点啥'</span><span class="token punctuation">)</span>
+  <span class="token keyword">const</span> $$ <span class="token operator">=</span> vnode<span class="token punctuation">.</span>$$
+  <span class="token comment">//文本节点</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>$$<span class="token punctuation">.</span>flag <span class="token operator">&amp;</span> <span class="token constant">NODE_FLAG</span><span class="token punctuation">.</span><span class="token constant">TEXT</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> el <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createTextNode</span><span class="token punctuation">(</span>vnode<span class="token punctuation">.</span>props<span class="token punctuation">.</span>nodeValue<span class="token punctuation">)</span>
+    vnode<span class="token punctuation">.</span>el <span class="token operator">=</span> el <span class="token comment">//挂载真实dom节点</span>
+    parent<span class="token punctuation">.</span><span class="token function">appendChild</span><span class="token punctuation">(</span>el<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span><span class="token comment">//元素节点</span>
+  <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>$$<span class="token punctuation">.</span>flag <span class="token operator">&amp;</span> <span class="token constant">NODE_FLAG</span><span class="token punctuation">.</span><span class="token constant">EL</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> <span class="token punctuation">{</span> type<span class="token punctuation">,</span> props <span class="token punctuation">}</span> <span class="token operator">=</span> vnode
+    <span class="token comment">// 先不考虑 type 是一个组件的情况 ⚠️</span>
+    <span class="token keyword">const</span> el <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span>type<span class="token punctuation">)</span>
+    vnode<span class="token punctuation">.</span>el <span class="token operator">=</span> el
+
+    <span class="token keyword">const</span> <span class="token punctuation">{</span> children<span class="token punctuation">,</span> <span class="token operator">...</span>rest <span class="token punctuation">}</span> <span class="token operator">=</span> props
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>Object<span class="token punctuation">.</span><span class="token function">keys</span><span class="token punctuation">(</span>rest<span class="token punctuation">)</span><span class="token punctuation">.</span>length<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> key <span class="token keyword">of</span> Object<span class="token punctuation">.</span><span class="token function">keys</span><span class="token punctuation">(</span>rest<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">patchProps</span><span class="token punctuation">(</span>key<span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">,</span> rest<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">,</span> el<span class="token punctuation">)</span><span class="token comment">//patch属性，前属性为null</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>children<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">const</span> __children <span class="token operator">=</span> Array<span class="token punctuation">.</span><span class="token function">isArray</span><span class="token punctuation">(</span>children<span class="token punctuation">)</span> <span class="token operator">?</span> children <span class="token operator">:</span> <span class="token punctuation">[</span>children<span class="token punctuation">]</span>
+      <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> child <span class="token keyword">of</span> __children<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">mount</span><span class="token punctuation">(</span>child<span class="token punctuation">,</span> el<span class="token punctuation">)</span> <span class="token comment">//递归执行</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    refNode <span class="token operator">?</span> parent<span class="token punctuation">.</span><span class="token function">insertBefore</span><span class="token punctuation">(</span>el<span class="token punctuation">,</span> refNode<span class="token punctuation">)</span> <span class="token operator">:</span> parent<span class="token punctuation">.</span><span class="token function">appendChild</span><span class="token punctuation">(</span>el<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">//patchProps.js，属性值、前属性对象、后属性对象、dom节点</span>
+<span class="token keyword">export</span> <span class="token keyword">const</span> <span class="token function-variable function">patchProps</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">key<span class="token punctuation">,</span> prev<span class="token punctuation">,</span> next<span class="token punctuation">,</span> el</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token comment">// style</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>key <span class="token operator">===</span> <span class="token string">'style'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// { style: { margin: '0px', padding: '10px' }}</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>next<span class="token punctuation">)</span>
+      <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> k <span class="token keyword">in</span> next<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        el<span class="token punctuation">.</span>style<span class="token punctuation">[</span>k<span class="token punctuation">]</span> <span class="token operator">=</span> next<span class="token punctuation">[</span>k<span class="token punctuation">]</span>
+      <span class="token punctuation">}</span>
+    <span class="token comment">// { style: { padding: '0px', color: 'red' } }</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>prev<span class="token punctuation">)</span>
+      <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> k <span class="token keyword">in</span> prev<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>next<span class="token punctuation">.</span><span class="token function">hasOwnProperty</span><span class="token punctuation">(</span>k<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          el<span class="token punctuation">.</span>style<span class="token punctuation">[</span>k<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">''</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+  <span class="token comment">// class</span>
+  <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>key <span class="token operator">===</span> <span class="token string">'className'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>el<span class="token punctuation">.</span>classList<span class="token punctuation">.</span><span class="token function">contains</span><span class="token punctuation">(</span>next<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      el<span class="token punctuation">.</span>classList<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>next<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+  <span class="token comment">// events</span>
+  <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>key<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">===</span> <span class="token string">'o'</span> <span class="token operator">&amp;&amp;</span> key<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">===</span> <span class="token string">'n'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    prev <span class="token operator">&amp;&amp;</span> el<span class="token punctuation">.</span><span class="token function">removeEventListener</span><span class="token punctuation">(</span>key<span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toLowerCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> prev<span class="token punctuation">)</span>
+    next <span class="token operator">&amp;&amp;</span> el<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span>key<span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toLowerCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> next<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">\[A-Z]|^(?:value|checked|selected|muted)$</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    el<span class="token punctuation">[</span>key<span class="token punctuation">]</span> <span class="token operator">=</span> next
+  <span class="token punctuation">}</span>
+  <span class="token keyword">else</span> <span class="token punctuation">{</span>
+    el<span class="token punctuation">.</span>setAttribute <span class="token operator">&amp;&amp;</span> el<span class="token punctuation">.</span><span class="token function">setAttribute</span><span class="token punctuation">(</span>key<span class="token punctuation">,</span> next<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br><span class="line-number">79</span><br><span class="line-number">80</span><br><span class="line-number">81</span><br><span class="line-number">82</span><br><span class="line-number">83</span><br><span class="line-number">84</span><br><span class="line-number">85</span><br><span class="line-number">86</span><br><span class="line-number">87</span><br><span class="line-number">88</span><br><span class="line-number">89</span><br><span class="line-number">90</span><br><span class="line-number">91</span><br><span class="line-number">92</span><br><span class="line-number">93</span><br><span class="line-number">94</span><br><span class="line-number">95</span><br><span class="line-number">96</span><br><span class="line-number">97</span><br><span class="line-number">98</span><br><span class="line-number">99</span><br><span class="line-number">100</span><br><span class="line-number">101</span><br></div></div><h3 id="_5、diff-相关-patch"><a href="#_5、diff-相关-patch" class="header-anchor">#</a> 5、diff 相关(patch)</h3> <p>f(oldVnodeTree, newVnodeTree, parent) -&gt; 调度 -&gt; view</p> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token comment">//新老tree一个对象情况</span>
+<span class="token comment">//prev旧虚拟dom树、next新虚拟dom树、parent挂载节点</span>
+<span class="token keyword">export</span> <span class="token keyword">const</span> <span class="token function-variable function">patch</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">prev<span class="token punctuation">,</span> next<span class="token punctuation">,</span> parent</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token comment">// type: 'div' -&gt; type: 'p'，type不同直接删除新增</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>prev<span class="token punctuation">.</span>type <span class="token operator">!==</span> next<span class="token punctuation">.</span>type<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    parent<span class="token punctuation">.</span><span class="token function">removeChild</span><span class="token punctuation">(</span>prev<span class="token punctuation">.</span>el<span class="token punctuation">)</span>
+    <span class="token function">mount</span><span class="token punctuation">(</span>next<span class="token punctuation">,</span> parent<span class="token punctuation">)</span>
+    <span class="token keyword">return</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">// type 一样，diff props（先不看 children）</span>
+  <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token literal-property property">props</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token literal-property property">children</span><span class="token operator">:</span> prevChildren<span class="token punctuation">,</span> <span class="token operator">...</span>prevProps <span class="token punctuation">}</span> <span class="token punctuation">}</span> <span class="token operator">=</span> prev
+  <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token literal-property property">props</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token literal-property property">children</span><span class="token operator">:</span> nextChildren<span class="token punctuation">,</span> <span class="token operator">...</span>nextProps <span class="token punctuation">}</span> <span class="token punctuation">}</span> <span class="token operator">=</span> next
+  <span class="token comment">// patchProps</span>
+  <span class="token keyword">const</span> el <span class="token operator">=</span> <span class="token punctuation">(</span>next<span class="token punctuation">.</span>el <span class="token operator">=</span> prev<span class="token punctuation">.</span>el<span class="token punctuation">)</span>
+  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> key <span class="token keyword">of</span> Object<span class="token punctuation">.</span><span class="token function">keys</span><span class="token punctuation">(</span>nextProps<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> prev <span class="token operator">=</span> prevProps<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">,</span> next <span class="token operator">=</span> nextProps<span class="token punctuation">[</span>key<span class="token punctuation">]</span>
+      <span class="token function">patchProps</span><span class="token punctuation">(</span>key<span class="token punctuation">,</span> prev<span class="token punctuation">,</span> next<span class="token punctuation">,</span> el<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> key <span class="token keyword">of</span> Object<span class="token punctuation">.</span><span class="token function">keys</span><span class="token punctuation">(</span>prevProps<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>nextProps<span class="token punctuation">.</span><span class="token function">hasOwnProperty</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token function">patchProps</span><span class="token punctuation">(</span>key<span class="token punctuation">,</span> prevProps<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">,</span> el<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+  <span class="token comment">// patch children</span>
+  <span class="token function">patchChildren</span><span class="token punctuation">(</span>
+    prevChildren<span class="token punctuation">,</span>
+    nextChildren<span class="token punctuation">,</span>
+    el
+  <span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">const</span> <span class="token function-variable function">patchChildren</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">prev<span class="token punctuation">,</span> next<span class="token punctuation">,</span> parent</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token comment">// diff 比较耗性能，可以前置做一些处理，提升效率</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>prev<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>next<span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token comment">//新旧tree不存在</span>
+      <span class="token comment">// do nothing</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">else</span> <span class="token punctuation">{</span><span class="token comment">//旧不存在，新存在</span>
+      next <span class="token operator">=</span> Array<span class="token punctuation">.</span><span class="token function">isArray</span><span class="token punctuation">(</span>next<span class="token punctuation">)</span> <span class="token operator">?</span> next <span class="token operator">:</span> <span class="token punctuation">[</span>next<span class="token punctuation">]</span>
+      <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">const</span> c <span class="token keyword">of</span> next<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">mount</span><span class="token punctuation">(</span>c<span class="token punctuation">,</span> parent<span class="token punctuation">)</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+  <span class="token comment">// 只有一个 children，直接diff处理</span>
+  <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>prev <span class="token operator">&amp;&amp;</span> <span class="token operator">!</span>Array<span class="token punctuation">.</span><span class="token function">isArray</span><span class="token punctuation">(</span>prev<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">//新tree不存在，删除</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>next<span class="token punctuation">)</span> parent<span class="token punctuation">.</span><span class="token function">removeChild</span><span class="token punctuation">(</span>prev<span class="token punctuation">.</span>el<span class="token punctuation">)</span>
+    <span class="token comment">//新tree一个对象，老tree一个对象，直接patch</span>
+    <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>next <span class="token operator">&amp;&amp;</span> <span class="token operator">!</span>Array<span class="token punctuation">.</span><span class="token function">isArray</span><span class="token punctuation">(</span>next<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token function">patch</span><span class="token punctuation">(</span>prev<span class="token punctuation">,</span> next<span class="token punctuation">,</span> parent<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">else</span> <span class="token punctuation">{</span><span class="token comment">//旧tree一个对象，新tree多个对象，删除直接挂载</span>
+      parent<span class="token punctuation">.</span><span class="token function">removeChild</span><span class="token punctuation">(</span>prev<span class="token punctuation">.</span>el<span class="token punctuation">)</span>
+      <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">const</span> c <span class="token keyword">of</span> next<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">mount</span><span class="token punctuation">(</span>c<span class="token punctuation">,</span> parent<span class="token punctuation">)</span>
+      <span class="token punctuation">}</span> 
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+  <span class="token comment">//新老tree都多个对象，使用diff算法</span>
+  <span class="token keyword">else</span> <span class="token function">odiff</span><span class="token punctuation">(</span>prev<span class="token punctuation">,</span> next<span class="token punctuation">,</span> parent<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br></div></div><h4 id="_1、react的diff算法"><a href="#_1、react的diff算法" class="header-anchor">#</a> 1、react的diff算法</h4> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token keyword">export</span> <span class="token keyword">const</span> <span class="token function-variable function">diff</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">prev<span class="token punctuation">,</span> next<span class="token punctuation">,</span> parent</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">let</span> prevMap <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+  <span class="token keyword">let</span> nextMap <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+  <span class="token comment">// old tree children</span>
+  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> prev<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> <span class="token punctuation">{</span> key <span class="token operator">=</span> i <span class="token operator">+</span> <span class="token string">''</span> <span class="token punctuation">}</span> <span class="token operator">=</span> prev<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
+    prevMap<span class="token punctuation">[</span>key<span class="token punctuation">]</span> <span class="token operator">=</span> i
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">let</span> lastIndex <span class="token operator">=</span> <span class="token number">0</span>
+  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> n <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> n <span class="token operator">&lt;</span> next<span class="token punctuation">.</span>length<span class="token punctuation">;</span> n<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> <span class="token punctuation">{</span> key <span class="token operator">=</span> n <span class="token operator">+</span> <span class="token string">''</span> <span class="token punctuation">}</span> <span class="token operator">=</span> next<span class="token punctuation">[</span>n<span class="token punctuation">]</span>
+    <span class="token keyword">let</span> j <span class="token operator">=</span> prevMap<span class="token punctuation">[</span>key<span class="token punctuation">]</span>
+    <span class="token keyword">let</span> nextChild <span class="token operator">=</span> next<span class="token punctuation">[</span>n<span class="token punctuation">]</span>
+    nextMap<span class="token punctuation">[</span>key<span class="token punctuation">]</span> <span class="token operator">=</span> n
+    
+    <span class="token comment">// {b: 0, a: 1}</span>
+    <span class="token comment">// 原children    新 children</span>
+    <span class="token comment">// [b, a]   -&gt;   [c, d, a]  ::[c, b, a] 👉 c</span>
+    <span class="token comment">// [b, a]   -&gt;   [c, d, a]  ::[c, d, b, a] 👉 d</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>j <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">let</span> refNode <span class="token operator">=</span> n <span class="token operator">===</span> <span class="token number">0</span> <span class="token operator">?</span> prev<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>el <span class="token operator">:</span> next<span class="token punctuation">[</span>n <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">.</span>el<span class="token punctuation">.</span>nextSibling
+      <span class="token function">mount</span><span class="token punctuation">(</span>nextChild<span class="token punctuation">,</span> parent<span class="token punctuation">,</span> refNode<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">else</span> <span class="token punctuation">{</span>
+      <span class="token comment">// [b, a] -&gt; [c, d, a]  ::[c, d, a, b] 👉 a</span>
+      <span class="token function">patch</span><span class="token punctuation">(</span>prev<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">,</span> nextChild<span class="token punctuation">,</span> parent<span class="token punctuation">)</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>j <span class="token operator">&lt;</span> lastIndex<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">let</span> refNode <span class="token operator">=</span> next<span class="token punctuation">[</span>n <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">.</span>el<span class="token punctuation">.</span>nextSibling<span class="token punctuation">;</span>
+        parent<span class="token punctuation">.</span><span class="token function">insertBefore</span><span class="token punctuation">(</span>nextChild<span class="token punctuation">.</span>el<span class="token punctuation">,</span> refNode<span class="token punctuation">)</span>
+      <span class="token punctuation">}</span>
+      <span class="token keyword">else</span> <span class="token punctuation">{</span>
+        lastIndex <span class="token operator">=</span> j
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">// [b, a] -&gt; [c, d, a]  ::[c, d, a] 👉 b</span>
+  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> prev<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> <span class="token punctuation">{</span> key <span class="token operator">=</span> <span class="token string">''</span> <span class="token operator">+</span> i <span class="token punctuation">}</span> <span class="token operator">=</span> prev<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>nextMap<span class="token punctuation">.</span><span class="token function">hasOwnProperty</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span><span class="token punctuation">)</span> parent<span class="token punctuation">.</span><span class="token function">removeChild</span><span class="token punctuation">(</span>prev<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>el<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br></div></div><h4 id="_2、vue的diff算法"><a href="#_2、vue的diff算法" class="header-anchor">#</a> 2、vue的diff算法</h4> <ul><li>双指针前置处理</li> <li>最长上升子序列最小化移动</li></ul> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token keyword">export</span> <span class="token keyword">const</span> <span class="token function-variable function">odiff</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">prevChildren<span class="token punctuation">,</span> nextChildren<span class="token punctuation">,</span> parent</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token comment">// 前指针</span>
+  <span class="token keyword">let</span> j <span class="token operator">=</span> <span class="token number">0</span>
+
+  <span class="token comment">// 后指针</span>
+  <span class="token keyword">let</span> prevEnd <span class="token operator">=</span> prevChildren<span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">1</span>
+  <span class="token keyword">let</span> nextEnd <span class="token operator">=</span> nextChildren<span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">1</span>
+
+  <span class="token keyword">let</span> prevNode <span class="token operator">=</span> prevChildren<span class="token punctuation">[</span>j<span class="token punctuation">]</span>
+  <span class="token keyword">let</span> nextNode <span class="token operator">=</span> nextChildren<span class="token punctuation">[</span>j<span class="token punctuation">]</span>
+
+  <span class="token comment">// [a, b, c, d]   [a, b, c, d, e]</span>
+  <span class="token comment">//  j        👆    j           👆</span>
+  <span class="token literal-property property">outer</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token keyword">while</span><span class="token punctuation">(</span>prevNode<span class="token punctuation">.</span>key <span class="token operator">===</span> nextNode<span class="token punctuation">.</span>key<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token function">patch</span><span class="token punctuation">(</span>prevNode<span class="token punctuation">,</span> nextNode<span class="token punctuation">,</span> parent<span class="token punctuation">)</span>
+      j<span class="token operator">++</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>j <span class="token operator">&gt;</span> prevEnd <span class="token operator">||</span> j <span class="token operator">&gt;</span> nextEnd<span class="token punctuation">)</span> <span class="token keyword">break</span> outer
+      prevNode <span class="token operator">=</span> prevChildren<span class="token punctuation">[</span>j<span class="token punctuation">]</span>
+      nextNode <span class="token operator">=</span> nextChildren<span class="token punctuation">[</span>j<span class="token punctuation">]</span>
+    <span class="token punctuation">}</span>
+
+    prevNode <span class="token operator">=</span> prevChildren<span class="token punctuation">[</span>prevEnd<span class="token punctuation">]</span>
+    nextNode <span class="token operator">=</span> nextChildren<span class="token punctuation">[</span>nextEnd<span class="token punctuation">]</span>
+
+    <span class="token keyword">while</span> <span class="token punctuation">(</span>prevNode<span class="token punctuation">.</span>key <span class="token operator">===</span> nextNode<span class="token punctuation">.</span>key<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token function">patch</span><span class="token punctuation">(</span>prevNode<span class="token punctuation">,</span> nextNode<span class="token punctuation">,</span> parent<span class="token punctuation">)</span>
+      prevEnd<span class="token operator">--</span>
+      nextEnd<span class="token operator">--</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>j <span class="token operator">&gt;</span> prevEnd <span class="token operator">||</span> j <span class="token operator">&gt;</span> nextEnd<span class="token punctuation">)</span> <span class="token keyword">break</span> outer
+      prevNode <span class="token operator">=</span> prevChildren<span class="token punctuation">[</span>prevEnd<span class="token punctuation">]</span>
+      nextNode <span class="token operator">=</span> nextChildren<span class="token punctuation">[</span>nextEnd<span class="token punctuation">]</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">// [a, b, c, h, d]   [a, b, c, f, m, k, h, d]</span>
+  <span class="token comment">//        👆 j                 j     👆</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>j <span class="token operator">&gt;</span> prevEnd <span class="token operator">&amp;&amp;</span> j <span class="token operator">&lt;=</span> nextEnd<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> nextPos <span class="token operator">=</span> nextEnd <span class="token operator">+</span> <span class="token number">1</span>
+    <span class="token keyword">let</span> refNode <span class="token operator">=</span> nextPos <span class="token operator">&gt;=</span> nextChildren<span class="token punctuation">.</span>length
+      <span class="token operator">?</span> <span class="token keyword">null</span>
+      <span class="token operator">:</span> nextChildren<span class="token punctuation">[</span>nextPos<span class="token punctuation">]</span><span class="token punctuation">.</span>el
+    <span class="token keyword">while</span> <span class="token punctuation">(</span>j <span class="token operator">&lt;=</span> nextEnd<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token function">mount</span><span class="token punctuation">(</span>nextChildren<span class="token punctuation">[</span>j<span class="token operator">++</span><span class="token punctuation">]</span><span class="token punctuation">,</span> parent<span class="token punctuation">,</span> refNode<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">// [a, b, c, f, m, k, h, d]  [a, b, c, h, d]   </span>
+  <span class="token comment">//           j     👆               👆  j</span>
+  <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>j <span class="token operator">&gt;</span> nextEnd<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span>j <span class="token operator">&lt;=</span> prevEnd<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      parent<span class="token punctuation">.</span><span class="token function">removeChild</span><span class="token punctuation">(</span>prevChildren<span class="token punctuation">[</span>j<span class="token operator">++</span><span class="token punctuation">]</span><span class="token punctuation">.</span>el<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">// [a, b, c, d]  [c, a, d, b]</span>
+  <span class="token comment">//  j        👆   j        👆</span>
+  <span class="token keyword">let</span> nextStart <span class="token operator">=</span> j<span class="token punctuation">,</span>
+    prevStart <span class="token operator">=</span> j<span class="token punctuation">,</span>
+    nextLeft <span class="token operator">=</span> nextEnd <span class="token operator">-</span> j <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span>
+    nextIndexMap <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+    source <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Array</span><span class="token punctuation">(</span>nextLeft<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">fill</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    patched <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span>
+    lastIndex <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span>
+    move <span class="token operator">=</span> <span class="token boolean">false</span>
+
+  <span class="token comment">// { 'c': 0, 'a': 1, 'd': 2, 'b': 3 }</span>
+  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> nextStart<span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> nextEnd<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> key <span class="token operator">=</span> nextChildren<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>key <span class="token operator">||</span> i
+    nextIndexMap<span class="token punctuation">[</span>key<span class="token punctuation">]</span> <span class="token operator">=</span> i
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> prevStart<span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> prevEnd<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> prevChild <span class="token operator">=</span> prevChildren<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span>
+      prevKey <span class="token operator">=</span> prevChild<span class="token punctuation">.</span>key <span class="token operator">||</span> i<span class="token punctuation">,</span>
+      nextIndex <span class="token operator">=</span> nextIndexMap<span class="token punctuation">[</span>prevKey<span class="token punctuation">]</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>patched <span class="token operator">&gt;=</span> nextLeft <span class="token operator">||</span> nextIndex <span class="token operator">===</span> <span class="token keyword">undefined</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      parent<span class="token punctuation">.</span><span class="token function">removeChild</span><span class="token punctuation">(</span>prevChild<span class="token punctuation">.</span>el<span class="token punctuation">)</span>
+      <span class="token keyword">continue</span>
+    <span class="token punctuation">}</span>
+    patched<span class="token operator">++</span>
+    <span class="token keyword">let</span> nextChild <span class="token operator">=</span> nextChildren<span class="token punctuation">[</span>nextIndex<span class="token punctuation">]</span>
+    <span class="token function">patch</span><span class="token punctuation">(</span>prevChild<span class="token punctuation">,</span> nextChild<span class="token punctuation">,</span> parent<span class="token punctuation">)</span>
+
+    source<span class="token punctuation">[</span>nextIndex <span class="token operator">-</span> nextStart<span class="token punctuation">]</span> <span class="token operator">=</span> i
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>nextIndex <span class="token operator">&lt;</span> lastIndex<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      move <span class="token operator">=</span> <span class="token boolean">true</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+      lastIndex <span class="token operator">=</span> nextIndex
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>move<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> seq <span class="token operator">=</span> <span class="token function">lis</span><span class="token punctuation">(</span>source<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// seq = [1, 3]</span>
+    <span class="token keyword">let</span> j <span class="token operator">=</span> seq<span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> nextLeft <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&gt;=</span> <span class="token number">0</span><span class="token punctuation">;</span> i<span class="token operator">--</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">let</span> pos <span class="token operator">=</span> nextStart <span class="token operator">+</span> i<span class="token punctuation">,</span>
+        nextPos <span class="token operator">=</span> pos <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span>
+        nextChild <span class="token operator">=</span> nextChildren<span class="token punctuation">[</span>pos<span class="token punctuation">]</span><span class="token punctuation">,</span>
+        refNode <span class="token operator">=</span> nextPos <span class="token operator">&gt;=</span> nextLeft <span class="token operator">?</span> <span class="token keyword">null</span> <span class="token operator">:</span> nextChildren<span class="token punctuation">[</span>nextPos<span class="token punctuation">]</span><span class="token punctuation">.</span>el
+      <span class="token comment">// [4, 0, -1, 1]</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>source<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">===</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">mount</span><span class="token punctuation">(</span>nextChild<span class="token punctuation">,</span> parent<span class="token punctuation">,</span> refNode<span class="token punctuation">)</span>
+      <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>i <span class="token operator">!==</span> seq<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        parent<span class="token punctuation">.</span><span class="token function">insertBefore</span><span class="token punctuation">(</span>nextChild<span class="token punctuation">.</span>el<span class="token punctuation">,</span> refNode<span class="token punctuation">)</span>
+      <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+        j<span class="token operator">--</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+    <span class="token comment">// no move</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> nextLeft <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&gt;=</span> <span class="token number">0</span><span class="token punctuation">;</span> i<span class="token operator">--</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>source<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">===</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">let</span> pos <span class="token operator">=</span> nextStart <span class="token operator">+</span> i<span class="token punctuation">,</span>
+          nextPos <span class="token operator">=</span> pos <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span>
+          nextChild <span class="token operator">=</span> nextChildren<span class="token punctuation">[</span>pos<span class="token punctuation">]</span><span class="token punctuation">,</span>
+          refNode <span class="token operator">=</span> nextPos <span class="token operator">&gt;=</span> nextLeft <span class="token operator">?</span> <span class="token keyword">null</span> <span class="token operator">:</span> nextChildren<span class="token punctuation">[</span>nextPos<span class="token punctuation">]</span><span class="token punctuation">.</span>el
+      
+        <span class="token function">mount</span><span class="token punctuation">(</span>nextChild<span class="token punctuation">,</span> parent<span class="token punctuation">,</span> refNode<span class="token punctuation">)</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">lis</span><span class="token punctuation">(</span><span class="token parameter">arr</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">let</span> len <span class="token operator">=</span> arr<span class="token punctuation">.</span>length<span class="token punctuation">,</span>
+    result <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    dp <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Array</span><span class="token punctuation">(</span>len<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">fill</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> len<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    result<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> len <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&gt;=</span> <span class="token number">0</span><span class="token punctuation">;</span> i<span class="token operator">--</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> cur <span class="token operator">=</span> arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> nextIndex <span class="token operator">=</span> <span class="token keyword">undefined</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>cur <span class="token operator">===</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token keyword">continue</span>
+
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> j <span class="token operator">=</span> i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> len<span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">let</span> next <span class="token operator">=</span> arr<span class="token punctuation">[</span>j<span class="token punctuation">]</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>cur <span class="token operator">&lt;</span> next<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">let</span> max <span class="token operator">=</span> dp<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token number">1</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>max <span class="token operator">&gt;</span> dp<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          nextIndex <span class="token operator">=</span> j
+          dp<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> max
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>nextIndex <span class="token operator">!==</span> <span class="token keyword">undefined</span><span class="token punctuation">)</span> result<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token operator">...</span>result<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token operator">...</span>result<span class="token punctuation">[</span>nextIndex<span class="token punctuation">]</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">let</span> index <span class="token operator">=</span> dp<span class="token punctuation">.</span><span class="token function">reduce</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">prev<span class="token punctuation">,</span> cur<span class="token punctuation">,</span> i<span class="token punctuation">,</span> arr</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> cur <span class="token operator">&gt;</span> arr<span class="token punctuation">[</span>prev<span class="token punctuation">]</span> <span class="token operator">?</span> i <span class="token operator">:</span> prev<span class="token punctuation">,</span> dp<span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span>
+  <span class="token keyword">return</span> result<span class="token punctuation">[</span>index<span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br><span class="line-number">79</span><br><span class="line-number">80</span><br><span class="line-number">81</span><br><span class="line-number">82</span><br><span class="line-number">83</span><br><span class="line-number">84</span><br><span class="line-number">85</span><br><span class="line-number">86</span><br><span class="line-number">87</span><br><span class="line-number">88</span><br><span class="line-number">89</span><br><span class="line-number">90</span><br><span class="line-number">91</span><br><span class="line-number">92</span><br><span class="line-number">93</span><br><span class="line-number">94</span><br><span class="line-number">95</span><br><span class="line-number">96</span><br><span class="line-number">97</span><br><span class="line-number">98</span><br><span class="line-number">99</span><br><span class="line-number">100</span><br><span class="line-number">101</span><br><span class="line-number">102</span><br><span class="line-number">103</span><br><span class="line-number">104</span><br><span class="line-number">105</span><br><span class="line-number">106</span><br><span class="line-number">107</span><br><span class="line-number">108</span><br><span class="line-number">109</span><br><span class="line-number">110</span><br><span class="line-number">111</span><br><span class="line-number">112</span><br><span class="line-number">113</span><br><span class="line-number">114</span><br><span class="line-number">115</span><br><span class="line-number">116</span><br><span class="line-number">117</span><br><span class="line-number">118</span><br><span class="line-number">119</span><br><span class="line-number">120</span><br><span class="line-number">121</span><br><span class="line-number">122</span><br><span class="line-number">123</span><br><span class="line-number">124</span><br><span class="line-number">125</span><br><span class="line-number">126</span><br><span class="line-number">127</span><br><span class="line-number">128</span><br><span class="line-number">129</span><br><span class="line-number">130</span><br><span class="line-number">131</span><br><span class="line-number">132</span><br><span class="line-number">133</span><br><span class="line-number">134</span><br><span class="line-number">135</span><br><span class="line-number">136</span><br><span class="line-number">137</span><br><span class="line-number">138</span><br><span class="line-number">139</span><br><span class="line-number">140</span><br><span class="line-number">141</span><br><span class="line-number">142</span><br><span class="line-number">143</span><br><span class="line-number">144</span><br><span class="line-number">145</span><br><span class="line-number">146</span><br><span class="line-number">147</span><br><span class="line-number">148</span><br><span class="line-number">149</span><br><span class="line-number">150</span><br><span class="line-number">151</span><br><span class="line-number">152</span><br><span class="line-number">153</span><br><span class="line-number">154</span><br><span class="line-number">155</span><br></div></div></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">Last Updated:</span> <span class="time">11/11/2021, 11:04:53 AM</span></div></footer> <!----> </main></div><div class="global-ui"><!----><!----></div></div>
+    <script src="/assets/js/app.9e441e61.js" defer></script><script src="/assets/js/2.36bde0fd.js" defer></script><script src="/assets/js/78.5e4673c6.js" defer></script><script src="/assets/js/3.5a07e503.js" defer></script>
+  </body>
+</html>
